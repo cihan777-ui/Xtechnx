@@ -386,8 +386,8 @@ function renderPending(){
         <div class="plat-lbl">Platform seçin:</div>
         <div class="plat-row" id="pr-${item.item_id}">
           ${Object.entries(PLAT).map(([k,v])=>`
-            <label class="pcheck on" id="pc-${item.item_id}-${k}">
-              <input type="checkbox" value="${k}" checked onchange="tog('${item.item_id}','${k}',this.checked)">
+            <label class="pcheck" id="pc-${item.item_id}-${k}">
+              <input type="checkbox" value="${k}" onchange="tog('${item.item_id}','${k}',this.checked)">
               ${v.icon} ${v.label}<span class="chk">✓</span>
             </label>`).join('')}
         </div>
