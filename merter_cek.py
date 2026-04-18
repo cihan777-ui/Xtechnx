@@ -3,6 +3,8 @@ merterelektronik.com'dan barkodla urun ceker, JSON cikti verir.
 Kullanim: python merter_cek.py <barkod>
 """
 import sys, json, re, time
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 
