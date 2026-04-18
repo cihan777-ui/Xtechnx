@@ -13,6 +13,7 @@ class Settings(BaseSettings):
 
     n11_app_key: str = ""
     n11_app_secret: str = ""
+    n11_shipment_template: str = "Aras Kargo"
 
     amazon_lwa_app_id: str = ""
     amazon_lwa_client_secret: str = ""

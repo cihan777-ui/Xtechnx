@@ -23,9 +23,29 @@ def _resolve_category(p: Product) -> int:
     return get_n11_category(p.category or "", db_mappings)
 
 
+def _extract_brand(p: Product) -> str:
+    if p.brand:
+        return p.brand
+    # "Xtechnx Marka ..." → "Marka"
+    title = p.title or ""
+    if title.startswith("Xtechnx "):
+        title = title[len("Xtechnx "):]
+    return title.split()[0] if title.split() else "Diger"
+
+
+def _numeric_barcode(p: Product) -> str:
+    """'Xtechnx123456' → '0000000123456' (13 haneli sayısal barkod)"""
+    raw = p.barcode or ""
+    digits = "".join(c for c in raw if c.isdigit())
+    return digits.zfill(13)[:13] if digits else str(abs(hash(p.title)) % 10**13).zfill(13)
+
+
 def _build_payload(p: Product) -> dict:
     cat_id = _resolve_category(p)
     images = [{"url": img, "order": i + 1} for i, img in enumerate(p.images[:8]) if img]
+    brand = _extract_brand(p)
+    barcode = _numeric_barcode(p)
+    tmpl = getattr(settings, "n11_shipment_template", "") or "Aras Kargo"
     return {
         "payload": {
             "integrator": "Xtechnx",
@@ -35,12 +55,13 @@ def _build_payload(p: Product) -> dict:
                 "categoryId": cat_id,
                 "currencyType": "TL",
                 "productMainId": p.sku or f"XTECH-{abs(hash(p.title)) % 10**8}",
-                "preparingDay": 3,
-                "shipmentTemplate": "Standart",
+                "preparingDay": 2,
+                "shipmentTemplate": tmpl,
                 "stockCode": p.sku or f"XTECH-{abs(hash(p.title)) % 10**8}",
+                "barcode": barcode,
                 "quantity": p.stock,
                 "images": images,
-                "attributes": [],
+                "attributes": [{"id": 1, "customValue": brand, "valueId": None}],
                 "salePrice": round(p.price, 2),
                 "listPrice": round(p.price * 1.1, 2),
                 "vatRate": 10,

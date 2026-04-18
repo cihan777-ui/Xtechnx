@@ -6,12 +6,12 @@ Merter kategori adını N11 alt kategori ID'sine çevirir.
 # Anahtar kelime → N11 leaf category ID
 KEYWORD_MAP = {
     # Adaptör / Şarj / Pil
-    "adaptör": 1000535,
-    "adaptor": 1000535,
-    "şarj": 1000535,
-    "pil": 1000535,
-    "akü": 1000535,
-    "güç kaynağı": 1000535,
+    "adaptör": 1000544,
+    "adaptor": 1000544,
+    "şarj": 1000544,
+    "pil": 1000542,
+    "akü": 1000542,
+    "güç kaynağı": 1000544,
 
     # Televizyon
     "televizyon": 1000558,
@@ -23,15 +23,16 @@ KEYWORD_MAP = {
     "projeksiyon": 1246200,
 
     # Ses
-    "hoparlör": 1000545,
-    "ses sistemi": 1000545,
+    "hoparlör": 1000557,
+    "ses sistemi": 1000557,
     "bluetooth hoparlör": 1165207,
     "müzik sistemi": 1000528,
     "mp3": 1000523,
     "mp4": 1000523,
     "dvd": 1000515,
     "blu-ray": 1000515,
-    "uydu": 1000574,
+    "uydu alıcı": 1000576,
+    "uydu": 1000576,
 
     # Oto
     "oto ses": 1003054,
@@ -73,7 +74,7 @@ KEYWORD_MAP = {
     "nemlendirici": 1278200,
 }
 
-DEFAULT_N11_CATEGORY = 1000211  # Bilgisayar → Aksesuar & Yedek Parça
+DEFAULT_N11_CATEGORY = 1000240  # Bilgisayar → Aksesuar → USB Aksesuarları
 
 
 def get_n11_category(source_category: str, db_mapping: dict = None) -> int:
