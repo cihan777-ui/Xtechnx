@@ -8,3 +8,4 @@ python-dotenv==1.0.1
 openpyxl==3.1.2
 keyring==25.1.0
 lxml>=4.9.0
+orjson>=3.9.0

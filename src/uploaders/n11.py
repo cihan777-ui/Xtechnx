@@ -49,7 +49,7 @@ def _build_payload(p: Product) -> dict:
                 "categoryId": cat_id,
                 "currencyType": "TL",
                 "productMainId": p.sku or f"XTECH-{abs(hash(p.title)) % 10**8}",
-                "preparingDay": 2,
+                "preparingDay": 1,
                 "shipmentTemplate": tmpl,
                 "stockCode": p.sku or f"XTECH-{abs(hash(p.title)) % 10**8}",
                 "barcode": barcode,
@@ -58,7 +58,7 @@ def _build_payload(p: Product) -> dict:
                 "attributes": [{"id": 1, "customValue": brand, "valueId": None}],
                 "salePrice": round(p.price, 2),
                 "listPrice": round(p.price * 1.1, 2),
-                "vatRate": 10,
+                "vatRate": 20,
             }]
         }
     }

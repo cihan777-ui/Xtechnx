@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.responses import HTMLResponse, FileResponse, ORJSONResponse
 from pydantic import BaseModel
 from typing import Optional, List
 import uvicorn, logging, uuid, asyncio, subprocess, sys, os
@@ -24,7 +24,7 @@ from uploaders.amazon import AmazonUploader
 
 db.init_db()
 
-app = FastAPI(title="Xtechnx Product Sync", version="4.0.0")
+app = FastAPI(title="Xtechnx Product Sync", version="4.0.0", default_response_class=ORJSONResponse)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 jobs: dict = {}
