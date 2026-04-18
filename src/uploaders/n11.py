@@ -27,11 +27,20 @@ def _extract_brand(p: Product) -> str:
     return "Xtechnx"
 
 
+def _ean13(base: str) -> str:
+    """12 haneli sayıdan geçerli EAN-13 üretir (check digit ekler)."""
+    digits = base[:12].zfill(12)
+    toplam = sum(int(d) * (1 if i % 2 == 0 else 3) for i, d in enumerate(digits))
+    check = (10 - (toplam % 10)) % 10
+    return digits + str(check)
+
+
 def _numeric_barcode(p: Product) -> str:
-    """'Xtechnx123456' → '0000000123456' (13 haneli sayısal barkod)"""
+    """Ürüne özgü geçerli EAN-13 barkod üretir."""
     raw = p.barcode or ""
     digits = "".join(c for c in raw if c.isdigit())
-    return digits.zfill(13)[:13] if digits else str(abs(hash(p.title)) % 10**13).zfill(13)
+    base12 = digits[:12] if len(digits) >= 12 else str(abs(hash(p.sku or p.title)) % 10**12).zfill(12)
+    return _ean13(base12)
 
 
 def _build_payload(p: Product) -> dict:
