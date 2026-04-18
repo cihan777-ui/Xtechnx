@@ -24,13 +24,7 @@ def _resolve_category(p: Product) -> int:
 
 
 def _extract_brand(p: Product) -> str:
-    if p.brand:
-        return p.brand
-    # "Xtechnx Marka ..." → "Marka"
-    title = p.title or ""
-    if title.startswith("Xtechnx "):
-        title = title[len("Xtechnx "):]
-    return title.split()[0] if title.split() else "Diger"
+    return "Xtechnx"
 
 
 def _numeric_barcode(p: Product) -> str:

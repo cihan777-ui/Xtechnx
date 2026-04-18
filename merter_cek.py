@@ -144,16 +144,27 @@ def main():
                             break
             except: pass
 
-        # Aciklama
-        aciklama = ""
-        for id_val in ["divTabOzellikler","divTabAciklama","divUrunAciklama","divDescription"]:
+        # Aciklama - tum olasi bolumlerden topla
+        aciklama_parcalar = []
+        for id_val in ["divTabOzellikler","divTabAciklama","divUrunAciklama",
+                       "divDescription","divUrunDetay","divOzellikler",
+                       "divTeknikOzellik","product-description","product-detail"]:
             tag = soup.find(id=id_val)
             if tag:
-                aciklama = tag.get_text(separator="\n", strip=True)[:3000]
-                break
+                metin = tag.get_text(separator="\n", strip=True)
+                if metin and metin not in aciklama_parcalar:
+                    aciklama_parcalar.append(metin)
+        # CSS class ile de dene
+        for cls in ["product-description","urun-aciklama","product-detail","ozellikler"]:
+            tag = soup.find(class_=cls)
+            if tag:
+                metin = tag.get_text(separator="\n", strip=True)
+                if metin and metin not in aciklama_parcalar:
+                    aciklama_parcalar.append(metin)
+        aciklama = "\n\n".join(aciklama_parcalar)
         if not aciklama:
             meta_d = soup.find("meta", {"name":"description"}) or soup.find("meta", {"property":"og:description"})
-            aciklama = meta_d.get("content","")[:1000] if meta_d else ""
+            aciklama = meta_d.get("content","") if meta_d else ""
 
         # Resimler
         resimler = []
