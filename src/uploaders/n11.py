@@ -1,3 +1,4 @@
+import hashlib
 import aiohttp
 from models.product import Product
 from config.settings import settings
@@ -39,7 +40,11 @@ def _numeric_barcode(p: Product) -> str:
     """Ürüne özgü geçerli EAN-13 barkod üretir."""
     raw = p.barcode or ""
     digits = "".join(c for c in raw if c.isdigit())
-    base12 = digits[:12] if len(digits) >= 12 else str(abs(hash(p.sku or p.title)) % 10**12).zfill(12)
+    if len(digits) >= 12:
+        base12 = digits[:12]
+    else:
+        key = (p.sku or p.barcode or p.title or "").encode("utf-8")
+        base12 = str(int(hashlib.md5(key).hexdigest(), 16) % 10**12).zfill(12)
     return _ean13(base12)
 
 
