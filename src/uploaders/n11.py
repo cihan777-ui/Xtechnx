@@ -63,7 +63,7 @@ def _build_payload(p: Product) -> dict:
                 "images": images,
                 "attributes": [{"id": 1, "customValue": brand, "valueId": None}],
                 "salePrice": round(p.price, 2),
-                "listPrice": round(p.price, 2),
+                "listPrice": round(p.price * 1.1, 2),
                 "vatRate": 10,
             }]
         }
