@@ -1,0 +1,25 @@
+2026-03-29 16:17:58,997 [INFO] 4 changes detected
+2026-03-29 16:53:02,169 [INFO] ==================================================
+2026-03-29 16:53:02,170 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-03-29 16:53:02,170 [INFO] ==================================================
+2026-03-29 16:53:02,171 [INFO] Sunucu başlatıldı
+2026-03-29 16:53:02,845 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-03-29 16:57:10,568 [INFO] ==================================================
+2026-03-29 16:57:10,569 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-03-29 16:57:10,570 [INFO] ==================================================
+2026-03-29 16:57:10,574 [INFO] Sunucu başlatıldı
+2026-03-29 16:57:12,626 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-03-29 17:52:47,455 [ERROR] ✗ 8680618309188: cannot import name 'urun_bul_ve_cek' from 'scrapers.merter_scraper' (C:\Users\Sule\Desktop\product-sync\src\scrapers\merter_scraper.py)
+2026-03-29 18:11:02,578 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-03-29 18:11:26,789 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618309188
+2026-03-29 18:11:26,789 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-pm-4735-16-volt-2-amper-tos-fisli-rca-uclu-priz-tipi-santral-adaptoru
+2026-03-29 18:11:26,789 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 212.04
+2026-03-29 18:11:26,789 [INFO]   [cek] Baslik: Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
+2026-03-29 18:11:26,789 [INFO]   [cek] Fiyat: 212.04
+2026-03-29 18:11:26,789 [INFO]   [cek] Resimler: 3
+2026-03-29 18:11:26,789 [INFO] Urun bulundu: Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Pri
+2026-03-29 18:11:27,936 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
+2026-03-29 18:15:13,241 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
+2026-03-29 18:33:29,771 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
+2026-03-29 18:34:44,240 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
+2026-03-29 18:52:11,141 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�

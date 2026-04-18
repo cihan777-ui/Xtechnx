@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Xtechnx Product Sync v4</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  --bg:#08080f;--surf:#111118;--surf2:#1a1a24;--surf3:#22222f;
+  --border:#2d2d3f;--border2:#3d3d52;
+  --accent:#7c5cfc;--accent2:#fc5c7d;--green:#3de68e;--yellow:#ffd166;--red:#ff4d6d;--blue:#5c9afc;
+  --text:#e8e8f2;--muted:#6b6b8a;--muted2:#4a4a64;
+  --font:'Syne',sans-serif;--mono:'JetBrains Mono',monospace;--r:10px;--r2:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);background:var(--surf);flex-shrink:0}
+.logo{font-size:20px;font-weight:800}.logo em{color:var(--accent);font-style:normal}
+.ver{font-family:var(--mono);font-size:9px;background:var(--accent);color:#fff;padding:2px 7px;border-radius:4px;letter-spacing:1px}
+.hstats{margin-left:auto;display:flex;gap:20px}
+.hstat .n{font-size:18px;font-weight:800;color:var(--accent)}.hstat .l{font-size:10px;color:var(--muted);letter-spacing:.5px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.app{display:grid;grid-template-columns:300px 1fr;flex:1;overflow:hidden}
+.left{background:var(--surf);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.ptitle{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--muted);padding:16px 16px 8px;text-transform:uppercase}
+.bc-wrap{padding:0 12px 10px}
+.bc-input-row{display:flex;gap:8px;background:var(--surf2);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;transition:border-color .2s}
+.bc-input-row:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,92,252,.12)}
+.bc-input-row input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:var(--mono);font-size:13px}
+.bc-input-row input::placeholder{color:var(--muted)}
+.btn-add{background:var(--accent);border:none;color:#fff;font-family:var(--font);font-size:11px;font-weight:700;padding:5px 10px;border-radius:7px;cursor:pointer}
+.fb{font-family:var(--mono);font-size:11px;min-height:16px;margin-top:5px;padding-left:2px}
+.fb.ok{color:var(--green)}.fb.dup{color:var(--yellow)}.fb.err{color:var(--red)}
+.bc-list{flex:1;overflow-y:auto;padding:0 12px}
+.bc-list::-webkit-scrollbar{width:3px}
+.bc-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.bc-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;margin-bottom:4px;background:var(--surf2);border:1px solid var(--border)}
+.bc-item.done{opacity:.4}
+.bc-code{font-family:var(--mono);font-size:12px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bc-tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px}
+.bc-tag.new{background:rgba(61,230,142,.15);color:var(--green)}
+.bc-tag.done{background:rgba(107,107,138,.12);color:var(--muted)}
+.btn-x{background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px;padding:1px 3px;border-radius:3px}
+.btn-x:hover{color:var(--red)}
+.empty{text-align:center;padding:32px 16px;color:var(--muted);font-size:12px;line-height:1.8}
+.empty .ico{font-size:26px;margin-bottom:8px}
+.left-foot{padding:12px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.btn-main{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-family:var(--font);font-size:13px;font-weight:700;padding:11px;border-radius:var(--r);cursor:pointer;transition:opacity .2s}
+.btn-main:hover{opacity:.9}.btn-main:disabled{opacity:.35;cursor:not-allowed}
+.btn-sec{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font);font-size:11px;padding:7px;border-radius:8px;cursor:pointer;transition:all .15s}
+.btn-sec:hover{border-color:var(--border2);color:var(--text)}
+.btn-danger:hover{border-color:var(--red);color:var(--red)}
+.right{display:flex;flex-direction:column;overflow:hidden}
+.tabs{display:flex;padding:0 20px;border-bottom:1px solid var(--border);background:var(--surf);flex-shrink:0}
+.tab{padding:13px 15px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
+.tab:hover{color:var(--text)}.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab .cnt{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;background:var(--accent);color:#fff;font-size:9px;border-radius:8px;margin-left:5px;padding:0 4px}
+.tcontent{flex:1;overflow-y:auto;padding:18px}
+.tcontent::-webkit-scrollbar{width:4px}
+.tcontent::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.tpane{display:none}.tpane.active{display:block}
+.pgrid{display:flex;flex-direction:column;gap:12px}
+.pcard{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:border-color .2s}
+.pcard:hover{border-color:var(--accent)}
+.card-top{display:flex;gap:12px;padding:12px 14px}
+.card-img{width:64px;height:64px;object-fit:contain;background:var(--surf2);border-radius:8px;flex-shrink:0;border:1px solid var(--border)}
+.card-no-img{width:64px;height:64px;background:var(--surf2);border-radius:8px;flex-shrink:0;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--muted)}
+.card-info{flex:1;min-width:0}
+.card-title{font-size:13px;font-weight:700;line-height:1.4;margin-bottom:7px}
+.card-title .xt{color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-family:var(--mono);font-size:10px;padding:3px 7px;border-radius:5px;background:var(--surf2);border:1px solid var(--border)}
+.tag .lbl{color:var(--muted);margin-right:3px}
+.tag.price .val{color:var(--green);font-weight:600}
+.diff{border-top:1px solid var(--border);padding:9px 14px;display:grid;grid-template-columns:1fr 18px 1fr;gap:4px 5px;align-items:center}
+.dl{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:1px}
+.dold{font-family:var(--mono);font-size:11px;color:var(--muted2);text-decoration:line-through;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.darr{color:var(--accent);text-align:center;font-size:12px}
+.dnew{font-family:var(--mono);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dnew.hi{color:var(--green);font-weight:600}
+.plat-sec{border-top:1px solid var(--border);padding:10px 14px}
+.plat-lbl{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.plat-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.pcheck{display:flex;align-items:center;gap:6px;padding:6px 11px;background:var(--surf2);border:1px solid var(--border);border-radius:7px;cursor:pointer;user-select:none;font-size:12px;font-weight:600;transition:all .15s}
+.pcheck:hover{border-color:var(--accent)}.pcheck.on{border-color:var(--accent);background:rgba(124,92,252,.1);color:var(--accent)}
+.pcheck input{display:none}
+.chk{width:14px;height:14px;border:2px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;transition:all .15s}
+.pcheck.on .chk{background:var(--accent);border-color:var(--accent);color:#fff}
+.card-acts{display:flex;gap:7px}
+.btn-approve{flex:1;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-family:var(--font);font-size:12px;font-weight:700;padding:9px;border-radius:7px;cursor:pointer;transition:opacity .2s}
+.btn-approve:hover{opacity:.85}.btn-approve:disabled{opacity:.35;cursor:not-allowed}
+.btn-skip{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font);font-size:12px;padding:9px 14px;border-radius:7px;cursor:pointer;transition:all .15s}
+.btn-skip:hover{border-color:var(--red);color:var(--red)}
+.hist-filters{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.fsel{background:var(--surf2);border:1px solid var(--border);color:var(--text);font-family:var(--font);font-size:12px;padding:7px 11px;border-radius:7px;outline:none;cursor:pointer}
+.fsel:focus{border-color:var(--accent)}
+.btn-sm{background:var(--surf2);border:1px solid var(--border);color:var(--text);font-family:var(--font);font-size:11px;padding:7px 12px;border-radius:7px;cursor:pointer;transition:all .15s}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.hist-table{width:100%;border-collapse:collapse;font-size:12px}
+.hist-table th{background:var(--surf2);padding:8px 10px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--border);white-space:nowrap}
+.hist-table td{padding:8px 10px;border-bottom:1px solid var(--border2);vertical-align:middle}
+.hist-table tr:hover td{background:rgba(124,92,252,.04)}
+.ok-tag{background:rgba(61,230,142,.15);color:var(--green);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.err-tag{background:rgba(255,77,109,.15);color:var(--red);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.mono{font-family:var(--mono);font-size:11px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+.stat-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:16px}
+.stat-card .n{font-size:30px;font-weight:800;line-height:1}.stat-card .l{font-size:11px;color:var(--muted);margin-top:4px}
+.stat-card.green .n{color:var(--green)}.stat-card.acc .n{color:var(--accent)}
+.plat-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.plat-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:14px}
+.plat-card .plat-name{font-size:13px;font-weight:700;margin-bottom:10px}
+.plat-row2{display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px}
+.plat-row2 .l{color:var(--muted)}.v.g{color:var(--green)}.v.r{color:var(--red)}
+.prog{height:4px;background:var(--surf2);border-radius:2px;margin-top:7px;overflow:hidden}
+.prog-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .5s}
+.sett-section{margin-bottom:22px}
+.sett-title{font-size:13px;font-weight:700;margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.sett-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.inp-wrap{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:9px 11px;transition:border-color .15s}
+.inp-wrap:focus-within{border-color:var(--accent)}
+.inp-wrap label{display:block;font-size:9px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.inp-wrap input{width:100%;background:none;border:none;outline:none;color:var(--text);font-family:var(--mono);font-size:12px}
+.btn-save-creds{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-family:var(--font);font-size:12px;font-weight:700;padding:9px 18px;border-radius:8px;cursor:pointer;margin-top:10px}
+.spinner{display:inline-block;width:13px;height:13px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:5px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.no-data{text-align:center;padding:36px;color:var(--muted);font-size:13px}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--surf2);border:1px solid var(--border);border-radius:var(--r);padding:11px 16px;font-size:13px;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:999;transform:translateY(80px);opacity:0;transition:all .3s;max-width:300px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.ok{border-color:var(--green);color:var(--green)}
+.toast.err{border-color:var(--red);color:var(--red)}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><em>Xtechnx</em> Product Sync</div>
+  <div class="ver">v4.0</div>
+  <div class="hstats">
+    <div class="hstat"><div class="n" id="hToday">—</div><div class="l">BUGÜN</div></div>
+    <div class="hstat"><div class="n" id="hTotal">—</div><div class="l">TOPLAM</div></div>
+    <div class="hstat"><div class="n" id="hPending">0</div><div class="l">BEKLEYEN</div></div>
+  </div>
+  <div class="dot"></div>
+</header>
+
+<div class="app">
+<div class="left">
+  <div class="ptitle">📦 Barkod Listesi</div>
+  <div class="bc-wrap">
+    <div class="bc-input-row">
+      <input id="bcIn" placeholder="Barkod okutun..." autofocus autocomplete="off">
+      <button class="btn-add" onclick="addBC()">EKLE</button>
+    </div>
+    <div class="fb" id="bcFb"></div>
+  </div>
+  <div class="bc-list" id="bcList">
+    <div class="empty"><div class="ico">🔍</div>Henüz barkod eklenmedi.</div>
+  </div>
+  <div class="left-foot">
+    <button class="btn-main" id="btnProc" onclick="processAll()">▶ Ürünleri Çek &amp; Dönüştür</button>
+    <button class="btn-sec btn-danger" onclick="clearAll()">🗑 Listeyi Temizle</button>
+  </div>
+</div>
+
+<div class="right">
+  <div class="tabs">
+    <div class="tab active" onclick="sw('pending')" id="t-pending">Onay Bekleyen <span class="cnt" id="cPending">0</span></div>
+    <div class="tab" onclick="sw('history')" id="t-history">Geçmiş</div>
+    <div class="tab" onclick="sw('stats')" id="t-stats">İstatistik</div>
+    <div class="tab" onclick="sw('settings')" id="t-settings">⚙ Ayarlar</div>
+  </div>
+  <div class="tcontent">
+
+    <div class="tpane active" id="p-pending">
+      <div class="pgrid" id="pendingGrid">
+        <div class="empty" style="margin-top:40px"><div class="ico">⏳</div>Barkod ekleyin, ardından<br><strong>"Ürünleri Çek &amp; Dönüştür"</strong> butonuna basın.</div>
+      </div>
+    </div>
+
+    <div class="tpane" id="p-history">
+      <div class="hist-filters">
+        <select class="fsel" id="fPlatform" onchange="loadHistory()">
+          <option value="">Tüm Platformlar</option>
+          <option value="trendyol">Trendyol</option>
+          <option value="hepsiburada">Hepsiburada</option>
+          <option value="n11">N11</option>
+          <option value="amazon">Amazon TR</option>
+        </select>
+        <select class="fsel" id="fStatus" onchange="loadHistory()">
+          <option value="">Tüm Durumlar</option>
+          <option value="success">Başarılı</option>
+          <option value="error">Hatalı</option>
+        </select>
+        <button class="btn-sm" onclick="generateReport()">📥 Excel Rapor</button>
+        <button class="btn-sm" onclick="loadHistory()">↻ Yenile</button>
+      </div>
+      <div id="histBody"><div class="no-data">Yükleniyor...</div></div>
+    </div>
+
+    <div class="tpane" id="p-stats">
+      <div class="stats-grid" id="statsGrid"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Platform Detayı</div>
+      <div class="plat-stats" id="platStats"></div>
+    </div>
+
+    <div class="tpane" id="p-settings">
+      <div class="sett-section">
+        <div class="sett-title">🟠 Trendyol</div>
+        <div class="sett-grid">
+          <div class="inp-wrap"><label>API Key</label><input type="password" id="s-ty-api_key"></div>
+          <div class="inp-wrap"><label>API Secret</label><input type="password" id="s-ty-api_secret"></div>
+          <div class="inp-wrap"><label>Supplier ID</label><input id="s-ty-supplier_id"></div>
+        </div>
+        <button class="btn-save-creds" onclick="saveCreds('trendyol',['api_key','api_secret','supplier_id'])">Kaydet</button>
+      </div>
+      <div class="sett-section">
+        <div class="sett-title">🟡 Hepsiburada</div>
+        <div class="sett-grid">
+          <div class="inp-wrap"><label>Kullanıcı Adı</label><input id="s-hb-username"></div>
+          <div class="inp-wrap"><label>Şifre</label><input type="password" id="s-hb-password"></div>
+          <div class="inp-wrap"><label>Merchant ID</label><input id="s-hb-merchant_id"></div>
+        </div>
+        <button class="btn-save-creds" onclick="saveCreds('hepsiburada',['username','password','merchant_id'])">Kaydet</button>
+      </div>
+      <div class="sett-section">
+        <div class="sett-title">🔵 N11</div>
+        <div class="sett-grid">
+          <div class="inp-wrap"><label>App Key</label><input type="password" id="s-n11-app_key"></div>
+          <div class="inp-wrap"><label>App Secret</label><input type="password" id="s-n11-app_secret"></div>
+        </div>
+        <button class="btn-save-creds" onclick="saveCreds('n11',['app_key','app_secret'])">Kaydet</button>
+      </div>
+      <div class="sett-section">
+        <div class="sett-title">🟤 Amazon TR</div>
+        <div class="sett-grid">
+          <div class="inp-wrap"><label>LWA App ID</label><input id="s-amz-lwa_app_id"></div>
+          <div class="inp-wrap"><label>LWA Client Secret</label><input type="password" id="s-amz-lwa_client_secret"></div>
+          <div class="inp-wrap"><label>Refresh Token</label><input type="password" id="s-amz-refresh_token"></div>
+          <div class="inp-wrap"><label>Seller ID</label><input id="s-amz-seller_id"></div>
+        </div>
+        <button class="btn-save-creds" onclick="saveCreds('amazon',['lwa_app_id','lwa_client_secret','refresh_token','seller_id'])">Kaydet</button>
+      </div>
+      <div class="sett-section">
+        <div class="sett-title">💾 Önbellek</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Ürün verileri 24 saat önbellekte tutulur.</p>
+        <button class="btn-sec" onclick="clearCache()">🗑 Önbelleği Temizle</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API='';
+const PLAT={trendyol:{icon:'🟠',label:'Trendyol'},hepsiburada:{icon:'🟡',label:'Hepsiburada'},n11:{icon:'🔵',label:'N11'},amazon:{icon:'🟤',label:'Amazon TR'}};
+let barcodes=[],pending=[],jobPoll=null;
+
+document.addEventListener('DOMContentLoaded',()=>{
+  loadBC();loadPending();loadStats();loadHistory();
+  document.getElementById('bcIn').addEventListener('keydown',e=>{if(e.key==='Enter')addBC();});
+  setInterval(()=>{loadPending();loadStats();},8000);
+});
+
+function sw(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tpane').forEach(p=>p.classList.remove('active'));
+  document.getElementById('t-'+name).classList.add('active');
+  document.getElementById('p-'+name).classList.add('active');
+  if(name==='history')loadHistory();
+  if(name==='stats')loadStats();
+}
+
+async function addBC(){
+  const inp=document.getElementById('bcIn');
+  const bc=inp.value.trim();if(!bc)return;
+  inp.value='';
+  const fb=document.getElementById('bcFb');
+  try{
+    const r=await fetch(`${API}/barcodes/add`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({barcode:bc})});
+    const d=await r.json();
+    fb.textContent=d.status==='added'?`✓ ${bc} eklendi`:d.status==='duplicate'?`⚠ ${bc} zaten kayıtlı`:`✗ ${d.message}`;
+    fb.className='fb '+(d.status==='added'?'ok':d.status==='duplicate'?'dup':'err');
+    setTimeout(()=>{fb.textContent='';fb.className='fb';},3000);
+    loadBC();
+  }catch(e){fb.textContent='✗ Sunucu bağlantısı yok';fb.className='fb err';}
+}
+
+async function loadBC(){
+  try{
+    const d=await fetch(`${API}/barcodes`).then(r=>r.json());
+    barcodes=d.barcodes||[];
+    document.getElementById('btnProc').disabled=barcodes.filter(b=>!b.processed).length===0;
+    renderBC();
+  }catch(e){}
+}
+
+function renderBC(){
+  const el=document.getElementById('bcList');
+  if(!barcodes.length){el.innerHTML='<div class="empty"><div class="ico">🔍</div>Henüz barkod eklenmedi.</div>';return;}
+  el.innerHTML=barcodes.map(b=>`
+    <div class="bc-item ${b.processed?'done':''}">
+      <div class="bc-code">${esc(b.barcode)}</div>
+      <div class="bc-tag ${b.processed?'done':'new'}">${b.processed?'İşlendi':'Yeni'}</div>
+      <button class="btn-x" onclick="delBC('${esc(b.barcode)}')">×</button>
+    </div>`).join('');
+}
+
+async function delBC(bc){await fetch(`${API}/barcodes/${encodeURIComponent(bc)}`,{method:'DELETE'});loadBC();}
+
+async function clearAll(){
+  if(!confirm('Tüm barkodlar silinsin mi?'))return;
+  await fetch(`${API}/barcodes`,{method:'DELETE'});
+  loadBC();toast('Liste temizlendi');
+}
+
+async function processAll(){
+  const btn=document.getElementById('btnProc');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>İşleniyor...';
+  try{
+    const d=await fetch(`${API}/process`,{method:'POST'}).then(r=>r.json());
+    if(d.status==='nothing_to_do'){toast('İşlenecek barkod yok','err');btn.innerHTML='▶ Ürünleri Çek & Dönüştür';btn.disabled=false;return;}
+    toast(d.message,'ok');
+    pollJob(d.job_id,btn);
+    sw('pending');
+  }catch(e){toast('Sunucu hatası','err');btn.innerHTML='▶ Ürünleri Çek & Dönüştür';btn.disabled=false;}
+}
+
+function pollJob(jobId,btn){
+  if(jobPoll)clearInterval(jobPoll);
+  jobPoll=setInterval(async()=>{
+    try{
+      const d=await fetch(`${API}/jobs/${jobId}`).then(r=>r.json());
+      if(d.status==='completed'){
+        clearInterval(jobPoll);
+        btn.innerHTML='▶ Ürünleri Çek & Dönüştür';
+        loadBC();loadPending();loadStats();
+        toast(`✓ ${d.results?.length||0} ürün onay bekliyor`,'ok');
+      }
+    }catch(e){}
+  },2000);
+}
+
+async function loadPending(){
+  try{
+    const d=await fetch(`${API}/pending`).then(r=>r.json());
+    pending=d.items||[];
+    document.getElementById('cPending').textContent=pending.length;
+    document.getElementById('hPending').textContent=pending.length;
+    renderPending();
+  }catch(e){}
+}
+
+function renderPending(){
+  const el=document.getElementById('pendingGrid');
+  if(!pending.length){
+    el.innerHTML='<div class="empty" style="margin-top:40px"><div class="ico">⏳</div>Barkod ekleyin, ardından<br><strong>"Ürünleri Çek &amp; Dönüştür"</strong> butonuna basın.</div>';return;
+  }
+  el.innerHTML=pending.map(item=>{
+    const p=item.preview,img=item.images?.[0];
+    return `<div class="pcard" id="card-${item.item_id}">
+      <div class="card-top">
+        ${img?`<img class="card-img" src="${esc(img)}" onerror="this.style.display='none'">`:'<div class="card-no-img">📦</div>'}
+        <div class="card-info">
+          <div class="card-title"><span class="xt">Xtechnx</span> ${esc(p.original.title)}</div>
+          <div class="tags">
+            <div class="tag price"><span class="lbl">Fiyat</span><span class="val">${p.original.price} → <b>${p.transformed.price} TL</b></span></div>
+            <div class="tag"><span class="lbl">Barkod</span><span>${p.transformed.barcode}</span></div>
+            <div class="tag"><span class="lbl">SKU</span><span>${p.transformed.sku}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="diff">
+        <div><div class="dl">Başlık</div><div class="dold">${esc(p.original.title)}</div></div>
+        <div class="darr">→</div><div class="dnew">${esc(p.transformed.title)}</div>
+        <div><div class="dl">Barkod</div><div class="dold">${p.original.barcode}</div></div>
+        <div class="darr">→</div><div class="dnew hi">${p.transformed.barcode}</div>
+        <div><div class="dl">SKU</div><div class="dold">${p.original.sku}</div></div>
+        <div class="darr">→</div><div class="dnew hi">${p.transformed.sku}</div>
+      </div>
+      <div class="plat-sec">
+        <div class="plat-lbl">Platform seçin:</div>
+        <div class="plat-row" id="pr-${item.item_id}">
+          ${Object.entries(PLAT).map(([k,v])=>`
+            <label class="pcheck on" id="pc-${item.item_id}-${k}">
+              <input type="checkbox" value="${k}" checked onchange="tog('${item.item_id}','${k}',this.checked)">
+              ${v.icon} ${v.label}<span class="chk">✓</span>
+            </label>`).join('')}
+        </div>
+        <div class="card-acts">
+          <button class="btn-approve" id="ba-${item.item_id}" onclick="approve('${item.item_id}')">✓ Onayla &amp; Yükle</button>
+          <button class="btn-skip" onclick="skip('${item.item_id}')">✗ Geç</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function tog(id,plat,checked){document.getElementById(`pc-${id}-${plat}`)?.classList.toggle('on',checked);}
+function getPlats(id){return[...document.querySelectorAll(`#pr-${id} input:checked`)].map(i=>i.value);}
+
+async function approve(id){
+  const plats=getPlats(id);
+  if(!plats.length){toast('En az bir platform seçin!','err');return;}
+  const btn=document.getElementById(`ba-${id}`);
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Yükleniyor...';
+  try{
+    const d=await fetch(`${API}/approve/${id}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({platforms:plats})}).then(r=>r.json());
+    toast(`Yükleniyor: ${plats.join(', ')}`,'ok');
+    document.getElementById(`card-${id}`)?.remove();
+    loadPending();loadStats();
+  }catch(e){toast('Hata: '+e.message,'err');btn.disabled=false;btn.innerHTML='✓ Onayla & Yükle';}
+}
+
+async function skip(id){
+  await fetch(`${API}/pending/${id}`,{method:'DELETE'});
+  document.getElementById(`card-${id}`)?.remove();
+  loadPending();
+}
+
+async function loadHistory(){
+  const plat=document.getElementById('fPlatform')?.value||'';
+  const stat=document.getElementById('fStatus')?.value||'';
+  try{
+    const d=await fetch(`${API}/history?limit=200${plat?'&platform='+plat:''}${stat?'&status='+stat:''}`).then(r=>r.json());
+    const recs=d.records||[];
+    if(!recs.length){document.getElementById('histBody').innerHTML='<div class="no-data">Kayıt yok</div>';return;}
+    document.getElementById('histBody').innerHTML=`
+      <table class="hist-table"><thead><tr>
+        <th>Tarih</th><th>Platform</th><th>Durum</th><th>Başlık</th><th>Barkod</th><th>Fiyat</th>
+      </tr></thead><tbody>${recs.map(r=>`
+        <tr>
+          <td class="mono">${(r.uploaded_at||'').slice(0,16).replace('T',' ')}</td>
+          <td>${PLAT[r.platform]?.icon||''} ${PLAT[r.platform]?.label||r.platform}</td>
+          <td>${r.status==='success'?'<span class="ok-tag">✓ Başarılı</span>':'<span class="err-tag">✗ Hata</span>'}</td>
+          <td>${esc(r.title_new||'')}</td>
+          <td class="mono">${esc(r.barcode_new||'')}</td>
+          <td class="mono" style="color:var(--green)">${r.price_new} TL</td>
+        </tr>`).join('')}
+      </tbody></table>`;
+  }catch(e){document.getElementById('histBody').innerHTML='<div class="no-data">Yüklenemedi</div>';}
+}
+
+async function generateReport(){
+  toast('Rapor hazırlanıyor...');
+  try{
+    const d=await fetch(`${API}/report`,{method:'POST'}).then(r=>r.json());
+    window.open(d.download,'_blank');
+    toast('✓ Excel rapor indirildi','ok');
+  }catch(e){toast('Rapor hatası','err');}
+}
+
+async function loadStats(){
+  try{
+    const s=await fetch(`${API}/stats`).then(r=>r.json());
+    document.getElementById('hToday').textContent=s.today||0;
+    document.getElementById('hTotal').textContent=s.total||0;
+    document.getElementById('statsGrid').innerHTML=`
+      <div class="stat-card acc"><div class="n">${s.total||0}</div><div class="l">Toplam Yükleme</div></div>
+      <div class="stat-card green"><div class="n">${s.today||0}</div><div class="l">Bugün</div></div>`;
+    document.getElementById('platStats').innerHTML=Object.entries(PLAT).map(([k,v])=>{
+      const p=s[k]||{total:0,success:0,error:0};
+      const pct=p.total>0?Math.round(p.success/p.total*100):0;
+      return `<div class="plat-card">
+        <div class="plat-name">${v.icon} ${v.label}</div>
+        <div class="plat-row2"><span class="l">Toplam</span><span class="v">${p.total}</span></div>
+        <div class="plat-row2"><span class="l">Başarılı</span><span class="v g">${p.success}</span></div>
+        <div class="plat-row2"><span class="l">Hatalı</span><span class="v r">${p.error}</span></div>
+        <div class="prog"><div class="prog-bar" style="width:${pct}%"></div></div>
+      </div>`;}).join('');
+  }catch(e){}
+}
+
+async function saveCreds(platform,fields){
+  for(const field of fields){
+    const key=platform==='hepsiburada'?'hb':platform==='amazon'?'amz':platform;
+    const val=document.getElementById(`s-${key}-${field}`)?.value;
+    if(val)await fetch(`${API}/credentials`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({platform,field,value:val})});
+  }
+  toast(`${platform} ayarları kaydedildi`,'ok');
+}
+
+async function clearCache(){await fetch(`${API}/cache`,{method:'DELETE'});toast('Önbellek temizlendi','ok');}
+
+let toastTimer;
+function toast(msg,type=''){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.className='toast show'+(type?' '+type:'');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3500);
+}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+</script>
+</body>
+</html>
