@@ -23,3 +23,2022 @@
 2026-03-29 18:33:29,771 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
 2026-03-29 18:34:44,240 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
 2026-03-29 18:52:11,141 [INFO] ✓ 8680618309188 → Xtechnx Powermaster PM-4735 16 Volt - 2 Amper Tos Fi�li Rca U�lu Priz Tipi Santral Adapt�r�
+2026-04-18 14:12:18,387 [INFO] ==================================================
+2026-04-18 14:12:18,388 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 14:12:18,388 [INFO] ==================================================
+2026-04-18 14:12:18,389 [INFO] Sunucu başlatıldı
+2026-04-18 14:12:21,052 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 14:12:50,206 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-18 14:13:14,729 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618404159
+2026-04-18 14:13:14,729 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/magbox-atlantic-display-gozlu-tkgsli-1080p-full-hd-mini-uydu-alicisi
+2026-04-18 14:13:14,729 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 737.09
+2026-04-18 14:13:14,729 [INFO]   [cek] Baslik: Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:13:14,739 [INFO]   [cek] Fiyat: 737.09
+2026-04-18 14:13:14,740 [INFO]   [cek] Resimler: 4
+2026-04-18 14:13:14,740 [INFO] Urun bulundu: Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uyd
+2026-04-18 14:13:14,772 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:15:10,139 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:28:40,287 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:31:04,615 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:32:07,096 [INFO] ==================================================
+2026-04-18 14:32:07,097 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 14:32:07,097 [INFO] ==================================================
+2026-04-18 14:32:07,101 [INFO] Sunucu başlatıldı
+2026-04-18 14:32:08,163 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 14:32:39,506 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:33:12,289 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:35:52,990 [INFO] ==================================================
+2026-04-18 14:35:52,990 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 14:35:52,990 [INFO] ==================================================
+2026-04-18 14:35:52,991 [INFO] Sunucu başlatıldı
+2026-04-18 14:35:55,295 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 14:36:14,077 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:45:32,967 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:48:43,615 [INFO] ==================================================
+2026-04-18 14:48:43,615 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 14:48:43,616 [INFO] ==================================================
+2026-04-18 14:48:43,617 [INFO] Sunucu başlatıldı
+2026-04-18 14:48:45,694 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 14:49:19,236 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 14:50:35,895 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:04:50,416 [INFO] ==================================================
+2026-04-18 15:04:50,416 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 15:04:50,417 [INFO] ==================================================
+2026-04-18 15:04:50,419 [INFO] Sunucu başlatıldı
+2026-04-18 15:04:52,538 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 15:13:55,494 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:14:55,430 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:16:46,226 [INFO] ==================================================
+2026-04-18 15:16:46,227 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 15:16:46,227 [INFO] ==================================================
+2026-04-18 15:16:46,228 [INFO] Sunucu başlatıldı
+2026-04-18 15:16:48,408 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 15:23:03,576 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:24:32,464 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:26:55,377 [INFO] ==================================================
+2026-04-18 15:26:55,377 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 15:26:55,377 [INFO] ==================================================
+2026-04-18 15:26:55,378 [INFO] Sunucu başlatıldı
+2026-04-18 15:26:57,495 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 15:27:51,719 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:29:09,831 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:30:48,520 [INFO] ==================================================
+2026-04-18 15:30:48,520 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 15:30:48,520 [INFO] ==================================================
+2026-04-18 15:30:48,521 [INFO] Sunucu başlatıldı
+2026-04-18 15:30:50,767 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 15:31:34,718 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:33:04,180 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:42:18,221 [INFO] ==================================================
+2026-04-18 15:42:18,221 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 15:42:18,221 [INFO] ==================================================
+2026-04-18 15:42:18,222 [INFO] Sunucu başlatıldı
+2026-04-18 15:42:20,417 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 15:42:34,785 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:46:30,677 [INFO] ==================================================
+2026-04-18 15:46:30,678 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 15:46:30,679 [INFO] ==================================================
+2026-04-18 15:46:30,680 [INFO] Sunucu başlatıldı
+2026-04-18 15:46:32,881 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 15:46:48,233 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:54:18,971 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 15:57:38,943 [INFO] ==================================================
+2026-04-18 15:57:38,944 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 15:57:38,944 [INFO] ==================================================
+2026-04-18 15:57:38,945 [INFO] Sunucu başlatıldı
+2026-04-18 15:57:41,006 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 15:58:51,056 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 16:01:39,380 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-18 16:02:04,634 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618307733
+2026-04-18 16:02:04,634 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-6v-2a-aku-sarj-adaptoru
+2026-04-18 16:02:04,634 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 480.67
+2026-04-18 16:02:04,635 [INFO]   [cek] Baslik: Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 16:02:04,638 [INFO]   [cek] Fiyat: 480.67
+2026-04-18 16:02:04,638 [INFO]   [cek] Resimler: 3
+2026-04-18 16:02:04,638 [INFO] Urun bulundu: Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 16:02:04,664 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 16:06:17,773 [INFO] ==================================================
+2026-04-18 16:06:17,774 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 16:06:17,774 [INFO] ==================================================
+2026-04-18 16:06:17,775 [INFO] Sunucu başlatıldı
+2026-04-18 16:06:19,982 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 16:09:21,550 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 16:10:52,730 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 16:32:05,710 [INFO] ==================================================
+2026-04-18 16:32:05,712 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 16:32:05,712 [INFO] ==================================================
+2026-04-18 16:32:05,713 [INFO] Sunucu başlatıldı
+2026-04-18 16:32:07,814 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 16:32:27,853 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-18 16:32:52,256 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618316735
+2026-04-18 16:32:52,257 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-24-1-pin-dvi-erkek-hdmi-disi-cevirici-jack-pm-8713
+2026-04-18 16:32:52,258 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 71.92
+2026-04-18 16:32:52,258 [INFO]   [cek] Baslik: Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 16:32:52,258 [INFO]   [cek] Fiyat: 71.92
+2026-04-18 16:32:52,258 [INFO]   [cek] Resimler: 1
+2026-04-18 16:32:52,259 [INFO] Urun bulundu: Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 16:32:52,294 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 16:35:41,561 [INFO] ==================================================
+2026-04-18 16:35:41,562 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 16:35:41,562 [INFO] ==================================================
+2026-04-18 16:35:41,563 [INFO] Sunucu başlatıldı
+2026-04-18 16:35:42,365 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 16:36:13,598 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 16:36:13,617 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 16:41:17,864 [INFO] ==================================================
+2026-04-18 16:41:17,864 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 16:41:17,864 [INFO] ==================================================
+2026-04-18 16:41:17,866 [INFO] Sunucu başlatıldı
+2026-04-18 16:41:18,687 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 16:55:44,327 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 16:55:44,345 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 17:14:25,940 [INFO] ==================================================
+2026-04-18 17:14:25,940 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 17:14:25,940 [INFO] ==================================================
+2026-04-18 17:14:25,942 [INFO] Sunucu başlatıldı
+2026-04-18 17:14:26,777 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 17:24:50,749 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 17:24:50,770 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 17:36:11,980 [INFO] ==================================================
+2026-04-18 17:36:11,980 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 17:36:11,981 [INFO] ==================================================
+2026-04-18 17:36:11,982 [INFO] Sunucu başlatıldı
+2026-04-18 17:36:12,838 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 17:36:25,871 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 17:36:25,893 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 19:07:42,005 [INFO] ==================================================
+2026-04-18 19:07:42,006 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 19:07:42,006 [INFO] ==================================================
+2026-04-18 19:07:42,008 [INFO] Sunucu başlatıldı
+2026-04-18 19:07:44,140 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 19:08:05,019 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 19:08:05,038 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 19:08:05,057 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 19:33:53,452 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 19:33:53,476 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 19:33:53,497 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 19:37:37,785 [INFO] ==================================================
+2026-04-18 19:37:37,785 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 19:37:37,785 [INFO] ==================================================
+2026-04-18 19:37:37,786 [INFO] Sunucu başlatıldı
+2026-04-18 19:37:39,900 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 19:37:54,416 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 19:37:54,437 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 19:37:54,455 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 19:41:43,242 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-18 19:42:09,465 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618343991
+2026-04-18 19:42:09,466 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-12-volt-maks.-6-amper-akilli-hizli-aku-sarj-cihazi-son-1206d
+2026-04-18 19:42:09,467 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 563.76
+2026-04-18 19:42:09,467 [INFO]   [cek] Baslik: Powermaster SON-1206D 12 Volt 6 Amper Dijital Göstergeli Akıllı Akü Şarj Cihazı
+2026-04-18 19:42:09,468 [INFO]   [cek] Fiyat: 563.76
+2026-04-18 19:42:09,468 [INFO]   [cek] Resimler: 4
+2026-04-18 19:42:09,468 [INFO] Urun bulundu: Powermaster SON-1206D 12 Volt 6 Amper Dijital Göstergeli Akı
+2026-04-18 19:42:09,494 [INFO] ✓ 8680618343991 → Xtechnx Powermaster SON-1206D 12 Volt 6 Amper Dijital Göstergeli Akıllı Akü Şarj Cihazı
+2026-04-18 19:48:16,635 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 20:00:37,563 [INFO] ==================================================
+2026-04-18 20:00:37,563 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 20:00:37,564 [INFO] ==================================================
+2026-04-18 20:00:37,565 [INFO] Sunucu başlatıldı
+2026-04-18 20:00:39,659 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 20:00:57,907 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 20:00:57,930 [INFO] ✓ 8680618404159 → Xtechnx Magbox Atlantic Display G�zl� Tkgs'li 1080P Full HD Mini Uydu Al�c�s�
+2026-04-18 20:00:57,949 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 20:12:11,890 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 20:12:11,909 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 20:17:08,527 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 20:17:08,546 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-18 20:24:51,413 [INFO] ==================================================
+2026-04-18 20:24:51,414 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-18 20:24:51,414 [INFO] ==================================================
+2026-04-18 20:24:51,415 [INFO] Sunucu başlatıldı
+2026-04-18 20:24:53,509 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-18 20:25:06,222 [INFO] ✓ 8680618307733 → Xtechnx Powermaster 6V - 2A  Ak� �arj Adapt�r�
+2026-04-18 20:25:06,240 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-20 13:37:16,315 [INFO] ==================================================
+2026-04-20 13:37:16,315 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 13:37:16,320 [INFO] ==================================================
+2026-04-20 13:37:16,323 [INFO] Sunucu başlatıldı
+2026-04-20 13:37:20,146 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 13:37:30,836 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 13:37:58,284 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618315622
+2026-04-20 13:37:58,284 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/f-konnektor-rg6-u4-genis-18-mm-100-adet
+2026-04-20 13:37:58,286 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 234.08
+2026-04-20 13:37:58,286 [INFO]   [cek] Baslik: F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 13:37:58,286 [INFO]   [cek] Fiyat: 234.08
+2026-04-20 13:37:58,287 [INFO]   [cek] Resimler: 1
+2026-04-20 13:37:58,287 [INFO] Urun bulundu: F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 13:37:58,315 [INFO] ✓ 8680618315622 → Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 14:07:22,633 [INFO] ==================================================
+2026-04-20 14:07:22,633 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 14:07:22,634 [INFO] ==================================================
+2026-04-20 14:07:22,635 [INFO] Sunucu başlatıldı
+2026-04-20 14:07:24,747 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 14:07:51,348 [INFO] ✓ 8680618315622 → Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 14:08:14,925 [WARNING] KATEGORİ EŞLEŞMEDİ: 'F Konnektör' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-20 14:08:14,925 [INFO] N11 KATEGORİ: Kaynak='F Konnektör' → ID=1000240
+2026-04-20 14:08:14,926 [INFO] N11 PAYLOAD [Cihan092637]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)",
+        "description": "F Konnektör RG6-U4 18 Mm Geniş (100 Adet) Özellikleri\nPowermaster RG6-U4Mm Geniş F Konnektör, koaksiyel kabloları F tipi konektörlere bağlamak için kullanılan yüksek kaliteli bir üründür. Powermaster RG6-U4Mm Geniş F Konnektör 100 lü paket olarak gelmektedir. 18 mm çapındaki kablolar için uygundur.\nİşlev : F Konnektör\nKablo Tipi: RG6/U4\nÇapı : 18 mm\nConta : Geniş\nMalzeme : Metal\nAdet : 100 Adet\nTV ve alıcı gibi F bağlantılı tüm cihazlar için uygundur.\nDayanıklı yapı ve kullanım kolaylığı\nPaket Ağırlığı : 233.85 Gr.\nRenk : Gümüş\nCE Belgeli\nModel : UJ-2004\nÖzellik\n681",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan092637",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan092637",
+        "barcode": "2972094066232",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-rg6u4-18-mm-genis-f-konnekto-49cc.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 468.16,
+        "listPrice": 514.98,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:08:15,047 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666745176,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:08:20,081 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:25,123 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:30,155 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:35,175 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:40,209 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:42,892 [WARNING] KATEGORİ EŞLEŞMEDİ: 'F Konnektör' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-20 14:08:42,893 [INFO] N11 KATEGORİ: Kaynak='F Konnektör' → ID=1000240
+2026-04-20 14:08:42,895 [INFO] N11 PAYLOAD [Cihan092637]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)",
+        "description": "F Konnektör RG6-U4 18 Mm Geniş (100 Adet) Özellikleri\nPowermaster RG6-U4Mm Geniş F Konnektör, koaksiyel kabloları F tipi konektörlere bağlamak için kullanılan yüksek kaliteli bir üründür. Powermaster RG6-U4Mm Geniş F Konnektör 100 lü paket olarak gelmektedir. 18 mm çapındaki kablolar için uygundur.\nİşlev : F Konnektör\nKablo Tipi: RG6/U4\nÇapı : 18 mm\nConta : Geniş\nMalzeme : Metal\nAdet : 100 Adet\nTV ve alıcı gibi F bağlantılı tüm cihazlar için uygundur.\nDayanıklı yapı ve kullanım kolaylığı\nPaket Ağırlığı : 233.85 Gr.\nRenk : Gümüş\nCE Belgeli\nModel : UJ-2004\nÖzellik\n681",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan092637",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan092637",
+        "barcode": "2972094066232",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-rg6u4-18-mm-genis-f-konnekto-49cc.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 468.16,
+        "listPrice": 514.98,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:08:42,995 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666747824,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:08:45,246 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:48,020 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:50,273 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:53,054 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:55,305 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:08:58,084 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:00,337 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:03,115 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:05,368 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:08,141 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:10,393 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:13,172 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:15,416 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:15,416 [INFO] N11 TASK RESULT [2666745176]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666745176
+}
+2026-04-20 14:09:18,209 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:23,244 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:28,272 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:33,295 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:38,327 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:43,351 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:09:43,352 [INFO] N11 TASK RESULT [2666747824]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666747824
+}
+2026-04-20 14:20:31,493 [INFO] ==================================================
+2026-04-20 14:20:31,494 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 14:20:31,495 [INFO] ==================================================
+2026-04-20 14:20:31,496 [INFO] Sunucu başlatıldı
+2026-04-20 14:20:33,567 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 14:20:54,820 [INFO] ✓ 8680618315622 → Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 14:21:07,848 [INFO] Kategori keyword eşleşti: 'F Konnektör' içinde 'f konnektör' → ID 1000565
+2026-04-20 14:21:07,849 [INFO] N11 KATEGORİ: Kaynak='F Konnektör' → ID=1000565
+2026-04-20 14:21:07,849 [INFO] N11 PAYLOAD [Cihan671030]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)",
+        "description": "F Konnektör RG6-U4 18 Mm Geniş (100 Adet) Özellikleri\nPowermaster RG6-U4Mm Geniş F Konnektör, koaksiyel kabloları F tipi konektörlere bağlamak için kullanılan yüksek kaliteli bir üründür. Powermaster RG6-U4Mm Geniş F Konnektör 100 lü paket olarak gelmektedir. 18 mm çapındaki kablolar için uygundur.\nİşlev : F Konnektör\nKablo Tipi: RG6/U4\nÇapı : 18 mm\nConta : Geniş\nMalzeme : Metal\nAdet : 100 Adet\nTV ve alıcı gibi F bağlantılı tüm cihazlar için uygundur.\nDayanıklı yapı ve kullanım kolaylığı\nPaket Ağırlığı : 233.85 Gr.\nRenk : Gümüş\nCE Belgeli\nModel : UJ-2004\nÖzellik\n681",
+        "categoryId": 1000565,
+        "currencyType": "TL",
+        "productMainId": "Cihan671030",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan671030",
+        "barcode": "2225577490773",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-rg6u4-18-mm-genis-f-konnekto-49cc.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 468.16,
+        "listPrice": 514.98,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:21:07,980 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666813224,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:21:13,007 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:18,026 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:23,046 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:28,073 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:33,106 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:38,124 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:43,152 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:48,171 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:53,202 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:21:58,234 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:22:03,270 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:22:08,298 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:22:08,299 [INFO] N11 TASK RESULT [2666813224]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666813224
+}
+2026-04-20 14:33:36,920 [INFO] ==================================================
+2026-04-20 14:33:36,920 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 14:33:36,920 [INFO] ==================================================
+2026-04-20 14:33:36,922 [INFO] Sunucu başlatıldı
+2026-04-20 14:33:37,784 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 14:33:47,195 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 14:34:13,916 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618315622
+2026-04-20 14:34:13,916 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/f-konnektor-rg6-u4-genis-18-mm-100-adet
+2026-04-20 14:34:13,920 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 234.08
+2026-04-20 14:34:13,921 [INFO]   [cek] Baslik: F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 14:34:13,922 [INFO]   [cek] Fiyat: 234.08
+2026-04-20 14:34:13,923 [INFO]   [cek] Resimler: 1
+2026-04-20 14:34:13,924 [INFO]   [cek] Stok kodu:
+2026-04-20 14:34:13,924 [INFO] Urun bulundu: F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 14:34:13,952 [INFO] ✓ 8680618315622 → Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 14:34:21,969 [INFO] Kategori keyword eşleşti: 'F Konnektör' içinde 'f konnektör' → ID 1000565
+2026-04-20 14:34:21,970 [INFO] N11 KATEGORİ: Kaynak='F Konnektör' → ID=1000565
+2026-04-20 14:34:21,972 [INFO] N11 PAYLOAD [Cihan689066]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)",
+        "description": "F Konnektör RG6-U4 18 Mm Geniş (100 Adet) Özellikleri\nPowermaster RG6-U4Mm Geniş F Konnektör, koaksiyel kabloları F tipi konektörlere bağlamak için kullanılan yüksek kaliteli bir üründür. Powermaster RG6-U4Mm Geniş F Konnektör 100 lü paket olarak gelmektedir. 18 mm çapındaki kablolar için uygundur.\nİşlev : F Konnektör\nKablo Tipi: RG6/U4\nÇapı : 18 mm\nConta : Geniş\nMalzeme : Metal\nAdet : 100 Adet\nTV ve alıcı gibi F bağlantılı tüm cihazlar için uygundur.\nDayanıklı yapı ve kullanım kolaylığı\nPaket Ağırlığı : 233.85 Gr.\nRenk : Gümüş\nCE Belgeli\nModel : UJ-2004\nÖzellik\n681",
+        "categoryId": 1000565,
+        "currencyType": "TL",
+        "productMainId": "Cihan689066",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan689066",
+        "barcode": "2636033613238",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-rg6u4-18-mm-genis-f-konnekto-49cc.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 468.16,
+        "listPrice": 514.98,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:34:22,090 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666865100,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:34:27,119 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:34:32,152 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:34:37,187 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:34:42,220 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:34:47,249 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:34:52,269 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:34:57,295 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:35:02,318 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:35:07,337 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:35:12,361 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:35:17,380 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:35:22,403 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:35:22,404 [INFO] N11 TASK RESULT [2666865100]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666865100
+}
+2026-04-20 14:37:33,304 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 14:37:59,417 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618375893
+2026-04-20 14:37:59,418 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-kh-320-titresimli-4-baslikli-masaj-aleti
+2026-04-20 14:37:59,421 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 622.28
+2026-04-20 14:37:59,424 [INFO]   [cek] Baslik: PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli Masaj Aleti 6 Kademeli 2000mAh
+2026-04-20 14:37:59,425 [INFO]   [cek] Fiyat: 622.28
+2026-04-20 14:37:59,426 [INFO]   [cek] Resimler: 2
+2026-04-20 14:37:59,427 [INFO]   [cek] Stok kodu:
+2026-04-20 14:37:59,428 [INFO] Urun bulundu: PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli M
+2026-04-20 14:37:59,460 [INFO] ✓ 8680618375893 → Xtechnx PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli Masaj Aleti 6 Kademeli 2000mAh
+2026-04-20 14:38:08,791 [WARNING] KATEGORİ EŞLEŞMEDİ: 'Kişisel Bakım' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-20 14:38:08,792 [INFO] N11 KATEGORİ: Kaynak='Kişisel Bakım' → ID=1000240
+2026-04-20 14:38:08,794 [INFO] N11 PAYLOAD [Cihan372038]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli Masaj Aleti 6 Kademeli 2000mAh",
+        "description": "PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli Masaj Aleti 6 Kademeli 2000mAh Özellikleri\nPowerMaster KH-320, sporcular ve aktif yaşam tarzına sahip bireyler için tasarlanmış şarjlı darbeli titreşimli masaj aletidir. 6 farklı kademeli masaj seçeneği sunan cihaz, 2000mAh yerleşik lityum pil ile uzun süreli kullanım imkanı sağlar. ABS malzemeden üretilmiş dayanıklı gövdesi ve 115x130x55mm kompakt boyutlarıyla kolay taşınabilirlik sunar. 4 farklı sert ve yumuşak silikon başlık seçeneği ile vücudun farklı bölgelerine özel masaj deneyimi yaşatır.\nTemel Özellikler ve Avantajlar:\n6 Masaj Modu:\nFarklı yoğunlukta titreşim seçenekleri\nUzun Pil Ömrü:\n2000mAh şarj edilebilir lityum pil\nÇoklu Başlık:\n4 farklı sert/yumuşak silikon başlık\nDayanıklı Tasarım:\nABS kasa malzemesi\nTaşınabilir:\n115x130x55mm kompakt boyutlar\nKullanışlı:\nSpor sonrası kas rahatlatma için ideal\nTeknik Özellikler:\nMarka Model:\nPowerMaster KH-320\nMasaj Kademeleri:\n6 farklı yoğunluk seviyesi\nPil Kapasitesi:\n2000mAh lityum iyon\nTam Şarj Süresi:\nYaklaşık 3 saat\nKullanım Süresi:\n1-2 saat (kademeye göre değişir)\nBaşlık Çeşitleri:\n4 adet (2 sert + 2 yumuşak silikon)\nKasa Malzemesi:\nABS plastik\nBoyutlar:\n115x130x55mm\nAğırlık:\n380g\nŞarj Yöntemi:\nTYPE-C\nSu Geçirmezlik:\nIPX4 (ter ve hafif sıçramalara dayanıklı)\nKullanım Talimatları:\nCihazı TYPE-C kablosu ile 1 gün boyunca tam şarj edin\nMasaj yapılacak bölgeye uygun başlığı seçin\nGüç düğmesine basarak cihazı açın\nMode düğmesi ile istediğiniz masaj kademesini seçin\nBaşlığı masaj yapılacak bölgeye hafifçe bastırarak gezdirin\nKullanım sonrası cihazı kapatın ve başlıkları temizleyin\nUygulama Alanları:\nSpor Sonrası:\nKas yorgunluğunu giderme\nGünlük Kullanım:\nSırt, boyun ve bel ağrıları\nAyak Masajı:\nYorgun ayakları rahatlatma\nKan Dolaşımı:\nDolaşımı hızlandırıcı etki\nEsneklik:\nKas esnekliğini artırma\nTemizlik ve Bakım:\nBaşlıkları ılık sabunlu suyla temizleyin\nCihazı suya sokmayın, nemli bezle silin\nŞarj portunu kuru tutun\nUzun süre kullanılmayacaksa %50 şarjla saklayin\nPaket İçeriği:\n1 x PowerMaster KH-320 Masaj Aleti\n4 x Değiştirilebilir Silikon Başlık\n1 x TYPE-C USB Şarj Kablosu\nÖnemli Uyarılar:\nYaralı ve iltihaplı bölgelerde kullanmayın\nHamileler ve kalp pili olanlar doktora danışmalı\nBir seferde 15 dakikadan fazla kullanmayın\nÇocukların erişemeyeceği yerlerde saklayın\nBaşlıkları düzenli aralıklarla değiştirin",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan372038",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan372038",
+        "barcode": "2825583948987",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-kh-320-sarjli-sporcu-kosuc-755094.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-kh-320-sarjli-sporcu-kosuc-a5c3-a.jpg",
+            "order": 2
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 1244.56,
+        "listPrice": 1369.02,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:38:08,895 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666880814,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:38:13,917 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:18,951 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:23,980 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:29,032 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:34,120 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:39,153 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:44,170 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:49,195 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:54,217 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:38:59,241 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:39:04,266 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:39:09,292 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:39:09,293 [INFO] N11 TASK RESULT [2666880814]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666880814
+}
+2026-04-20 14:43:43,086 [INFO] ==================================================
+2026-04-20 14:43:43,087 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 14:43:43,087 [INFO] ==================================================
+2026-04-20 14:43:43,088 [INFO] Sunucu başlatıldı
+2026-04-20 14:43:45,126 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 14:44:02,828 [INFO] ✓ 8680618375893 → Xtechnx PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli Masaj Aleti 6 Kademeli 2000mAh
+2026-04-20 14:44:07,917 [INFO] Kategori keyword eşleşti: 'Kişisel Bakım' içinde 'kişisel bakım' → ID 1000430
+2026-04-20 14:44:07,918 [INFO] N11 KATEGORİ: Kaynak='Kişisel Bakım' → ID=1000430
+2026-04-20 14:44:07,918 [INFO] N11 PAYLOAD [Cihan869840]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli Masaj Aleti 6 Kademeli 2000mAh",
+        "description": "PowerMaster KH-320 Şarjlı Sporcu Koşucu Darbeli Titreşimli Masaj Aleti 6 Kademeli 2000mAh Özellikleri\nPowerMaster KH-320, sporcular ve aktif yaşam tarzına sahip bireyler için tasarlanmış şarjlı darbeli titreşimli masaj aletidir. 6 farklı kademeli masaj seçeneği sunan cihaz, 2000mAh yerleşik lityum pil ile uzun süreli kullanım imkanı sağlar. ABS malzemeden üretilmiş dayanıklı gövdesi ve 115x130x55mm kompakt boyutlarıyla kolay taşınabilirlik sunar. 4 farklı sert ve yumuşak silikon başlık seçeneği ile vücudun farklı bölgelerine özel masaj deneyimi yaşatır.\nTemel Özellikler ve Avantajlar:\n6 Masaj Modu:\nFarklı yoğunlukta titreşim seçenekleri\nUzun Pil Ömrü:\n2000mAh şarj edilebilir lityum pil\nÇoklu Başlık:\n4 farklı sert/yumuşak silikon başlık\nDayanıklı Tasarım:\nABS kasa malzemesi\nTaşınabilir:\n115x130x55mm kompakt boyutlar\nKullanışlı:\nSpor sonrası kas rahatlatma için ideal\nTeknik Özellikler:\nMarka Model:\nPowerMaster KH-320\nMasaj Kademeleri:\n6 farklı yoğunluk seviyesi\nPil Kapasitesi:\n2000mAh lityum iyon\nTam Şarj Süresi:\nYaklaşık 3 saat\nKullanım Süresi:\n1-2 saat (kademeye göre değişir)\nBaşlık Çeşitleri:\n4 adet (2 sert + 2 yumuşak silikon)\nKasa Malzemesi:\nABS plastik\nBoyutlar:\n115x130x55mm\nAğırlık:\n380g\nŞarj Yöntemi:\nTYPE-C\nSu Geçirmezlik:\nIPX4 (ter ve hafif sıçramalara dayanıklı)\nKullanım Talimatları:\nCihazı TYPE-C kablosu ile 1 gün boyunca tam şarj edin\nMasaj yapılacak bölgeye uygun başlığı seçin\nGüç düğmesine basarak cihazı açın\nMode düğmesi ile istediğiniz masaj kademesini seçin\nBaşlığı masaj yapılacak bölgeye hafifçe bastırarak gezdirin\nKullanım sonrası cihazı kapatın ve başlıkları temizleyin\nUygulama Alanları:\nSpor Sonrası:\nKas yorgunluğunu giderme\nGünlük Kullanım:\nSırt, boyun ve bel ağrıları\nAyak Masajı:\nYorgun ayakları rahatlatma\nKan Dolaşımı:\nDolaşımı hızlandırıcı etki\nEsneklik:\nKas esnekliğini artırma\nTemizlik ve Bakım:\nBaşlıkları ılık sabunlu suyla temizleyin\nCihazı suya sokmayın, nemli bezle silin\nŞarj portunu kuru tutun\nUzun süre kullanılmayacaksa %50 şarjla saklayin\nPaket İçeriği:\n1 x PowerMaster KH-320 Masaj Aleti\n4 x Değiştirilebilir Silikon Başlık\n1 x TYPE-C USB Şarj Kablosu\nÖnemli Uyarılar:\nYaralı ve iltihaplı bölgelerde kullanmayın\nHamileler ve kalp pili olanlar doktora danışmalı\nBir seferde 15 dakikadan fazla kullanmayın\nÇocukların erişemeyeceği yerlerde saklayın\nBaşlıkları düzenli aralıklarla değiştirin",
+        "categoryId": 1000430,
+        "currencyType": "TL",
+        "productMainId": "Cihan869840",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan869840",
+        "barcode": "2003687633309",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-kh-320-sarjli-sporcu-kosuc-755094.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-kh-320-sarjli-sporcu-kosuc-a5c3-a.jpg",
+            "order": 2
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 1244.56,
+        "listPrice": 1369.02,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:44:08,053 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666898661,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:44:13,079 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:18,096 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:23,130 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:28,162 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:33,181 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:38,213 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:43,243 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:48,268 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:53,297 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:44:58,322 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:45:03,346 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:45:08,377 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:45:08,378 [INFO] N11 TASK RESULT [2666898661]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666898661
+}
+2026-04-20 14:49:19,886 [INFO] ==================================================
+2026-04-20 14:49:19,886 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 14:49:19,887 [INFO] ==================================================
+2026-04-20 14:49:19,888 [INFO] Sunucu başlatıldı
+2026-04-20 14:49:21,939 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 14:49:39,143 [INFO] ✓ 8680618315622 → Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 14:49:43,620 [INFO] Kategori keyword eşleşti: 'F Konnektör' içinde 'f konnektör' → ID 1000565
+2026-04-20 14:49:43,621 [INFO] N11 KATEGORİ: Kaynak='F Konnektör' → ID=1000565
+2026-04-20 14:49:43,621 [INFO] N11 PAYLOAD [Cihan883808]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)",
+        "description": "F Konnektör RG6-U4 18 Mm Geniş (100 Adet) Özellikleri\nPowermaster RG6-U4Mm Geniş F Konnektör, koaksiyel kabloları F tipi konektörlere bağlamak için kullanılan yüksek kaliteli bir üründür. Powermaster RG6-U4Mm Geniş F Konnektör 100 lü paket olarak gelmektedir. 18 mm çapındaki kablolar için uygundur.\nİşlev : F Konnektör\nKablo Tipi: RG6/U4\nÇapı : 18 mm\nConta : Geniş\nMalzeme : Metal\nAdet : 100 Adet\nTV ve alıcı gibi F bağlantılı tüm cihazlar için uygundur.\nDayanıklı yapı ve kullanım kolaylığı\nPaket Ağırlığı : 233.85 Gr.\nRenk : Gümüş\nCE Belgeli\nModel : UJ-2004\nÖzellik\n681",
+        "categoryId": 1000565,
+        "currencyType": "TL",
+        "productMainId": "Cihan883808",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan883808",
+        "barcode": "2060079978103",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-rg6u4-18-mm-genis-f-konnekto-49cc.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 468.16,
+        "listPrice": 514.98,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:49:43,751 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666917358,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:49:48,786 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:49:53,805 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:49:58,829 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:03,861 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:08,901 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:13,931 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:18,950 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:23,989 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:29,020 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:34,052 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:39,079 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:44,112 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:50:44,112 [INFO] N11 TASK RESULT [2666917358]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666917358
+}
+2026-04-20 14:55:56,155 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 14:56:22,135 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618359442
+2026-04-20 14:56:22,135 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-pm-21489-cob-ledli-3-fonksiyonlu-anahtarlik-sarjli-lamba
+2026-04-20 14:56:22,138 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 90.24
+2026-04-20 14:56:22,140 [INFO]   [cek] Baslik: Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-20 14:56:22,141 [INFO]   [cek] Fiyat: 90.24
+2026-04-20 14:56:22,141 [INFO]   [cek] Resimler: 3
+2026-04-20 14:56:22,142 [INFO]   [cek] Stok kodu:
+2026-04-20 14:56:22,143 [INFO] Urun bulundu: Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarj
+2026-04-20 14:56:22,170 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-20 14:56:27,200 [WARNING] KATEGORİ EŞLEŞMEDİ: 'Aydınlatma Diğer' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-20 14:56:27,201 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000240
+2026-04-20 14:56:27,203 [INFO] N11 PAYLOAD [Cihan396719]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan396719",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan396719",
+        "barcode": "2084333653261",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 14:56:27,302 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2666941676,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 14:56:32,327 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:56:37,347 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:56:42,377 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:56:47,406 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:56:52,425 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:56:57,454 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:57:02,474 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:57:07,499 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:57:12,530 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:57:17,558 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:57:22,586 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:57:27,620 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 14:57:27,621 [INFO] N11 TASK RESULT [2666941676]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2666941676
+}
+2026-04-20 15:07:26,089 [INFO] ==================================================
+2026-04-20 15:07:26,089 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 15:07:26,090 [INFO] ==================================================
+2026-04-20 15:07:26,091 [INFO] Sunucu başlatıldı
+2026-04-20 15:07:26,961 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 15:38:23,694 [INFO] ==================================================
+2026-04-20 15:38:23,694 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 15:38:23,694 [INFO] ==================================================
+2026-04-20 15:38:23,695 [INFO] Sunucu başlatıldı
+2026-04-20 15:38:25,807 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 15:38:57,656 [INFO] ✓ 8680618315622 → Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-20 15:39:03,424 [INFO] Kategori keyword eşleşti: 'F Konnektör' içinde 'f konnektör' → ID 1000570
+2026-04-20 15:39:03,424 [INFO] N11 KATEGORİ: Kaynak='F Konnektör' → ID=1000570
+2026-04-20 15:39:03,425 [INFO] N11 PAYLOAD [Cihan473397]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)",
+        "description": "F Konnektör RG6-U4 18 Mm Geniş (100 Adet) Özellikleri\nPowermaster RG6-U4Mm Geniş F Konnektör, koaksiyel kabloları F tipi konektörlere bağlamak için kullanılan yüksek kaliteli bir üründür. Powermaster RG6-U4Mm Geniş F Konnektör 100 lü paket olarak gelmektedir. 18 mm çapındaki kablolar için uygundur.\nİşlev : F Konnektör\nKablo Tipi: RG6/U4\nÇapı : 18 mm\nConta : Geniş\nMalzeme : Metal\nAdet : 100 Adet\nTV ve alıcı gibi F bağlantılı tüm cihazlar için uygundur.\nDayanıklı yapı ve kullanım kolaylığı\nPaket Ağırlığı : 233.85 Gr.\nRenk : Gümüş\nCE Belgeli\nModel : UJ-2004\nÖzellik\n681",
+        "categoryId": 1000570,
+        "currencyType": "TL",
+        "productMainId": "Cihan473397",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan473397",
+        "barcode": "2800667448867",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-rg6u4-18-mm-genis-f-konnekto-49cc.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 468.16,
+        "listPrice": 514.98,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 15:39:03,537 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2667088150,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 15:39:08,570 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:13,603 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:18,626 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:23,645 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:28,674 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:33,706 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:38,727 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:43,773 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:48,801 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:53,824 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:39:58,857 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:40:03,897 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:40:03,898 [INFO] N11 TASK RESULT [2667088150]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2667088150
+}
+2026-04-20 15:45:53,477 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 15:46:19,478 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618384574
+2026-04-20 15:46:19,478 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-pm-2000-12-volt-2000-watt-sarjli-upsli-inverter
+2026-04-20 15:46:19,481 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 2880.45
+2026-04-20 15:46:19,483 [INFO]   [cek] Baslik: Powermaster PM-2000 12 Volt - 2000 Watt Şarjlı UPS'li Inverter
+2026-04-20 15:46:19,484 [INFO]   [cek] Fiyat: 2880.45
+2026-04-20 15:46:19,484 [INFO]   [cek] Resimler: 3
+2026-04-20 15:46:19,485 [INFO]   [cek] Stok kodu:
+2026-04-20 15:46:19,486 [INFO] Urun bulundu: Powermaster PM-2000 12 Volt - 2000 Watt Şarjlı UPS'li Invert
+2026-04-20 15:46:19,513 [INFO] ✓ 8680618384574 → Xtechnx Powermaster PM-2000 12 Volt - 2000 Watt Şarjlı UPS'li Inverter
+2026-04-20 15:46:27,107 [WARNING] KATEGORİ EŞLEŞMEDİ: 'İnvertörler-Konvertörler' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-20 15:46:27,108 [INFO] N11 KATEGORİ: Kaynak='İnvertörler-Konvertörler' → ID=1000240
+2026-04-20 15:46:27,111 [INFO] N11 PAYLOAD [Cihan065064]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-2000 12 Volt - 2000 Watt Şarjlı UPS'li Inverter",
+        "description": "Powermaster PM-2000 12 Volt - 2000 Watt Şarjlı UPS'li Inverter Özellikleri\nPowermaster PM-2000, 12V DC akü gücünü 230V AC şebeke elektriğine dönüştüren, 2000 Watt gerçek değer kapasitesine sahip profesyonel bir modifiye sinüs inverterdir. Bu cihazın en önemli farkı, dahili UPS (Kesintisiz Güç Kaynağı) fonksiyonuna ve 20 Amperlik güçlü bir akü şarj ünitesine sahip olmasıdır. Şebeke elektriği varken bağlı aküyü otomatik olarak şarj eder, elektrik kesildiği anda ise milisaniyeler içinde aküden besleme yaparak bağlı cihazlarınızın kesintisiz çalışmasını sağlar. Dayanıklı alüminyum gövdesi, aktif soğutma fanı ve gelişmiş koruma devreleriyle hem mobil hem de sabit enerji sistemleri için güvenilir bir çözümdür.\nTeknik Detaylar:\nMarka Model:\nPowermaster PM-2000 (Kod: 26697)\nSürekli Güç:\n2000 Watt (Gerçek Değer)\nGiriş Voltajı:\n12V DC\nÇıkış Voltajı:\n230V AC\nDalga Tipi:\nModifiye Sinüs (Modified Wave Inverter)\nŞarj Kapasitesi:\nMaksimum 20 Amper akü şarj desteği\nUPS Fonksiyonu:\nŞebeke ve akü arasında otomatik geçiş sağlayan kesintisiz güç desteği\nUSB Portu:\n5V DC şarj çıkışı\nSoğutma:\nIsı dengesini sağlayan dahili aktif fan sistemi\nGüvenlik Göstergeleri:\nPower (Güç) ve Fault (Hata) LED bildirim ışıkları\nPaket İçeriği:\n1x Powermaster PM-2000 UPS Inverter\n1x Akü bağlantı maşaları ve kablo seti\n1x Şebeke şarj kablosu/fişi\nKullanım Alanları:\nKaravan ve teknelerde 220V elektrikli aletlerin çalıştırılması\nGüneş enerjisi (Solar) sistemlerinde enerji dönüşümü ve depolama\nElektrik kesintilerine karşı bilgisayar, modem ve aydınlatma sistemleri için UPS desteği\nKamp ve outdoor aktivitelerinde yüksek kapasiteli enerji ihtiyacı\nMutfak aletleri, küçük el aletleri ve elektronik cihazların şebekeden bağımsız beslenmesi\nAcil durum enerji yedekleme sistemleri\nÖzellik\n12 V\nDeğer\n2000 WATT",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan065064",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan065064",
+        "barcode": "2305291724108",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-2000-12-volt-2000-watt--d2747c.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-2000-12-volt-2000-watt--25-133.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-2000-12-volt-2000-watt--9246c4.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 5760.9,
+        "listPrice": 6336.99,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 15:46:27,227 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2667129556,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 15:46:32,250 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:46:37,269 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:46:42,311 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:46:47,342 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:46:52,364 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:46:57,393 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:47:02,413 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:47:07,451 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:47:12,471 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:47:17,496 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:47:22,524 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:47:27,548 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 15:47:27,549 [INFO] N11 TASK RESULT [2667129556]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2667129556
+}
+2026-04-20 16:01:05,304 [INFO] ==================================================
+2026-04-20 16:01:05,304 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 16:01:05,304 [INFO] ==================================================
+2026-04-20 16:01:05,306 [INFO] Sunucu başlatıldı
+2026-04-20 16:01:07,362 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 16:01:39,897 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 16:02:04,347 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618343069
+2026-04-20 16:02:04,347 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-pm-1000-12-volt-1000-watt-lcd-sarjli-ups-invertor
+2026-04-20 16:02:04,348 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 1866.84
+2026-04-20 16:02:04,348 [INFO]   [cek] Baslik: Powermaster PM-1000 12 Volt 1000 Watt Şarjlı UPS'li Inverter
+2026-04-20 16:02:04,349 [INFO]   [cek] Fiyat: 1866.84
+2026-04-20 16:02:04,349 [INFO]   [cek] Resimler: 4
+2026-04-20 16:02:04,349 [INFO]   [cek] Stok kodu:
+2026-04-20 16:02:04,350 [INFO] Urun bulundu: Powermaster PM-1000 12 Volt 1000 Watt Şarjlı UPS'li Inverter
+2026-04-20 16:02:04,373 [INFO] ✓ 8680618343069 → Xtechnx Powermaster PM-1000 12 Volt 1000 Watt Şarjlı UPS'li Inverter
+2026-04-20 16:02:15,773 [INFO] Kategori keyword eşleşti: 'Adaptörler' içinde 'adaptör' → ID 1000544
+2026-04-20 16:02:15,773 [INFO] N11 KATEGORİ: Kaynak='Adaptörler' → ID=1000544
+2026-04-20 16:02:15,774 [INFO] N11 PAYLOAD [Cihan212111]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-1000 12 Volt 1000 Watt Şarjlı UPS'li Inverter",
+        "description": "Powermaster PM-1000 12 Volt 1000 Watt Şarjlı UPS'li Inverter Özellikleri\nPowermaster PM-1000, 12V DC akü gücünü 230V AC elektrik enerjisine dönüştüren, 1000 Watt gerçek değer kapasiteli profesyonel bir inverterdir. Bu cihazın en belirgin özelliği, dahili UPS (Kesintisiz Güç Kaynağı) fonksiyonuna sahip olmasıdır; şebeke elektriği varken bağlı olan aküyü şarj eder, elektrik kesildiğinde ise otomatik olarak aküden besleme yaparak cihazlarınızın çalışmaya devam etmesini sağlar. Modifiye sinüs dalga yapısı ve entegre soğutma fanı ile güvenli bir çalışma performansı sunar. Ayrıca üzerinde bulunan USB çıkışı sayesinde mobil cihazlarınızı doğrudan şarj etme imkanı tanır.\nTeknik Detaylar:\nMarka Model:\nPowermaster PM-1000 (Kod: 16030)\nGüç Kapasitesi:\n1000 Watt (Gerçek Değer)\nGiriş Voltajı:\n12V DC (Aküden) / 220V-230V AC (Şebekeden şarj için)\nÇıkış Voltajı:\n230V AC\nDalga Tipi:\nModifiye Sinüs (Modified Wave Inverter)\nUPS Fonksiyonu:\nŞebeke üzerinden otomatik şarj ve kesintisiz geçiş desteği\nUSB Çıkışı:\n5V DC USB portu\nSoğutma:\nEntegre aktif soğutma fanı\nKontrol ve Uyarı:\nGüç anahtarı, Power ve Fault (Hata) LED göstergeleri\nBağlantı Arayüzü:\nEvrensel AC priz çıkışı ve sağlam akü terminalleri\nPaket İçeriği:\n1x Powermaster PM-1000 Inverter\n1x Akü bağlantı maşaları (Kırmızı/Siyah)\n1x Ring terminal bağlantı kabloları\n1x Şebeke şarj kablosu/fişi\nKullanım Alanları:\nOtomobil, karavan ve teknelerde 220V cihaz kullanımı\nElektrik kesintilerine karşı modem, bilgisayar ve aydınlatma sistemleri için UPS desteği\nKamp ve outdoor aktivitelerinde enerji ihtiyacının karşılanması\nGüneş enerjisi sistemlerinde aküden gelen enerjiyi dönüştürme\nKüçük ev aletleri, el aletleri ve şarj ünitelerinin çalıştırılması\nÖzellik\n12 V\nDeğer\n1000 W\nTeknik Bilgi 1\nŞARJLI",
+        "categoryId": 1000544,
+        "currencyType": "TL",
+        "productMainId": "Cihan212111",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan212111",
+        "barcode": "2696946866695",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-1000-12-volt---1000-watt--4192.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-1000-12-volt---1000-watt--c9c1.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-1000-12-volt---1000-watt--464c.jpg",
+            "order": 3
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-1000-12-volt---1000-watt--2e90.jpg",
+            "order": 4
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 3733.68,
+        "listPrice": 4107.05,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 16:02:15,888 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2667240736,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 16:02:20,917 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:02:25,957 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:02:30,988 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:02:36,005 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:02:41,025 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:02:46,051 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:02:51,095 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:02:56,122 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:03:01,144 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:03:06,174 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:03:11,204 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:03:16,229 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:03:16,230 [INFO] N11 TASK RESULT [2667240736]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2667240736
+}
+2026-04-20 16:43:48,566 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 16:44:14,438 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618362169
+2026-04-20 16:44:14,439 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-pm-10432-usb-2.0-to-video-capture
+2026-04-20 16:44:14,442 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 386.41
+2026-04-20 16:44:14,443 [INFO]   [cek] Baslik: Powermaster PM-10432 Usb 2.0 To Video Capture
+2026-04-20 16:44:14,444 [INFO]   [cek] Fiyat: 386.41
+2026-04-20 16:44:14,445 [INFO]   [cek] Resimler: 1
+2026-04-20 16:44:14,445 [INFO]   [cek] Stok kodu:
+2026-04-20 16:44:14,446 [INFO] Urun bulundu: Powermaster PM-10432 Usb 2.0 To Video Capture
+2026-04-20 16:44:14,493 [INFO] ✓ 8680618362169 → Xtechnx Powermaster PM-10432 Usb 2.0 To Video Capture
+2026-04-20 16:44:24,633 [INFO] Kategori keyword eşleşti: 'Çevirici Dağıtıcı' içinde 'çevirici dağıtıcı' → ID 1000212
+2026-04-20 16:44:24,634 [INFO] N11 KATEGORİ: Kaynak='Çevirici Dağıtıcı' → ID=1000212
+2026-04-20 16:44:24,635 [INFO] N11 PAYLOAD [Cihan955469]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-10432 Usb 2.0 To Video Capture",
+        "description": "Powermaster PM-10432 Usb 2.0 To Video Capture Video Yakalama ve Kayıt Ekran Aktarma Adaptörü Özellikleri\nPowermaster PM-10432 Usb 2.0 To Video Capture; HDMI çıkışa sahip kamera, oyun konsolu, uydu alıcısı veya benzeri cihazlardan gelen görüntüyü bilgisayara aktarmaya ve kaydetmeye yarayan pratik bir dönüştürücü çözümdür. Bu cihaz sayesinde yüksek çözünürlüklü video sinyallerini bilgisayar ortamında anlık olarak izleyebilir, kayıt altına alabilir veya canlı yayın yapabilirsiniz. Tak-çalıştır özelliği ile ek yazılım veya karmaşık kurulum gerektirmeden hızlı kullanım sunar ve özellikle yayıncılar, içerik üreticileri ve teknik kayıt işlemleri için ideal bir yardımcıdır. 1080P görüntü desteği sayesinde kaliteli ve akıcı video aktarımı sağlar.\nTeknik Özellikler\nTanım:\nUsb 2.0 To Video Capture\nGiriş Arayüzü:\nHDMI\nDestek:\nYayın kalitenizden ödün vermeden 1080P görüntü aktarımı deneyimi\nÇıkış Arayüzü:\nUSB 2.0 (Type-A)\nİşlev:\nUSB Video Capture (Görüntü yakalama cihazı)\nGiriş Arayüzü:\nHDMI\nGiriş Sayısı:\n1 adet HDMI\nÇıkış Sayısı:\n1 adet USB\nÇözünürlük Desteği:\nFull HD 1080P kayıt ve aktarım 60Hz çıkış çözünürlüğü\nVideo Formatı:\nHD görüntü desteği\nBağlantı Standardı:\nHDMI 1.3 uyumlu\nVeri Aktarımı:\nYüksek hızlı USB 2.0 veri iletimi\nKullanım Tipi:\nTak ve Çalıştır (Plug - Play)\nYazılım Desteği:\nVLC, OBS, Amacp gibi bir çok kayıt yazılımını destekler\nUyumluluk:\nBilgisayar ve mobil cihazlarla kullanım desteği\nKullanım Alanı:\nOyun konsolu, kamera, uydu alıcı, DVR vb. cihazlardan görüntü aktarımı\nYayın Desteği:\nCanlı yayın ve video kayıt için uygun\nTasarım:\nKompakt ve taşınabilir yapı\nKablo:\nEntegre kısa bağlantı kablosu\nUyum:\nBilgisayar ve Mobil oyuncular için uygundur\nBoyut:\n25 Cm Kablo dahil\nAğırlık:\n22.20 Gr.\nRenk:\nGri Siyah\nAdet:\n1\nModel:\nPM-10432\nKutu İçeriği\n1* Powermaster PM-10432 Usb 2.0 To Video Capture\nÖzellik\nUSB TO VIDEO CAPTURE",
+        "categoryId": 1000212,
+        "currencyType": "TL",
+        "productMainId": "Cihan955469",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan955469",
+        "barcode": "2933773140551",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-10432-usb-2.0-to-hdmi-vid-e463.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 772.82,
+        "listPrice": 850.1,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 16:44:24,765 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2667499492,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 16:44:29,795 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:44:34,822 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:44:39,840 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:44:44,893 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:44:49,941 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:44:54,975 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:45:00,003 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:45:05,036 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:45:10,055 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:45:15,084 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:45:20,116 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:45:25,140 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:45:25,141 [INFO] N11 TASK RESULT [2667499492]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2667499492
+}
+2026-04-20 16:53:28,745 [INFO] ==================================================
+2026-04-20 16:53:28,746 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 16:53:28,747 [INFO] ==================================================
+2026-04-20 16:53:28,748 [INFO] Sunucu başlatıldı
+2026-04-20 16:53:32,630 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 16:54:07,141 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-20 16:54:35,594 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618397420
+2026-04-20 16:54:35,595 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/sunup-sn-29309-bahce-sulama-zamanlayicisi
+2026-04-20 16:54:35,596 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 715.2
+2026-04-20 16:54:35,596 [INFO]   [cek] Baslik: Sunup SN-29309 Mekanik Bahçe Musluk Sulama Zamanlayıcısı 120 Dakika Hassas Ayarlı Manuel Kontrol
+2026-04-20 16:54:35,596 [INFO]   [cek] Fiyat: 715.2
+2026-04-20 16:54:35,596 [INFO]   [cek] Resimler: 5
+2026-04-20 16:54:35,597 [INFO]   [cek] Stok kodu:
+2026-04-20 16:54:35,597 [INFO] Urun bulundu: Sunup SN-29309 Mekanik Bahçe Musluk Sulama Zamanlayıcısı 120
+2026-04-20 16:54:35,626 [INFO] ✓ 8680618397420 → Xtechnx Sunup SN-29309 Mekanik Bahçe Musluk Sulama Zamanlayıcısı 120 Dakika Hassas Ayarlı Manuel Kontrol
+2026-04-20 16:54:53,574 [WARNING] KATEGORİ EŞLEŞMEDİ: 'Ev ve Yaşam' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-20 16:54:53,574 [INFO] N11 KATEGORİ: Kaynak='Ev ve Yaşam' → ID=1000240
+2026-04-20 16:54:53,576 [INFO] N11 PAYLOAD [Cihan008728]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Sunup SN-29309 Mekanik Bahçe Musluk Sulama Zamanlayıcısı 120 Dakika Hassas Ayarlı Manuel Kontrol",
+        "description": "Sunup SN-29309 Mekanik Bahçe Musluk Sulama Zamanlayıcısı 120 Dakika Hassas Ayarlı Manuel Kontrol Özellikleri\nBahçenizi sularken zaman yönetimini tamamen kontrol altına almanızı sağlayan Sunup SN-29309, mekanik yapısı sayesinde pil veya elektrik enerjisine ihtiyaç duymadan çalışır. Bu çevre dostu ve ekonomik tasarım, sadece kadranı çevirerek 15 dakikadan 120 dakikaya kadar hassas sulama süreleri belirlemenize olanak tanır. Yüksek kaliteli ABS plastik gövdesi, dış mekan koşullarına ve UV ışınlarına karşı yüksek dayanıklılık göstererek uzun ömürlü bir kullanım vaat eder. Cihazın giriş kısmında bulunan dahili paslanmaz çelik filtre, şebeke suyundaki tortu ve kum gibi partikülleri süzerek fıskiye veya damlama sistemlerinizin tıkanmasını önler. \"Manual ON\" modu sayesinde, kurulu zamanlama düzenini bozmadan istediğiniz an sürekli su akışı sağlayabilirsiniz. Standart hızlı bağlantı (quick connect) adaptörüyle gelen ürün, bahçe hortumu sistemlerine saniyeler içinde entegre edilebilir. Su israfını önlemek ve bitkilerinizin tam ihtiyacı olan miktarda sulanmasını sağlamak için profesyonel bir çözümdür. Ergonomik tasarımı ve kolay okunabilir kadranı ile her yaştan kullanıcı için pratik ve konforlu bir deneyim sunar. Kurulumu son derece basittir, herhangi bir teknik bilgi veya profesyonel alet gerektirmeden doğrudan musluğa takılabilir. Hem geniş çim alanlar hem de hassas damlama sulama hatları için yüksek verimlilik ve güvenilirlik sağlar.\nTeknik Detaylar:\nMarka Model:\nSunup SN-29309\nÇalışma Mekanizması:\nMekanik Yaylı Sistem (Pil Gerektirmez)\nZamanlama Aralığı:\n15 Dakika ile 120 Dakika Arası\nGövde Malzemesi:\nDarbeye ve UV Işınlarına Dayanıklı ABS Polimer\nSu Giriş Bağlantısı:\nUniversal Standart Musluk Dişi\nÇıkış Bağlantı Tipi:\nStandart Hortum Hızlı Bağlantı (Quick Connector)\nFiltreleme:\nDahili Paslanmaz Mikronize Çelik Filtre\nÇalışma Basınç Aralığı:\n1 - 6 Bar (15 - 90 PSI)\nMaksimum Su Sıcaklığı:\n60°C\nKontrol Modları:\nZaman ayarlı sulama ve Manuel Sürekli Açık (ON)\nSızdırmazlık:\nÇift Kauçuk Conta Korumalı Bağlantı Noktaları\nÜrün Boyutları:\n15.6 cm x 8.0 cm\nAğırlık:\nYaklaşık 160 Gram\nAkış Kapasitesi:\nDakikada 0-20 Litre (Basınca Bağlı Değişken)\nKurulum:\nAlet Gerektirmeyen Elle Sıkma Montajı\nPaket İçeriği:\n1 x Sunup SN-29309 Mekanik Sulama Zamanlayıcı\n1 x Entegre Süzgeçli Musluk Bağlantı Rakoru\n1 x Entegre Süzgeçsiz Musluk Bağlantı Rakoru\n1 x Entegre Hortum Hızlı Bağlantı Aparatı\nKullanım Alanları:\nGeniş bahçe ve çim alanların periyodik sulanması\nSera ve hobi bahçelerindeki damlama sulama sistemleri\nBalkon ve teraslarda yer alan saksı bitkilerinin bakımı\nYeraltı ve yer üstü fıskiye (sprinkler) sistemlerinin zamanlanması",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan008728",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan008728",
+        "barcode": "2264494765700",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/sunup-sn-29309-bahce-sulama-zamanlayic-4362-8.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/sunup-sn-29309-bahce-sulama-zamanlayic-48498-.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/sunup-sn-29309-bahce-sulama-zamanlayic-b-ba50.jpg",
+            "order": 3
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/sunup-sn-29309-bahce-sulama-zamanlayic-4-4a4e.jpg",
+            "order": 4
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/sunup-sn-29309-bahce-sulama-zamanlayic-645335.jpg",
+            "order": 5
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 1430.4,
+        "listPrice": 1573.44,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 16:54:53,705 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2667552109,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 16:54:58,740 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:03,771 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:08,797 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:13,819 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:18,853 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:23,884 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:28,920 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:33,950 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:38,982 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:44,002 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:49,041 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:54,060 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:55:54,061 [INFO] N11 TASK RESULT [2667552109]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2667552109
+}
+2026-04-20 16:57:09,691 [INFO] ✓ 8680618362169 → Xtechnx Powermaster PM-10432 Usb 2.0 To Video Capture
+2026-04-20 16:57:15,555 [INFO] Kategori keyword eşleşti: 'Çevirici Dağıtıcı' içinde 'çevirici dağıtıcı' → ID 1000212
+2026-04-20 16:57:15,556 [INFO] N11 KATEGORİ: Kaynak='Çevirici Dağıtıcı' → ID=1000212
+2026-04-20 16:57:15,558 [INFO] N11 PAYLOAD [Cihan254971]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-10432 Usb 2.0 To Video Capture",
+        "description": "Powermaster PM-10432 Usb 2.0 To Video Capture Video Yakalama ve Kayıt Ekran Aktarma Adaptörü Özellikleri\nPowermaster PM-10432 Usb 2.0 To Video Capture; HDMI çıkışa sahip kamera, oyun konsolu, uydu alıcısı veya benzeri cihazlardan gelen görüntüyü bilgisayara aktarmaya ve kaydetmeye yarayan pratik bir dönüştürücü çözümdür. Bu cihaz sayesinde yüksek çözünürlüklü video sinyallerini bilgisayar ortamında anlık olarak izleyebilir, kayıt altına alabilir veya canlı yayın yapabilirsiniz. Tak-çalıştır özelliği ile ek yazılım veya karmaşık kurulum gerektirmeden hızlı kullanım sunar ve özellikle yayıncılar, içerik üreticileri ve teknik kayıt işlemleri için ideal bir yardımcıdır. 1080P görüntü desteği sayesinde kaliteli ve akıcı video aktarımı sağlar.\nTeknik Özellikler\nTanım:\nUsb 2.0 To Video Capture\nGiriş Arayüzü:\nHDMI\nDestek:\nYayın kalitenizden ödün vermeden 1080P görüntü aktarımı deneyimi\nÇıkış Arayüzü:\nUSB 2.0 (Type-A)\nİşlev:\nUSB Video Capture (Görüntü yakalama cihazı)\nGiriş Arayüzü:\nHDMI\nGiriş Sayısı:\n1 adet HDMI\nÇıkış Sayısı:\n1 adet USB\nÇözünürlük Desteği:\nFull HD 1080P kayıt ve aktarım 60Hz çıkış çözünürlüğü\nVideo Formatı:\nHD görüntü desteği\nBağlantı Standardı:\nHDMI 1.3 uyumlu\nVeri Aktarımı:\nYüksek hızlı USB 2.0 veri iletimi\nKullanım Tipi:\nTak ve Çalıştır (Plug - Play)\nYazılım Desteği:\nVLC, OBS, Amacp gibi bir çok kayıt yazılımını destekler\nUyumluluk:\nBilgisayar ve mobil cihazlarla kullanım desteği\nKullanım Alanı:\nOyun konsolu, kamera, uydu alıcı, DVR vb. cihazlardan görüntü aktarımı\nYayın Desteği:\nCanlı yayın ve video kayıt için uygun\nTasarım:\nKompakt ve taşınabilir yapı\nKablo:\nEntegre kısa bağlantı kablosu\nUyum:\nBilgisayar ve Mobil oyuncular için uygundur\nBoyut:\n25 Cm Kablo dahil\nAğırlık:\n22.20 Gr.\nRenk:\nGri Siyah\nAdet:\n1\nModel:\nPM-10432\nKutu İçeriği\n1* Powermaster PM-10432 Usb 2.0 To Video Capture\nÖzellik\nUSB TO VIDEO CAPTURE",
+        "categoryId": 1000212,
+        "currencyType": "TL",
+        "productMainId": "Cihan254971",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan254971",
+        "barcode": "2819554334367",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-10432-usb-2.0-to-hdmi-vid-e463.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 772.82,
+        "listPrice": 850.1,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-20 16:57:15,659 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2667564535,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-20 16:57:20,689 [WARNING] N11 task poll #1 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:57:25,722 [WARNING] N11 task poll #2 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:57:30,750 [WARNING] N11 task poll #3 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:57:35,773 [WARNING] N11 task poll #4 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:57:40,802 [WARNING] N11 task poll #5 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:57:45,821 [WARNING] N11 task poll #6 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:57:50,841 [WARNING] N11 task poll #7 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:57:55,863 [WARNING] N11 task poll #8 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:58:00,888 [WARNING] N11 task poll #9 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:58:05,908 [WARNING] N11 task poll #10 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:58:10,937 [WARNING] N11 task poll #11 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:58:15,964 [WARNING] N11 task poll #12 hata: Expecting value: line 1 column 1 (char 0)
+2026-04-20 16:58:15,965 [INFO] N11 TASK RESULT [2667564535]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2667564535
+}
+2026-04-20 17:29:27,237 [INFO] ==================================================
+2026-04-20 17:29:27,238 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 17:29:27,238 [INFO] ==================================================
+2026-04-20 17:29:27,239 [INFO] Sunucu başlatıldı
+2026-04-20 17:29:28,024 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-20 17:32:17,800 [INFO] ==================================================
+2026-04-20 17:32:17,801 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-20 17:32:17,801 [INFO] ==================================================
+2026-04-20 17:32:17,802 [INFO] Sunucu başlatıldı
+2026-04-20 17:32:19,864 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 11:58:25,312 [INFO] ==================================================
+2026-04-21 11:58:25,313 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 11:58:25,317 [INFO] ==================================================
+2026-04-21 11:58:25,318 [INFO] Sunucu başlatıldı
+2026-04-21 11:58:27,975 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 11:59:32,609 [INFO] ✓ 8680618315622 → Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)
+2026-04-21 11:59:40,099 [INFO] Kategori keyword eşleşti: 'F Konnektör' içinde 'f konnektör' → ID 1000570
+2026-04-21 11:59:40,099 [INFO] N11 KATEGORİ: Kaynak='F Konnektör' → ID=1000570
+2026-04-21 11:59:40,101 [INFO] N11 PAYLOAD [Cihan207345]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx F Konnektör RG6-U4 Geniş 18 Mm (100 Adet)",
+        "description": "F Konnektör RG6-U4 18 Mm Geniş (100 Adet) Özellikleri\nPowermaster RG6-U4Mm Geniş F Konnektör, koaksiyel kabloları F tipi konektörlere bağlamak için kullanılan yüksek kaliteli bir üründür. Powermaster RG6-U4Mm Geniş F Konnektör 100 lü paket olarak gelmektedir. 18 mm çapındaki kablolar için uygundur.\nİşlev : F Konnektör\nKablo Tipi: RG6/U4\nÇapı : 18 mm\nConta : Geniş\nMalzeme : Metal\nAdet : 100 Adet\nTV ve alıcı gibi F bağlantılı tüm cihazlar için uygundur.\nDayanıklı yapı ve kullanım kolaylığı\nPaket Ağırlığı : 233.85 Gr.\nRenk : Gümüş\nCE Belgeli\nModel : UJ-2004\nÖzellik\n681",
+        "categoryId": 1000570,
+        "currencyType": "TL",
+        "productMainId": "Cihan207345",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan207345",
+        "barcode": "2796600533533",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-rg6u4-18-mm-genis-f-konnekto-49cc.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 468.16,
+        "listPrice": 514.98,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 11:59:40,242 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2670802750,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 11:59:43,271 [WARNING] N11 task poll #1: HTTP 404 → task bulunamadı
+2026-04-21 11:59:43,272 [INFO] N11 TASK RESULT [2670802750]:
+{
+  "status": "FAILED",
+  "taskId": 2670802750,
+  "message": "Task bulunamadı (404)"
+}
+2026-04-21 12:42:56,565 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-21 12:43:27,365 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680618316735
+2026-04-21 12:43:27,365 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/powermaster-24-1-pin-dvi-erkek-hdmi-disi-cevirici-jack-pm-8713
+2026-04-21 12:43:27,366 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 71.92
+2026-04-21 12:43:27,366 [INFO]   [cek] Baslik: Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-21 12:43:27,367 [INFO]   [cek] Fiyat: 71.92
+2026-04-21 12:43:27,368 [INFO]   [cek] Resimler: 1
+2026-04-21 12:43:27,368 [INFO]   [cek] Stok kodu:
+2026-04-21 12:43:27,370 [INFO] Urun bulundu: Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-21 12:43:27,401 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-21 12:43:52,463 [WARNING] KATEGORİ EŞLEŞMEDİ: 'Fiş - Jack - Şase' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-21 12:43:52,464 [INFO] N11 KATEGORİ: Kaynak='Fiş - Jack - Şase' → ID=1000240
+2026-04-21 12:43:52,466 [INFO] N11 PAYLOAD [Cihan586852]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack",
+        "description": "Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack Özellikleri\nPowermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack; farklı video bağlantı türleri arasında dönüşüm yapmak için kullanılan bir adaptördür. DVI sinyalini HDMI formatına dönüştürmek için idealdir. Bu adaptör, genellikle bilgisayarlar, monitörler, televizyonlar ve diğer görüntü cihazları arasında bağlantı kurmak için kullanılır. Altın kaplama konektörler ve sağlam yapısıyla uzun ömürlü ve güvenilir bir performans sunar. PowerMaster PM-8713 DVI Erkek - HDMI Dişi Çevirici, farklı video bağlantı türlerini birbirine dönüştürmek için kullanışlı ve güvenilir bir adaptördür. Altın kaplama konektörler ve sağlam yapısı, uzun ömürlü ve güvenilir bir performans sağlar. Bilgisayarlar, monitörler, televizyonlar ve diğer görüntü cihazları arasında bağlantı kurarken kolaylık ve esneklik sunar.\nTeknik Özellikleri:\nTanım : DVI Erkek - HDMI Dişi Çevirici Jack\nSinyal Dönüşümü : DVI sinyalini HDMI formatına çevirir. Pasif adaptör (ekstra güç gerektirmez)\nGiriş : DVI Erkek 24+1 Pin (DVI-D Single Link)\nÇıkış : HDMI Dişi\nGörüntü Desteği : Dijital görüntü aktarımı / Full HD (1080p) uyumlu (cihaza bağlı)\nSes Desteği : DVI çıkıştan gelen sinyaller genelde ses taşımaz. Ses iletimi için ayrı kablo gerekebilir\nKurulum : Tak - Çalıştır (Plug-Play). Sürücü gerektirmez\nUyumluluk : Bilgisayar (ekran kartı DVI çıkışı), Monitör / TV (HDMI girişi), Projeksiyon cihazları, Uydu alıcıları ve medya oynatıcılar\nKullanım Amacı : DVI çıkışlı cihazı HDMI girişli ekrana bağlama. Eski PC → yeni TV/monitör bağlantısı\nBoyut : 52 *40 Mm\nAğırlık : 20.10 Gr.\nMalzeme : Altın kaplama konektörler, dayanıklı plastik gövde\nRenk : Siyah\nAdet : 1\nModel : PM-8713\nNeden Tercih Etmelisiniz?:\nFarklı video bağlantı türleri arasında dönüşüm yapar, geniş cihaz yelpazesine uyum sağlar.\nAltın kaplama konektörler daha iyi iletkenlik ve daha güvenilir bağlantı sağlar.\nKolay ve hızlı kurulum, tak-çalıştır özelliği ile kullanımı pratik ve kullanıcı dostudur.\nSağlam yapıya sahiptir, uzun süreli kullanım için dayanıklıdır.\nPaket İçeriği:\n1* Powermaster PM-8713 Gold 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan586852",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan586852",
+        "barcode": "2611190530239",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-241-pin-gold-dvi-erkek-hdmi--2fd5.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 143.84,
+        "listPrice": 158.22,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 12:43:52,612 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2670946333,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 12:43:55,636 [WARNING] N11 task poll #1: HTTP 404 → task bulunamadı
+2026-04-21 12:43:55,637 [INFO] N11 TASK RESULT [2670946333]:
+{
+  "status": "FAILED",
+  "taskId": 2670946333,
+  "message": "Task bulunamadı (404)"
+}
+2026-04-21 12:52:39,902 [INFO] ✓ 8680618316735 → Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack
+2026-04-21 12:52:47,680 [WARNING] KATEGORİ EŞLEŞMEDİ: 'Fiş - Jack - Şase' → varsayılan ID 1000240 (USB Aksesuarları). Doğru ID için /categories endpoint'ini kullanın.
+2026-04-21 12:52:47,680 [INFO] N11 KATEGORİ: Kaynak='Fiş - Jack - Şase' → ID=1000240
+2026-04-21 12:52:47,684 [INFO] N11 PAYLOAD [Cihan717316]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack",
+        "description": "Powermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack Özellikleri\nPowermaster 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack; farklı video bağlantı türleri arasında dönüşüm yapmak için kullanılan bir adaptördür. DVI sinyalini HDMI formatına dönüştürmek için idealdir. Bu adaptör, genellikle bilgisayarlar, monitörler, televizyonlar ve diğer görüntü cihazları arasında bağlantı kurmak için kullanılır. Altın kaplama konektörler ve sağlam yapısıyla uzun ömürlü ve güvenilir bir performans sunar. PowerMaster PM-8713 DVI Erkek - HDMI Dişi Çevirici, farklı video bağlantı türlerini birbirine dönüştürmek için kullanışlı ve güvenilir bir adaptördür. Altın kaplama konektörler ve sağlam yapısı, uzun ömürlü ve güvenilir bir performans sağlar. Bilgisayarlar, monitörler, televizyonlar ve diğer görüntü cihazları arasında bağlantı kurarken kolaylık ve esneklik sunar.\nTeknik Özellikleri:\nTanım : DVI Erkek - HDMI Dişi Çevirici Jack\nSinyal Dönüşümü : DVI sinyalini HDMI formatına çevirir. Pasif adaptör (ekstra güç gerektirmez)\nGiriş : DVI Erkek 24+1 Pin (DVI-D Single Link)\nÇıkış : HDMI Dişi\nGörüntü Desteği : Dijital görüntü aktarımı / Full HD (1080p) uyumlu (cihaza bağlı)\nSes Desteği : DVI çıkıştan gelen sinyaller genelde ses taşımaz. Ses iletimi için ayrı kablo gerekebilir\nKurulum : Tak - Çalıştır (Plug-Play). Sürücü gerektirmez\nUyumluluk : Bilgisayar (ekran kartı DVI çıkışı), Monitör / TV (HDMI girişi), Projeksiyon cihazları, Uydu alıcıları ve medya oynatıcılar\nKullanım Amacı : DVI çıkışlı cihazı HDMI girişli ekrana bağlama. Eski PC → yeni TV/monitör bağlantısı\nBoyut : 52 *40 Mm\nAğırlık : 20.10 Gr.\nMalzeme : Altın kaplama konektörler, dayanıklı plastik gövde\nRenk : Siyah\nAdet : 1\nModel : PM-8713\nNeden Tercih Etmelisiniz?:\nFarklı video bağlantı türleri arasında dönüşüm yapar, geniş cihaz yelpazesine uyum sağlar.\nAltın kaplama konektörler daha iyi iletkenlik ve daha güvenilir bağlantı sağlar.\nKolay ve hızlı kurulum, tak-çalıştır özelliği ile kullanımı pratik ve kullanıcı dostudur.\nSağlam yapıya sahiptir, uzun süreli kullanım için dayanıklıdır.\nPaket İçeriği:\n1* Powermaster PM-8713 Gold 24+1 Pin DVI Erkek - HDMI Dişi Çevirici Jack",
+        "categoryId": 1000240,
+        "currencyType": "TL",
+        "productMainId": "Cihan717316",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan717316",
+        "barcode": "2850317405412",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-241-pin-gold-dvi-erkek-hdmi--2fd5.jpg",
+            "order": 1
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 143.84,
+        "listPrice": 158.22,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 12:52:47,783 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2670973012,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 12:52:50,812 [WARNING] N11 task poll #1: HTTP 404 → task bulunamadı
+2026-04-21 12:52:50,813 [INFO] N11 TASK RESULT [2670973012]:
+{
+  "status": "FAILED",
+  "taskId": 2670973012,
+  "message": "Task bulunamadı (404)"
+}
+2026-04-21 13:14:56,476 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-21 13:15:05,853 [INFO] Kategori keyword eşleşti: 'Aydınlatma Diğer' içinde 'aydınlatma' → ID 1000626
+2026-04-21 13:15:05,853 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000626
+2026-04-21 13:15:05,857 [INFO] N11 PAYLOAD [Cihan505287]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000626,
+        "currencyType": "TL",
+        "productMainId": "Cihan505287",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan505287",
+        "barcode": "2502563566491",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 13:15:05,971 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671040382,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 13:15:09,000 [WARNING] N11 task poll #1: HTTP 404 → task bulunamadı
+2026-04-21 13:15:09,001 [INFO] N11 TASK RESULT [2671040382]:
+{
+  "status": "FAILED",
+  "taskId": 2671040382,
+  "message": "Task bulunamadı (404)"
+}
+2026-04-21 13:22:00,375 [INFO] ==================================================
+2026-04-21 13:22:00,376 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:22:00,376 [INFO] ==================================================
+2026-04-21 13:22:00,377 [INFO] Sunucu başlatıldı
+2026-04-21 13:22:03,005 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:22:31,401 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-21 13:22:37,667 [INFO] Kategori keyword eşleşti: 'Aydınlatma Diğer' içinde 'aydınlatma' → ID 1000626
+2026-04-21 13:22:37,667 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000626
+2026-04-21 13:22:37,668 [INFO] N11 PAYLOAD [Cihan410791]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000626,
+        "currencyType": "TL",
+        "productMainId": "Cihan410791",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan410791",
+        "barcode": "2041502017781",
+        "brandName": "Xtechnx",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 13:22:37,789 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671063339,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 13:22:38,812 [WARNING] N11 task poll #1: HTTP 404 → task kuyruktan silindi, ürün yüklendi olabilir
+2026-04-21 13:22:38,814 [INFO] N11 TASK RESULT [2671063339]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2671063339
+}
+2026-04-21 13:22:38,819 [WARNING] N11 task zaman aşımı [2671063339]: ürün muhtemelen yüklendi, N11 panelinden kontrol edin
+2026-04-21 13:28:03,069 [INFO] ==================================================
+2026-04-21 13:28:03,070 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:28:03,070 [INFO] ==================================================
+2026-04-21 13:28:03,071 [INFO] Sunucu başlatıldı
+2026-04-21 13:28:03,855 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:29:29,895 [INFO] ==================================================
+2026-04-21 13:29:29,896 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:29:29,896 [INFO] ==================================================
+2026-04-21 13:29:29,897 [INFO] Sunucu başlatıldı
+2026-04-21 13:29:30,680 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:33:08,162 [INFO] ==================================================
+2026-04-21 13:33:08,163 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:33:08,163 [INFO] ==================================================
+2026-04-21 13:33:08,164 [INFO] Sunucu başlatıldı
+2026-04-21 13:33:08,963 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:36:57,818 [INFO] ==================================================
+2026-04-21 13:36:57,818 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:36:57,819 [INFO] ==================================================
+2026-04-21 13:36:57,820 [INFO] Sunucu başlatıldı
+2026-04-21 13:36:58,622 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:37:13,494 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-21 13:37:18,517 [INFO] Kategori keyword eşleşti: 'Aydınlatma Diğer' içinde 'aydınlatma' → ID 1000626
+2026-04-21 13:37:18,517 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000626
+2026-04-21 13:37:18,519 [INFO] N11 PAYLOAD [Cihan444627]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000626,
+        "currencyType": "TL",
+        "productMainId": "Cihan444627",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan444627",
+        "barcode": "2016643204666",
+        "brandName": "Xtechnx",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 13:37:18,616 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671112437,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 13:37:19,639 [WARNING] N11 task poll #1: HTTP 404 → task kuyruktan silindi, ürün yüklendi olabilir
+2026-04-21 13:37:19,640 [INFO] N11 TASK RESULT [2671112437]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2671112437
+}
+2026-04-21 13:37:19,645 [WARNING] N11 task zaman aşımı [2671112437]: ürün muhtemelen yüklendi, N11 panelinden kontrol edin
+2026-04-21 13:40:08,410 [INFO] ==================================================
+2026-04-21 13:40:08,411 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:40:08,411 [INFO] ==================================================
+2026-04-21 13:40:08,413 [INFO] Sunucu başlatıldı
+2026-04-21 13:40:09,197 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:40:47,114 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-21 13:40:51,698 [INFO] Kategori keyword eşleşti: 'Aydınlatma Diğer' içinde 'aydınlatma' → ID 1000626
+2026-04-21 13:40:51,698 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000626
+2026-04-21 13:40:51,700 [INFO] N11 PAYLOAD [Cihan454880]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000626,
+        "currencyType": "TL",
+        "productMainId": "Cihan454880",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan454880",
+        "barcode": "2036717542890",
+        "brandName": "Xtechnx",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 13:40:51,817 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671121358,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 13:40:52,838 [WARNING] N11 task poll #1: HTTP 404 → task kuyruktan silindi, ürün yüklendi olabilir
+2026-04-21 13:40:52,839 [INFO] N11 TASK RESULT [2671121358]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2671121358
+}
+2026-04-21 13:40:52,845 [WARNING] N11 task zaman aşımı [2671121358]: ürün muhtemelen yüklendi, N11 panelinden kontrol edin
+2026-04-21 13:43:23,563 [INFO] ==================================================
+2026-04-21 13:43:23,564 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:43:23,564 [INFO] ==================================================
+2026-04-21 13:43:23,565 [INFO] Sunucu başlatıldı
+2026-04-21 13:43:25,641 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:43:37,217 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-21 13:43:41,754 [INFO] Kategori keyword eşleşti: 'Aydınlatma Diğer' içinde 'aydınlatma' → ID 1000629
+2026-04-21 13:43:41,754 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000629
+2026-04-21 13:43:41,755 [INFO] N11 PAYLOAD [Cihan822748]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000629,
+        "currencyType": "TL",
+        "productMainId": "Cihan822748",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan822748",
+        "barcode": "2047832126971",
+        "brandName": "Xtechnx",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 13:43:41,875 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671129379,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 13:43:42,898 [WARNING] N11 task poll #1: HTTP 404 → task kuyruktan silindi, ürün yüklendi olabilir
+2026-04-21 13:43:42,899 [INFO] N11 TASK RESULT [2671129379]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2671129379
+}
+2026-04-21 13:43:42,904 [WARNING] N11 task zaman aşımı [2671129379]: ürün muhtemelen yüklendi, N11 panelinden kontrol edin
+2026-04-21 13:46:27,452 [INFO] ==================================================
+2026-04-21 13:46:27,453 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:46:27,453 [INFO] ==================================================
+2026-04-21 13:46:27,454 [INFO] Sunucu başlatıldı
+2026-04-21 13:46:28,239 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:46:39,717 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-21 13:46:47,662 [INFO] Kategori keyword eşleşti: 'Aydınlatma Diğer' içinde 'aydınlatma' → ID 1000629
+2026-04-21 13:46:47,663 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000629
+2026-04-21 13:46:47,667 [INFO] N11 PAYLOAD [Cihan840862]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000629,
+        "currencyType": "TL",
+        "productMainId": "Cihan840862",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan840862",
+        "barcode": "2040155307232",
+        "brandName": "Xtechnx",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 13:46:47,771 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671139469,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 13:46:48,797 [WARNING] N11 task poll #1: HTTP 404 → task kuyruktan silindi, ürün yüklendi olabilir
+2026-04-21 13:46:48,798 [INFO] N11 TASK RESULT [2671139469]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2671139469
+}
+2026-04-21 13:46:48,804 [WARNING] N11 task zaman aşımı [2671139469]: ürün muhtemelen yüklendi, N11 panelinden kontrol edin
+2026-04-21 13:50:02,225 [INFO] ==================================================
+2026-04-21 13:50:02,226 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 13:50:02,226 [INFO] ==================================================
+2026-04-21 13:50:02,227 [INFO] Sunucu başlatıldı
+2026-04-21 13:50:03,056 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 13:50:18,292 [INFO] Scraper: C:\Users\Sule\Desktop\product-sync\merter_cek.py
+2026-04-21 13:50:43,044 [INFO]   [cek] Arama: https://www.merterelektronik.com/Arama?1&kelime=8680096114236
+2026-04-21 13:50:43,044 [INFO]   [cek] Urun URL: https://www.merterelektronik.com/everest-ewn-212-2.4ghz-mt7601-islemcili-2dbi-150-mbps-wireless-usb-kablosuz-adaptor
+2026-04-21 13:50:43,047 [INFO]   [cek] Fiyat bulundu (span#fiyat2): 181.37
+2026-04-21 13:50:43,048 [INFO]   [cek] Baslik: Everest EWN-212 2.4GHz MT7601 İşlemcili 2dBi 150 Mbps Wireless Usb Kablosuz Adaptör
+2026-04-21 13:50:43,049 [INFO]   [cek] Fiyat: 181.37
+2026-04-21 13:50:43,050 [INFO]   [cek] Resimler: 3
+2026-04-21 13:50:43,050 [INFO]   [cek] Stok kodu:
+2026-04-21 13:50:43,051 [INFO] Urun bulundu: Everest EWN-212 2.4GHz MT7601 İşlemcili 2dBi 150 Mbps Wirele
+2026-04-21 13:50:43,075 [INFO] ✓ 8680096114236 → Xtechnx Everest EWN-212 2.4GHz MT7601 İşlemcili 2dBi 150 Mbps Wireless Usb Kablosuz Adaptör
+2026-04-21 13:50:47,269 [INFO] Kategori keyword eşleşti: 'Wireless Adaptör' içinde 'wireless adaptör' → ID 1000284
+2026-04-21 13:50:47,270 [INFO] N11 KATEGORİ: Kaynak='Wireless Adaptör' → ID=1000284
+2026-04-21 13:50:47,273 [INFO] N11 PAYLOAD [Cihan381511]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Everest EWN-212 2.4GHz MT7601 İşlemcili 2dBi 150 Mbps Wireless Usb Kablosuz Adaptör",
+        "description": "Everest EWN-212 2.4GHz MT7601 İşlemcili 2dBi 150 Mbps Wireless Usb Kablosuz Adaptör Özellikleri\nWifi Usb Kablosuz Adaptör\nIEEE802,11 n, IEEE802.11g ile tam uyumlu\n128-bit WEB şifreleme ve WPA güvenlik desteği\nFrekans Bandı : 2.4GHz\nUSB Desteği : USB 2.0 arayüz\nArabirim : MT7601 Chipset\nHD Uydu Alıcıları Uyumlu\nAnten Kazancı : 2dBi\nBoyut : 135.6 Mm\nAğırlık : 86.7 Gr.\nÇalışma Sıcaklığı : 0°c ~ 40°c\nDepolama Sıcaklığı : -20°c ~ 75°c\nMalzeme : ABS Plastik\nRenk : Siyah\nModel : EWN-212\nÖzellik\nWIRELESS ADAPTÖR\nDeğer\n150 MBPS\nTeknik Bilgi 1\n31545 - 11139 - 24182 - 1286",
+        "categoryId": 1000284,
+        "currencyType": "TL",
+        "productMainId": "Cihan381511",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan381511",
+        "barcode": "2065478030124",
+        "brandName": "Xtechnx",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/everest-ewn-212-150mbps-2.4ghz-2dbi-mt76-1c79.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/everest-ewn-212-150mbps-2.4ghz-2dbi-mt76-238e.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/everest-ewn-212-150mbps-2.4ghz-2dbi-mt76-05f9.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 362.74,
+        "listPrice": 399.01,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 13:50:47,392 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671152226,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 13:50:48,415 [WARNING] N11 task poll #1: HTTP 404 → task kuyruktan silindi, ürün yüklendi olabilir
+2026-04-21 13:50:48,416 [INFO] N11 TASK RESULT [2671152226]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2671152226
+}
+2026-04-21 13:50:48,421 [WARNING] N11 task zaman aşımı [2671152226]: ürün muhtemelen yüklendi, N11 panelinden kontrol edin
+2026-04-21 14:03:54,940 [INFO] ==================================================
+2026-04-21 14:03:54,940 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 14:03:54,941 [INFO] ==================================================
+2026-04-21 14:03:54,942 [INFO] Sunucu başlatıldı
+2026-04-21 14:03:55,768 [INFO] Tarayıcı açıldı: http://127.0.0.1:8000
+2026-04-21 14:04:08,073 [INFO] ✓ 8680618359442 → Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba
+2026-04-21 14:04:15,435 [INFO] Kategori keyword eşleşti: 'Aydınlatma Diğer' içinde 'aydınlatma' → ID 1000629
+2026-04-21 14:04:15,436 [INFO] N11 KATEGORİ: Kaynak='Aydınlatma Diğer' → ID=1000629
+2026-04-21 14:04:15,437 [INFO] N11 PAYLOAD [Cihan033117]:
+{
+  "payload": {
+    "integrator": "Xtechnx",
+    "skus": [
+      {
+        "title": "Xtechnx Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba",
+        "description": "Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba Özellikleri\nPowermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba, kompakt tasarımı ve çok yönlü kullanımı ile dikkat çeker. Bu şarjlı lamba, yüksek performanslı Cob Led ışığıyla donatılmış olup, sabit ışık, düşük ışık ve flaş ışığı modlarına sahiptir.\nÖzellikler:\nTanım:\nCob Ledli Şarjlı Lamba\nIşık Kaynağı Tipi:\nLed Işık\nAydınlatma Modu:\nSabit Işık, Düşük Işık, Flaş Işığı\nMaksimum Güç:\n6W\nParlaklık:\n500lm\nRenk:\nSiyah\nAğırlık:\n65gr\nÜrün Boyutu:\n60*42mm\nMalzeme:\nABS Plastik\nRenk Sıcaklığı:\n4500K\nPil Tipi:\nLityum pil\nBatarya:\n500mAh\nPil Ömrü:\n5 Saat\nŞarj Süresi:\n5 Saat\nKullanım Süresi:\n3-8 Saat\nSu Geçirmezlik Sınıfı:\nIPX5\nŞarj Özelliği:\nUSB İle Şarj Dolumu Yapılmaktadır\nRahat ve Kolay Taşınabilir\nKaliteli ve Uzun Ömürlü Kullanım\nMarka:\nPowermaster\nModel:\nPM-21489\nPowermaster PM-21489, 4500K renk sıcaklığıyla doğal bir aydınlatma sunar. 500mAh lityum pil ile donatılmıştır, bu sayede 5 saatlik kesintisiz kullanım sağlar. USB ile şarj edilebilir özelliği ile pratik bir kullanım sunar.\nPaket İçeriği:\n1 x Powermaster PM-21489 Cob Ledli 3 Fonksiyonlu Anahtarlık Şarjlı Lamba\n1 x USB Şarj Kablosu\nPowermaster PM-21489 Cob Ledli Şarjlı Lamba ile her an ve her yerde ihtiyacınız olan ışığı elinizin altında bulundurun. Dayanıklı malzeme ve şık tasarımıyla öne çıkan bu ürünü hemen satın alın!",
+        "categoryId": 1000629,
+        "currencyType": "TL",
+        "productMainId": "Cihan033117",
+        "preparingDay": 1,
+        "shipmentTemplate": "Kargo Tercihleri",
+        "stockCode": "Cihan033117",
+        "barcode": "2005087277657",
+        "brandName": "Xtechnx",
+        "quantity": 1,
+        "images": [
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-1118.jpg",
+            "order": 1
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-57ba.jpg",
+            "order": 2
+          },
+          {
+            "url": "https://static.ticimax.cloud/64223/uploads/urunresimleri/buyuk/powermaster-pm-21489-cob-ledli-3-fonksiy-d1db.jpg",
+            "order": 3
+          }
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "customValue": "Xtechnx",
+            "valueId": null
+          }
+        ],
+        "salePrice": 180.48,
+        "listPrice": 198.53,
+        "vatRate": 20
+      }
+    ]
+  }
+}
+2026-04-21 14:04:15,538 [INFO] N11 RESPONSE [HTTP 200]:
+{
+  "id": 2671194886,
+  "type": "PRODUCT_CREATE",
+  "status": "IN_QUEUE",
+  "reasons": [
+    "1 sku işlenmeye alındı."
+  ]
+}
+2026-04-21 14:04:16,569 [WARNING] N11 task poll #1: HTTP 404 → task kuyruktan silindi, ürün yüklendi olabilir
+2026-04-21 14:04:16,571 [INFO] N11 TASK RESULT [2671194886]:
+{
+  "status": "TIMEOUT",
+  "taskId": 2671194886
+}
+2026-04-21 14:04:16,577 [WARNING] N11 task zaman aşımı [2671194886]: ürün muhtemelen yüklendi, N11 panelinden kontrol edin
+2026-04-21 14:05:23,008 [INFO] ==================================================
+2026-04-21 14:05:23,009 [INFO]   Xtechnx Product Sync v4.0 başlatılıyor...
+2026-04-21 14:05:23,009 [INFO] ==================================================
+2026-04-21 14:05:23,010 [INFO] Sunucu başlatıldı

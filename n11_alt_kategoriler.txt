@@ -1,0 +1,391 @@
+
+==================================================
+1000605  Aydinlatma
+1000624  Gece Lambası
+1000623  Dekoratif Led Işık
+1000621  Avize & Sarkıt
+1000620  Armatür
+1000619  Aplik
+1217206  Bahçe Aydınlatma
+  1217207  Bahçe Direkleri
+  1217208  Bahçe Aplikleri
+  1217211  Bahçe Set Üstü Aydınlatmalar
+  1217209  Bahçe Fenerleri
+  1217210  Bahçe Yol Aydınlatmaları
+1000615  Ampul
+  1217204  Halojen Ampul
+  1000618  Floresan Lamba
+  1217205  Rustik Ampul
+  1000616  LED Ampul
+1000606  Abajur
+  1000607  Abajur Şapkası
+  1000613  Abajur Ayağı
+  1000610  Abajurlar
+1000631  Bebek ve Çocuk Odası Aydınlatmaları
+  1000634  Sarkıt
+  1000632  Abajur
+1000630  Tuz Lamba
+1149100  Tavan Lambaları
+1000629  Spot Lamba
+1149101  Elektrik Aksesuarları
+1000627  Masa Lambası
+1000626  Led Aydınlatmalar
+1000625  Lambader & Köşe Aydınlatmaları
+
+==================================================
+1000472  Telefon & Aksesuarlari
+1000496  Cep Telefonu Yedek Parça
+  1000501  Tuş Takımı
+  1000500  Kasa & Kapak
+  1000499  Ekran
+  1000498  Diğer
+  1000497  Batarya
+1215220  Outlet - Teşhir Cep Telefonu
+1000477  Cep Telefonu Aksesuarları
+  1000495  Şarj Cihazı
+  1000494  Çevirici & Dönüştürücü
+  1000493  Telefon Askısı
+  1000491  Kılıf
+  1000490  Kablolu Kulakiçi Kulaklık
+  1000488  Telefon Kamera & Fotoğraf Aksesuarları
+  1000487  Kalem
+  1000486  Kablo
+  1000483  Hafıza Kartı
+  1171200  Bluetooth Kulaklık Aksesuarları
+  1000482  Ekran Koruyucu
+  1000481  Dock
+  1000480  Diğer
+  1171201  Telefon Sterilizasyon Ürünleri
+  1000479  Bluetooth Kulaklık
+  1000478  Araç Kiti & Telefon Tutucu
+  1092100  Telefon Gimbal
+  1076100  Taşınabilir Şarj Cihazı
+  1101100  Telefon Oyun Aksesuarları
+  1089102  Selfie Çubuğu & Telefon Tripodu
+1000476  Cep Telefonu
+1000508  Telsiz & Masaüstü Telefon
+  1000512  IP Telefon
+  1000511  Faks
+  1000510  El Telsizi
+  1000509  Dect Telefon
+  1000513  Masa & Duvar Telefonu
+1039100  Uzatılmış Garanti
+1000473  Giyilebilir Teknoloji
+  1171202  Akıllı Gözlük
+  1000475  Akıllı Saat Aksesuarları
+  1000474  Akıllı Saat
+  1071100  Akıllı Bileklik
+  1071101  Sanal Gerçeklik Gözlüğü
+  1071102  Giyilebilir Teknoloji Aksesuarları
+  1089103  Akıllı Takip
+1200201  Cep Telefonu Sigorta
+1000502  Sim Kart, Hat, Paketler
+  1000507  Vodafone
+  1000506  Turkcell
+  1009107  GSM Paketleri
+    1009108  Vodafone
+1089100  Yenilenmiş Telefon & Aksesuarları
+1089101  Tuşlu Telefon
+
+==================================================
+1000373  Elektrikli Ev Aletleri
+1278200  Hava Temizleme & Nemlendirme
+  1278202  Aksesuarlar
+  1278201  Hava Temizleyiciler & Nem Alma Cihazları
+  1279200  Hava Nemlendiriciler
+1250200  Dikiş Makinesi ve Aksesuarları
+  1250201  Dikiş Makinesı Aksesuarları
+  1251200  Dikiş Makinesi
+1000375  Elektrikli Mutfak Aletleri
+  1138100  Yedek Parça ve Aksesuarlar
+  1138101  Elektrikli Çeyiz Paketleri
+  1000384  Elektrikli Bıçaklar
+  1000383  Elektrikli Izgara
+  1000382  Ekmek Yapma Makinesi
+  1000381  Ekmek Kızartma Makinesi
+  1000380  Doğrayıcı & Rondo
+  1000379  Dondurma Makinesi
+  1000378  Dilimleyici
+  1000377  Buz Yapma & Kırma Makinesi
+  1000376  Buharlı Pişiriciler
+  1000400  Su Isıtıcısı & Kettle
+  1000399  Su Arıtma Cihazları
+  1000398  Semaver & Çay Makinesi
+  1000397  Mısır Patlatma Makinesi
+  1000396  Mutfak Robotu
+  1000392  Mikser & Blender
+    1000395  Blender
+    1000394  Mikser & Blender Set
+    1000393  Mikser
+  1000391  Meyve Sıkacağı
+  1000390  Kıyma Makinesi
+  1000389  Krep Makinesi
+  1000386  Fritöz
+  1000385  Elektrikli Pişirici
+  1148100  Endüstriyel Mutfak Malzemeleri
+  1137100  Kahve Makineleri
+    1137106  Süt Köpürtücüler
+    1137105  Kahve Öğütücüler
+    1137107  Kahve Makinesi Aksesuarları
+    1137102  Filtre Kahve Makineleri
+    1137101  Türk Kahve Makineleri & Cezveler
+    1137104  Kapsül Kahve Makineleri
+    1137103  Espresso&Cappuccino Makineleri
+  1000405  Yumurta Pişirme Makinesi
+  1000404  Yoğurt Makinesi
+  1000403  Waffle Makinesi
+  1000402  Tost Makinesi
+1000423  Ütü
+  1000426  Buharlı Ütü
+  1000425  Seyahat Ütüsü
+  1000424  Buhar Kazanlı Ütü
+  1133150  Ütü Aksesuarları
+1000406  Elektrikli Süpürge & Yıkama
+  1140100  Robot Süpürge
+  1000407  Aksesuarlar
+    1000416  Toz Torbası Kızağı
+    1000415  Süpürge Hortumu
+    1000414  Süpürge Filtresi
+    1000413  Süpürge Emici Başlıklar
+    1000412  Süpürge Borusu
+    1000411  Diğer
+    1000410  Toz Torbası
+    1000409  Süpürge Tutma Sapı
+    1000408  Süpürge Pili
+    1000418  Süpürge Kokusu
+    1000417  Süpürge Motoru
+  1000422  Şarjlı ve Dikey Süpürge
+  1000421  Halı Yıkama Makinesi
+  1000420  Elektrikli Süpürge
+  1000419  Buharlı Temizleyici
+1203200  Teşhir & Outlet Ürünleri
+
+==================================================
+1000514  Televizyon & Ses Sistemleri
+1000528  Müzik Sistemleri
+  1002238  Dj Ekipmanları
+  1000534  Portatif Radyo
+  1000533  Mini & Midi Müzik Seti
+  1000532  Mikro Sistemler
+  1000531  Dock Stationlar
+1000558  Televizyon
+  1000562  Monitör TV
+  1000561  LED TV
+1246200  Projeksiyon ve Aksesuarları
+  1246204  Projeksiyon Perdesi
+  1246203  Projeksiyon Askı Aparatı
+  1246202  Sunum Kumandaları
+  1246201  Projeksiyon Cihazı
+  1246206  Projeksiyon Kabloları
+  1246205  Projeksiyon Lambası
+1000523  MP3, MP4 Çalar & Aksesuar
+  1000527  Ses Kayıt Cihazları
+  1000526  MP3 & Mp4 Çalar
+  1000524  Aksesuar
+1165207  Bluetooth Hoparlörler
+1000515  DVD, Blu-Ray, Medya Oynatıcı
+  1000519  Medya Oynatıcı
+  1000518  Divx Player
+  1000517  DVD Player
+  1000516  Blu-Ray Oynatıcı
+1000545  Ses Sistemleri
+  1000557  Hoparlörler
+  1039101  Pikap
+  1165206  Aksesuarlar
+  1165205  Ev Sinema Sistemleri
+  1000554  Soundbar
+  1000553  Hi-Fi Sistemler
+  1000550  AV Alıcılar ve Amfiler
+1000574  Uydu Sistemleri
+  1000576  Uydu Alıcısı
+  1000575  LNB & Çanak Anten
+1096100  Uzatılmış Garanti
+1000535  Pil
+  1000544  Şarj Kiti
+  1000543  Şarj Edilebilen Pil
+  1000542  Özel Pil
+  1000536  Alkalin Pil
+    1000541  AA Pil
+    1000540  Orta Boy (C) Pil
+    1000539  Büyük Boy (D) Pil
+    1000538  AAA Pil
+    1000537  9V Pil
+1000565  Televizyon Aksesuarları
+  1000573  Çoklayıcı & Dağıtıcı
+  1000572  Uzaktan Kumanda
+  1242200  Ekran Temizleme Ürünleri
+  1000570  TV Kabloları & Uydu Malzemeleri 
+  1000569  Diğer Televizyon Aksesuarları
+  1000568  Askı Aparatı
+  1000566  3D Gözlük
+1253200  İkinci El &Teşhir Cihazlar
+1201200  Televizyon Sigorta
+
+==================================================
+1003041  Ses Sistemleri & Navigasyon
+1003054  Oto Ses Sistemleri
+  1003056  Teyp, CD, DVD, MP3 Çalar
+  1003055  Amplifikatör
+  1003060  Teyp Çerçeveleri
+  1003059  Subwoofer
+  1003058  Hoparlör
+  1003057  FM Transmitter
+1003045  Oto Elektroniği
+  1003053  USB & SD Çevirici Modül
+  1003052  TV & Monitör
+  1003051  Montaj Kitleri
+  1003050  Komponent
+  1003049  Bluetooth Araç Kiti
+  1003048  Arka Görüş Kamerası
+  1003047  Araç İçi Kamera
+1003042  Multimedya & Navigasyon
+  1003044  Navigasyon (GPS) Cihazları
+  1003043  Multimedya Sistemleri
+
+==================================================
+1000210  Bilgisayar
+1000271  Dizüstü Bilgisayar
+1134100  Yenilenmiş&İkinci El&Teşhir Cihazlar
+  1137108  Teşhir Monitör
+  1134102  Teşhir Tablet
+  1134101  Yenilenmiş ve İkinci El Dizüstü Bilgisayar
+1142100  E-Kitap Okuyucu ve Aksesuarları
+  1142102  E-Kitap Okuyucu Aksesuarları
+  1142101  E-Kitap Okuyucu
+1000333  Yazıcı, Tarayıcı ve Aksesuarları
+  1000336  Kartuş Dolum Ürünleri
+  1000335  Kartuş
+  1000334  3D & Yazıcı Sarf Malzemeleri
+  1000348  Şerit (Yazıcı)
+  1000339  Yazıcı
+    1000347  Çok Fonksiyonlu Yazıcı
+    1000346  Taşınabilir Yazıcı
+    1000345  Nokta Vuruşlu Yazıcı
+    1000344  Mürekkep Püskürtmeli Yazıcı
+    1000343  Lazer Yazıcı
+    1000340  Barkod & Etiket Yazıcı
+    1089104  3D Yazıcı
+  1000338  Toner
+  1000337  Tarayıcı
+1000329  Sunucu ve Aksesuarları
+  1000332  Sunucu
+  1000331  Kabinet
+  1000330  Aksesuar
+1000292  Ofis Elektroniği
+  1000297  Güvenlik & Alarm Sistemleri
+    1000304  Alarm Sistemleri Aksesuarları
+    1000303  Diğer
+    1000302  Duman & Gaz Dedektörü
+    1000301  Elektronik Kasalar
+    1000300  Güvenlik Kamerası
+    1000299  Güvenlik Kamerası Aksesuarları
+    1000298  Kamera Kayıt Kartı
+    1000306  Sensörler
+    1000305  Alarm Sistemleri
+  1000296  Fotokopi Makinesi
+  1000312  Yazarkasa
+  1000294  Barkod Ürünleri
+1000355  Çevre Birimleri
+  1000368  Monitör & Ekran
+  1000364  Kulaklık & Mikrofon
+    1000366  Mikrofon
+    1000365  Kablolu Kulaküstü Kulaklık
+  1292200  Simülasyon Aksesuarları 
+  1000360  Klavye & Mouse
+    1000363  Mouse
+    1000362  Klavye & Mouse Setleri
+    1000361  Klavye
+  1000359  Joystick & Gamepad
+  1000358  Grafik Tabletler
+  1000357  DVD & HDD Kasaları
+  1000372  Webcam
+  1000371  UPS & Güç Kaynağı
+  1000370  Ses Sistemleri
+  1000369  Mouse Pad
+1000354  Tablet
+1000257  Bilgisayar Bileşenleri
+  1000270  İşlemci
+  1000269  TV Kartları
+  1000268  Soğutucu & Fan
+  1000267  Ses Kartı
+  1000266  Overclock Ürünleri
+  1000265  Optik Sürücü
+  1000264  Hard Disk
+  1000263  Güç Kaynağı
+  1000262  Ekran Kartı
+  1000261  Diğer
+  1000260  Bilgisayar Kasası
+  1000259  Bellek (RAM)
+  1000258  Anakart
+  1132100  Arduino Ürünleri ve Setleri
+1000349  Yedekleme Ürünleri
+  1000352  Taşınabilir Disk
+  1000353  USB Flash Bellek
+1000314  Oyun & Yazılım
+  1000320  Ofis Programları
+  1000319  Grafik & Tasarım
+  1088131  Dijital İndirilebilir Lisans
+    1088132  Microsoft Yazılımları
+    1088133  Antivirüs
+  1000318  Eğitim Yazılımları
+  1000317  Diğer Lisans Ürünleri
+  1082100  n11magazam
+  1000316  Bilgisayar Oyunları
+  1000315  Antivirüs Programları
+  1000321  İşletim Sistemi
+1000211  Aksesuar & Yedek Parça
+  1000240  USB Aksesuarları
+  1000239  Taşınabilir Disk Aksesuarları
+  1000238  Monitör Kolu ve Standları
+  1000236  Kablolar
+  1256200  Kulaklık Aksesuarları
+  1000220  Dizüstü Bilgisayar Aksesuarları
+    1000224  Ekran Koruyucusu
+    1000223  PCMCIA Kartlar
+    1000222  Çanta & Kılıf
+    1000221  Notebook Kilidi
+    1000234  Laptop Etiketleri
+    1000233  Klavye & Mouse
+    1000231  Adaptör & Şarj Cihazı
+    1000230  Batarya (Pil)
+    1000227  Dock Station & Stand
+    1000226  Led Işıklar
+    1000225  Laptop Soğutucu
+  1000235  Diğer Aksesuar & Yedek Parça
+  1000219  CD & DVD Sarf Malzemeleri
+  1000213  Bilgisayar Yedek Parça
+    1000218  Ekran
+    1000217  Klavye
+    1000216  Diğer Bilgisayar Yedek Parça
+    1000215  Chipsetler
+    1000214  Adaptör
+  1000212  Adaptör & Çevirici
+  1000242  iPad & Tablet Aksesuarları
+    1000256  Data Kablosu & Adaptör
+    1000255  Şarj Cihazı
+    1000254  Çanta, Kılıf, Askı
+    1000251  Klavye ve Aksesuarları
+    1000250  Kamera Bağlantı Kitleri
+    1000249  Kalem (Stylus)
+    1000247  Etiketler
+    1000246  Ekran Koruyucusu
+    1000245  Dock Station & Stand
+    1000244  Diğer
+    1000243  Araç Kitleri
+1000274  Modem & Ağ Ürünleri
+  1000287  Modem
+    1000288  ADSL
+    1000291  3G Modem
+  1000275  Ağ Ürünleri
+    1000286  Access Point & Router
+    1000285  Anten
+    1000284  Bluetooth Ürünleri
+    1000283  Ağ Ürünleri Yedek Parça & Aksesuarları
+    1000282  Ethernet Kartları
+    1000281  NAS Sürücüler
+    1000280  Network Görüntü Aktarıcıları
+    1000279  Network Kartları
+    1000278  Print Server
+    1000277  Switch & Hub
+    1000276  USB Ürünleri
+1000273  Masaüstü Bilgisayar

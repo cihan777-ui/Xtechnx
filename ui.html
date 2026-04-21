@@ -104,6 +104,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 .hist-table tr:hover td{background:rgba(124,92,252,.04)}
 .ok-tag{background:rgba(61,230,142,.15);color:var(--green);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
 .err-tag{background:rgba(255,77,109,.15);color:var(--red);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.warn-tag{background:rgba(255,190,60,.15);color:#f5a623;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
 .mono{font-family:var(--mono);font-size:11px}
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px}
 .stat-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r2);padding:16px}
@@ -191,6 +192,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
         <select class="fsel" id="fStatus" onchange="loadHistory()">
           <option value="">Tüm Durumlar</option>
           <option value="success">Başarılı</option>
+          <option value="success_unconfirmed">Onaysız (N11 kontrol et)</option>
           <option value="error">Hatalı</option>
         </select>
         <button class="btn-sm" onclick="generateReport()">📥 Excel Rapor</button>
@@ -386,8 +388,8 @@ function renderPending(){
         <div class="plat-lbl">Platform seçin:</div>
         <div class="plat-row" id="pr-${item.item_id}">
           ${Object.entries(PLAT).map(([k,v])=>`
-            <label class="pcheck on" id="pc-${item.item_id}-${k}">
-              <input type="checkbox" value="${k}" checked onchange="tog('${item.item_id}','${k}',this.checked)">
+            <label class="pcheck" id="pc-${item.item_id}-${k}">
+              <input type="checkbox" value="${k}" onchange="tog('${item.item_id}','${k}',this.checked)">
               ${v.icon} ${v.label}<span class="chk">✓</span>
             </label>`).join('')}
         </div>
@@ -436,7 +438,7 @@ async function loadHistory(){
         <tr>
           <td class="mono">${(r.uploaded_at||'').slice(0,16).replace('T',' ')}</td>
           <td>${PLAT[r.platform]?.icon||''} ${PLAT[r.platform]?.label||r.platform}</td>
-          <td>${r.status==='success'?'<span class="ok-tag">✓ Başarılı</span>':'<span class="err-tag">✗ Hata</span>'}</td>
+          <td>${r.status==='success'?'<span class="ok-tag">✓ Başarılı</span>':r.status==='success_unconfirmed'?'<span class="warn-tag">⚠ N11 Kontrol Et</span>':'<span class="err-tag">✗ Hata</span>'}</td>
           <td>${esc(r.title_new||'')}</td>
           <td class="mono">${esc(r.barcode_new||'')}</td>
           <td class="mono" style="color:var(--green)">${r.price_new} TL</td>
@@ -469,6 +471,7 @@ async function loadStats(){
         <div class="plat-name">${v.icon} ${v.label}</div>
         <div class="plat-row2"><span class="l">Toplam</span><span class="v">${p.total}</span></div>
         <div class="plat-row2"><span class="l">Başarılı</span><span class="v g">${p.success}</span></div>
+        ${p.unconfirmed?`<div class="plat-row2"><span class="l">Onaysız</span><span class="v" style="color:#f5a623">${p.unconfirmed}</span></div>`:''}
         <div class="plat-row2"><span class="l">Hatalı</span><span class="v r">${p.error}</span></div>
         <div class="prog"><div class="prog-bar" style="width:${pct}%"></div></div>
       </div>`;}).join('');

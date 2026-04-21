@@ -38,7 +38,8 @@ def transform(product: Product) -> Product:
     new_title   = product.title if product.title.startswith(PREFIX_TITLE) else PREFIX_TITLE + product.title
     new_price   = round(product.price * 2, 2)
     new_barcode = PREFIX_BARCODE + suffix
-    new_sku     = PREFIX_SKU + suffix
+    raw_sku     = (product.sku or "").strip()
+    new_sku     = PREFIX_SKU + (raw_sku.zfill(6) if raw_sku else suffix)
 
     try:
         import database as db

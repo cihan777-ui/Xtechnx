@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 import database as db
 import barcode_manager as bm
+from config.settings import settings
 from transformer import transform, preview
 from uploaders.trendyol import TrendyolUploader
 from uploaders.hepsiburada import HepsiburadaUploader
@@ -115,7 +116,7 @@ async def _process_job(job_id: str, barcodes: list):
                         images=urun_dict["resimler"],
                         category=urun_dict["kategori"],
                         barcode=urun_dict["barkod"],
-                        sku="",
+                        sku=urun_dict.get("stok_kodu", ""),
                         stock=1,
                         source_url=urun_dict["url"],
                     )
@@ -200,10 +201,11 @@ async def _upload_job(job_id: str, item: dict, platforms: list):
         try:
             result = await uploaders[platform].upload(product)
             job["results"][platform] = result
+            upload_status = "success_unconfirmed" if result.get("status") == "pending" else "success"
             db.record_upload(
                 item["original_barcode"], product.barcode, product.sku,
                 item["original"].title, product.title,
-                item["original"].price, product.price, platform, "success"
+                item["original"].price, product.price, platform, upload_status
             )
         except Exception as e:
             job["results"][platform] = {"status": "error", "message": str(e)}
@@ -261,6 +263,38 @@ async def get_categories():
 async def save_category(body: CategoryMapping):
     db.upsert_category_mapping(body.source_category, body.trendyol_id, body.hepsiburada_id, body.n11_id)
     return {"status": "saved"}
+
+@app.get("/n11-categories")
+async def n11_categories(search: str = ""):
+    """N11 kategori ağacını çeker. ?search=sulama ile filtrele."""
+    import aiohttp as _aiohttp
+    headers = {"appkey": settings.n11_app_key, "appsecret": settings.n11_app_secret}
+
+    def _flatten(cats, path=""):
+        results = []
+        for c in cats:
+            name = c.get("name", "")
+            cid  = c.get("id", "")
+            full = f"{path} > {name}".lstrip(" > ")
+            results.append({"id": cid, "name": full})
+            results += _flatten(c.get("subCategories", c.get("children", [])), full)
+        return results
+
+    try:
+        async with _aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://api.n11.com/ms/product/categories",
+                headers=headers, timeout=_aiohttp.ClientTimeout(total=15)
+            ) as resp:
+                data = await resp.json(content_type=None)
+        cats = data if isinstance(data, list) else data.get("categories", data.get("data", []))
+        flat = _flatten(cats)
+        if search:
+            low = search.lower()
+            flat = [c for c in flat if low in c["name"].lower()]
+        return {"categories": flat, "total": len(flat)}
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"N11 API hatası: {e}")
 
 
 # ── CREDENTIALS ─────────────────────────────────────────────

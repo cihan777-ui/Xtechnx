@@ -111,7 +111,8 @@ def get_history_stats():
         row = conn.execute("""
             SELECT
               COUNT(*) as total,
-              SUM(CASE WHEN status='success' THEN 1 ELSE 0 END) as success,
+              SUM(CASE WHEN status IN ('success','success_unconfirmed') THEN 1 ELSE 0 END) as success,
+              SUM(CASE WHEN status='success_unconfirmed' THEN 1 ELSE 0 END) as unconfirmed,
               SUM(CASE WHEN status='error' THEN 1 ELSE 0 END) as error
             FROM upload_history WHERE platform=?
         """, (platform,)).fetchone()

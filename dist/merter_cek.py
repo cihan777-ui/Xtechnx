@@ -184,6 +184,22 @@ def main():
         sys.stderr.write(f"Fiyat: {fiyat}\n"); sys.stderr.flush()
         sys.stderr.write(f"Resimler: {len(resimler)}\n"); sys.stderr.flush()
 
+        # Stok kodu
+        stok_kodu = ""
+        for sel in ['[itemprop="sku"]', ".product-code span", ".stok-kodu",
+                    '[itemprop="mpn"]', ".product-sku", ".urun-kodu", ".sku"]:
+            tag = soup.select_one(sel)
+            if tag:
+                val = (tag.get("content") or tag.get_text(strip=True) or "").strip()
+                if val and len(val) >= 2:
+                    stok_kodu = val
+                    break
+        if not stok_kodu:
+            m = re.search(r'-([A-Z0-9]{4,20})\.html', urun_url, re.I)
+            if m:
+                stok_kodu = m.group(1).upper()
+        sys.stderr.write(f"Stok kodu: {stok_kodu}\n"); sys.stderr.flush()
+
         sonuc = {
             "baslik": baslik,
             "fiyat": fiyat,
@@ -191,6 +207,7 @@ def main():
             "resimler": resimler[:6],
             "kategori": kategori,
             "barkod": barkod,
+            "stok_kodu": stok_kodu,
             "url": urun_url,
         }
         print(json.dumps(sonuc, ensure_ascii=False))
