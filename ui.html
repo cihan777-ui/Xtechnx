@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Xtechnx Product Sync v4</title>
+<title>Xtechnx Product Sync v4.1</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 :root{
@@ -86,8 +86,9 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 .pcheck{display:flex;align-items:center;gap:6px;padding:6px 11px;background:var(--surf2);border:1px solid var(--border);border-radius:7px;cursor:pointer;user-select:none;font-size:12px;font-weight:600;transition:all .15s}
 .pcheck:hover{border-color:var(--accent)}.pcheck.on{border-color:var(--accent);background:rgba(124,92,252,.1);color:var(--accent)}
 .pcheck input{display:none}
-.chk{width:14px;height:14px;border:2px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;transition:all .15s}
+.chk{width:14px;height:14px;border:2px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;transition:all .15s;color:transparent}
 .pcheck.on .chk{background:var(--accent);border-color:var(--accent);color:#fff}
+.pcheck.on{border-color:var(--accent);background:rgba(124,92,252,.15);color:var(--accent);font-weight:700}
 .card-acts{display:flex;gap:7px}
 .btn-approve{flex:1;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-family:var(--font);font-size:12px;font-weight:700;padding:9px;border-radius:7px;cursor:pointer;transition:opacity .2s}
 .btn-approve:hover{opacity:.85}.btn-approve:disabled{opacity:.35;cursor:not-allowed}
@@ -137,7 +138,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 <body>
 <header>
   <div class="logo"><em>Xtechnx</em> Product Sync</div>
-  <div class="ver">v4.0</div>
+  <div class="ver">v4.1</div>
   <div class="hstats">
     <div class="hstat"><div class="n" id="hToday">—</div><div class="l">BUGÜN</div></div>
     <div class="hstat"><div class="n" id="hTotal">—</div><div class="l">TOPLAM</div></div>
@@ -148,6 +149,14 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 
 <div class="app">
 <div class="left">
+  <div class="ptitle">🔗 URL ile Ürün Ekle</div>
+  <div class="bc-wrap">
+    <div class="bc-input-row">
+      <input id="urlIn" placeholder="Ürün linki yapıştırın..." autocomplete="off" style="font-size:11px">
+      <button class="btn-add" onclick="addByUrl()">EKLE</button>
+    </div>
+    <div class="fb" id="urlFb"></div>
+  </div>
   <div class="ptitle">📦 Barkod Listesi</div>
   <div class="bc-wrap">
     <div class="bc-input-row">
@@ -225,6 +234,8 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
           <div class="inp-wrap"><label>Merchant ID</label><input id="s-hb-merchant_id"></div>
         </div>
         <button class="btn-save-creds" onclick="saveCreds('hepsiburada',['username','password','merchant_id'])">Kaydet</button>
+        <button class="btn-sm" style="margin-top:8px" onclick="testHB()">🔌 Bağlantı Test Et</button>
+        <div id="hb-test-result" style="font-size:12px;margin-top:6px"></div>
       </div>
       <div class="sett-section">
         <div class="sett-title">🔵 N11</div>
@@ -245,6 +256,53 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
         <button class="btn-save-creds" onclick="saveCreds('amazon',['lwa_app_id','lwa_client_secret','refresh_token','seller_id'])">Kaydet</button>
       </div>
       <div class="sett-section">
+        <div class="sett-title">💰 Fiyat Çarpan Katsayısı</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Kaynak site fiyatı bu katsayı ile çarpılır. Örnek: 2 → fiyat × 2</p>
+        <div class="sett-grid" style="grid-template-columns:200px 1fr;align-items:end">
+          <div class="inp-wrap">
+            <label>Çarpan</label>
+            <input type="number" step="0.1" min="0.1" id="s-price-mult" placeholder="2.0">
+          </div>
+          <div></div>
+        </div>
+        <button class="btn-save-creds" onclick="savePriceMultiplier()" style="margin-top:10px">Kaydet</button>
+        <div id="price-mult-fb" style="font-size:12px;margin-top:6px"></div>
+      </div>
+      <div class="sett-section">
+        <div class="sett-title">🌐 Kaynak Site</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Ürün arama için kullanılan site. <code style="font-size:11px;color:var(--accent)">{}</code> arama terimi yerine geçer. Giriş gerektirmeyen siteler için kullanıcı adı/şifre boş bırakın.</p>
+        <div class="sett-grid" style="grid-template-columns:1fr">
+          <div class="inp-wrap">
+            <label>Site Adı</label>
+            <input id="s-src-name" placeholder="merterelektronik.com">
+          </div>
+          <div class="inp-wrap" style="margin-top:8px">
+            <label>Arama URL Şablonu</label>
+            <input id="s-src-url" placeholder="https://www.merterelektronik.com/Arama?1&kelime={}">
+          </div>
+          <div class="inp-wrap" style="margin-top:8px">
+            <label>Giriş Sayfası URL (opsiyonel)</label>
+            <input id="s-src-login" placeholder="https://www.b2bmerter.com/Giris">
+          </div>
+        </div>
+        <div class="sett-grid" style="margin-top:8px">
+          <div class="inp-wrap">
+            <label>Üye No / Kullanıcı No (opsiyonel)</label>
+            <input id="s-src-member" placeholder="12401" autocomplete="off">
+          </div>
+          <div class="inp-wrap">
+            <label>Kullanıcı Adı</label>
+            <input id="s-src-user" placeholder="CİHAN" autocomplete="off">
+          </div>
+          <div class="inp-wrap">
+            <label>Şifre</label>
+            <input type="password" id="s-src-pass" autocomplete="new-password">
+          </div>
+        </div>
+        <button class="btn-save-creds" onclick="saveSourceSite()" style="margin-top:10px">Kaydet</button>
+        <div id="src-site-fb" style="font-size:12px;margin-top:6px"></div>
+      </div>
+      <div class="sett-section">
         <div class="sett-title">💾 Önbellek</div>
         <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Ürün verileri 24 saat önbellekte tutulur.</p>
         <button class="btn-sec" onclick="clearCache()">🗑 Önbelleği Temizle</button>
@@ -261,10 +319,12 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 const API=window.location.origin;
 const PLAT={trendyol:{icon:'🟠',label:'Trendyol'},hepsiburada:{icon:'🟡',label:'Hepsiburada'},n11:{icon:'🔵',label:'N11'},amazon:{icon:'🟤',label:'Amazon TR'}};
 let barcodes=[],pending=[],jobPoll=null;
+let platSelections={}; // {item_id: {trendyol:true, n11:false, ...}}
 
 document.addEventListener('DOMContentLoaded',()=>{
-  loadBC();loadPending();loadStats();loadHistory();
+  loadBC();loadPending();loadStats();loadHistory();loadAppConfig();
   document.getElementById('bcIn').addEventListener('keydown',e=>{if(e.key==='Enter')addBC();});
+  document.getElementById('urlIn').addEventListener('keydown',e=>{if(e.key==='Enter')addByUrl();});
   setInterval(()=>{loadPending();loadStats();},8000);
 });
 
@@ -364,6 +424,7 @@ function renderPending(){
   }
   el.innerHTML=pending.map(item=>{
     const p=item.preview,img=item.images?.[0];
+    const sel=platSelections[item.item_id]||{};
     return `<div class="pcard" id="card-${item.item_id}">
       <div class="card-top">
         ${img?`<img class="card-img" src="${esc(img)}" onerror="this.style.display='none'">`:'<div class="card-no-img">📦</div>'}
@@ -387,11 +448,13 @@ function renderPending(){
       <div class="plat-sec">
         <div class="plat-lbl">Platform seçin:</div>
         <div class="plat-row" id="pr-${item.item_id}">
-          ${Object.entries(PLAT).map(([k,v])=>`
-            <label class="pcheck" id="pc-${item.item_id}-${k}">
-              <input type="checkbox" value="${k}" onchange="tog('${item.item_id}','${k}',this.checked)">
+          ${Object.entries(PLAT).map(([k,v])=>{
+            const on=sel[k]?true:false;
+            return `<label class="pcheck${on?' on':''}" id="pc-${item.item_id}-${k}">
+              <input type="checkbox" value="${k}"${on?' checked':''} onchange="tog('${item.item_id}','${k}',this.checked)">
               ${v.icon} ${v.label}<span class="chk">✓</span>
-            </label>`).join('')}
+            </label>`;
+          }).join('')}
         </div>
         <div class="card-acts">
           <button class="btn-approve" id="ba-${item.item_id}" onclick="approve('${item.item_id}')">✓ Onayla &amp; Yükle</button>
@@ -402,8 +465,12 @@ function renderPending(){
   }).join('');
 }
 
-function tog(id,plat,checked){document.getElementById(`pc-${id}-${plat}`)?.classList.toggle('on',checked);}
-function getPlats(id){return[...document.querySelectorAll(`#pr-${id} input:checked`)].map(i=>i.value);}
+function tog(id,plat,checked){
+  if(!platSelections[id])platSelections[id]={};
+  platSelections[id][plat]=checked;
+  document.getElementById(`pc-${id}-${plat}`)?.classList.toggle('on',checked);
+}
+function getPlats(id){return Object.entries(platSelections[id]||{}).filter(([,v])=>v).map(([k])=>k);}
 
 async function approve(id){
   const plats=getPlats(id);
@@ -413,6 +480,7 @@ async function approve(id){
   try{
     const d=await fetch(`${API}/approve/${id}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({platforms:plats})}).then(r=>r.json());
     toast(`Yükleniyor: ${plats.join(', ')}`,'ok');
+    delete platSelections[id];
     document.getElementById(`card-${id}`)?.remove();
     loadPending();loadStats();
   }catch(e){toast('Hata: '+e.message,'err');btn.disabled=false;btn.innerHTML='✓ Onayla & Yükle';}
@@ -420,6 +488,7 @@ async function approve(id){
 
 async function skip(id){
   await fetch(`${API}/pending/${id}`,{method:'DELETE'});
+  delete platSelections[id];
   document.getElementById(`card-${id}`)?.remove();
   loadPending();
 }
@@ -438,7 +507,7 @@ async function loadHistory(){
         <tr>
           <td class="mono">${(r.uploaded_at||'').slice(0,16).replace('T',' ')}</td>
           <td>${PLAT[r.platform]?.icon||''} ${PLAT[r.platform]?.label||r.platform}</td>
-          <td>${r.status==='success'?'<span class="ok-tag">✓ Başarılı</span>':r.status==='success_unconfirmed'?'<span class="warn-tag">⚠ N11 Kontrol Et</span>':'<span class="err-tag">✗ Hata</span>'}</td>
+          <td>${r.status==='success'?'<span class="ok-tag">✓ Başarılı</span>':r.status==='success_unconfirmed'?`<span class="warn-tag">⚠ ${PLAT[r.platform]?.label||r.platform} Kontrol Et</span>`:'<span class="err-tag">✗ Hata</span>'}</td>
           <td>${esc(r.title_new||'')}</td>
           <td class="mono">${esc(r.barcode_new||'')}</td>
           <td class="mono" style="color:var(--green)">${r.price_new} TL</td>
@@ -488,6 +557,105 @@ async function saveCreds(platform,fields){
 }
 
 async function clearCache(){await fetch(`${API}/cache`,{method:'DELETE'});toast('Önbellek temizlendi','ok');}
+
+async function addByUrl(){
+  const inp=document.getElementById('urlIn');
+  const url=inp.value.trim();if(!url)return;
+  if(!url.startsWith('http')){
+    const fb=document.getElementById('urlFb');
+    fb.textContent='✗ Geçerli bir URL girin (http ile başlamalı)';fb.className='fb err';
+    setTimeout(()=>{fb.textContent='';fb.className='fb';},3000);return;
+  }
+  inp.value='';
+  const fb=document.getElementById('urlFb');
+  fb.textContent='⏳ İşleniyor...';fb.className='fb ok';
+  try{
+    const d=await fetch(`${API}/products/add-by-url`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})}).then(r=>r.json());
+    if(d.status==='started'){
+      fb.textContent='⏳ Ürün çekiliyor, lütfen bekleyin...';
+      pollUrlJob(d.job_id,fb);
+    }else{
+      fb.textContent='✗ Başlatılamadı';fb.className='fb err';
+      setTimeout(()=>{fb.textContent='';fb.className='fb';},3000);
+    }
+  }catch(e){fb.textContent='✗ Sunucu bağlantısı yok';fb.className='fb err';
+    setTimeout(()=>{fb.textContent='';fb.className='fb';},3000);}
+}
+
+function pollUrlJob(jobId,fb){
+  const poll=setInterval(async()=>{
+    try{
+      const d=await fetch(`${API}/jobs/${jobId}`).then(r=>r.json());
+      if(d.status==='completed'){
+        clearInterval(poll);
+        if(d.errors?.length){
+          fb.textContent=`✗ ${d.errors[0].error||'Ürün alınamadı'}`;fb.className='fb err';
+        }else{
+          fb.textContent='✓ Ürün onay bekliyor!';fb.className='fb ok';
+          loadPending();loadStats();sw('pending');
+        }
+        setTimeout(()=>{fb.textContent='';fb.className='fb';},4000);
+      }
+    }catch(e){clearInterval(poll);}
+  },2000);
+}
+
+async function loadAppConfig(){
+  try{
+    const cfg=await fetch(`${API}/settings/app-config`).then(r=>r.json());
+    const set=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val||'';};
+    set('s-price-mult', cfg.price_multiplier??2);
+    set('s-src-name',   cfg.source_site_name);
+    set('s-src-url',    cfg.source_site_search_url);
+    set('s-src-login',  cfg.source_site_login_url);
+    set('s-src-member', cfg.source_site_member_no);
+    set('s-src-user',   cfg.source_site_username);
+    // şifreyi gösterme — dolu ise placeholder ile göster
+    const passEl=document.getElementById('s-src-pass');
+    if(passEl)passEl.placeholder=cfg.source_site_password?'••••••••':'';
+  }catch(e){}
+}
+
+async function savePriceMultiplier(){
+  const val=parseFloat(document.getElementById('s-price-mult')?.value);
+  const fb=document.getElementById('price-mult-fb');
+  if(!val||val<=0){fb.textContent='✗ Geçerli bir sayı girin';fb.style.color='var(--red)';return;}
+  try{
+    await fetch(`${API}/settings/app-config`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({price_multiplier:val})});
+    fb.textContent=`✓ Çarpan ${val} olarak kaydedildi`;fb.style.color='var(--green)';
+    setTimeout(()=>{fb.textContent='';},3000);
+  }catch(e){fb.textContent='✗ Kayıt hatası';fb.style.color='var(--red)';}
+}
+
+async function saveSourceSite(){
+  const name     = document.getElementById('s-src-name')?.value.trim();
+  const url      = document.getElementById('s-src-url')?.value.trim();
+  const loginUrl = document.getElementById('s-src-login')?.value.trim()||'';
+  const member   = document.getElementById('s-src-member')?.value.trim()||'';
+  const user     = document.getElementById('s-src-user')?.value.trim()||'';
+  const pass     = document.getElementById('s-src-pass')?.value||'';
+  const fb=document.getElementById('src-site-fb');
+  if(!name||!url){fb.textContent='✗ Site adı ve URL gerekli';fb.style.color='var(--red)';return;}
+  if(!url.includes('{}')){fb.textContent='✗ URL şablonunda {} olmalı (arama terimi için)';fb.style.color='var(--red)';return;}
+  const body={source_site_name:name,source_site_search_url:url,source_site_login_url:loginUrl,source_site_member_no:member,source_site_username:user};
+  if(pass)body.source_site_password=pass;
+  try{
+    await fetch(`${API}/settings/app-config`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    fb.textContent=`✓ "${name}" kaydedildi${loginUrl?' (giriş aktif)':''}`;fb.style.color='var(--green)';
+    document.getElementById('s-src-pass').value='';
+    setTimeout(()=>{fb.textContent='';loadAppConfig();},2000);
+  }catch(e){fb.textContent='✗ Kayıt hatası';fb.style.color='var(--red)';}
+}
+
+async function testHB(){
+  const el=document.getElementById('hb-test-result');
+  el.textContent='Test ediliyor...';el.style.color='var(--muted)';
+  try{
+    const d=await fetch(`${API}/health/hepsiburada`).then(r=>r.json());
+    if(d.status==='ok'){el.textContent='✓ Bağlantı başarılı';el.style.color='var(--green)';}
+    else{el.textContent=`✗ ${d.message||d.status}`;el.style.color='var(--red)';}
+  }catch(e){el.textContent='✗ Sunucuya ulaşılamadı';el.style.color='var(--red)';}
+}
 
 let toastTimer;
 function toast(msg,type=''){

@@ -226,3 +226,13 @@ def barcode_exists(barcode_new):
     ).fetchone()
     conn.close()
     return row is not None
+
+
+def get_barcode_by_orig(barcode_orig):
+    """Orijinal barkoda karşılık gelen Xtechnx barkodunu döner, yoksa None."""
+    conn = get_conn()
+    row = conn.execute(
+        "SELECT barcode_new FROM barcode_registry WHERE barcode_orig=?", (barcode_orig,)
+    ).fetchone()
+    conn.close()
+    return row[0] if row else None

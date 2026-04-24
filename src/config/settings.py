@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     hepsiburada_username: str = ""
     hepsiburada_password: str = ""
     hepsiburada_merchant_id: str = ""
+    hepsiburada_developer_username: str = "cihanelektrikelektronik_dev"
 
     n11_app_key: str = ""
     n11_app_secret: str = ""
@@ -22,7 +23,7 @@ class Settings(BaseSettings):
     amazon_marketplace_id: str = "A33AVAJ2PDY3EV"
 
     class Config:
-        env_file = ".env"
+        env_file = [".env", "../.env"]
         env_file_encoding = "utf-8"
 
 

@@ -3,8 +3,8 @@ from models.product import Product
 from config.settings import settings
 from category_mapper import get_n11_category
 
-CREATE_URL = "https://api.n11.com/ms/product/tasks/product-create"
-TASK_URL   = "https://api.n11.com/ms/product/tasks/{task_id}"
+CREATE_URL   = "https://api.n11.com/ms/product/tasks/product-create"
+TASK_QUERY_URL = "https://api.n11.com/ms/product/task-details/page-query"
 
 
 def _resolve_category(p: Product) -> int:
@@ -39,7 +39,11 @@ def _numeric_barcode(p: Product) -> str:
     """Ürüne özgü geçerli EAN-13 barkod üretir."""
     raw = p.barcode or ""
     digits = "".join(c for c in raw if c.isdigit())
-    base12 = digits[:12] if len(digits) >= 12 else str(abs(hash(p.sku or p.title)) % 10**12).zfill(12)
+    if len(digits) >= 12:
+        base12 = digits[:12]
+    else:
+        # "Xtechnx406837" → "406837" → sola sıfır ekle → "000000406837"
+        base12 = digits.zfill(12)
     return _ean13(base12)
 
 
@@ -81,20 +85,73 @@ class N11Uploader:
             "appsecret": settings.n11_app_secret,
         }
 
+    async def _poll_task(self, session: aiohttp.ClientSession, task_id: str) -> dict | None:
+        """Task sonucunu N11'den sorgular. Henüz bitmemişse None döner."""
+        import asyncio, logging, json as _json
+        _log = logging.getLogger(__name__)
+        for attempt in range(24):  # 24 × 10s = 4 dakika
+            await asyncio.sleep(10)
+            try:
+                payload = {"taskId": task_id, "page": 0, "size": 10}
+                async with session.post(TASK_QUERY_URL, json=payload, headers=self.headers,
+                                        timeout=aiohttp.ClientTimeout(total=15)) as r:
+                    raw = await r.text()
+                    _log.info(f"N11 task poll [{attempt+1}] HTTP {r.status} body={raw[:500]!r}")
+                    if not raw.strip():
+                        continue
+                    try:
+                        d = _json.loads(raw)
+                    except Exception:
+                        continue
+                    # Cevap yapısı: {"taskId":..., "skus":{"content":[{"status":"SUCCESS"/"REJECT",...}]}}
+                    skus = d.get("skus") or {}
+                    items = skus.get("content") or d.get("content") or d.get("data") or []
+                    task_level = (d.get("status") or "").upper()
+                    if isinstance(items, list) and items:
+                        sku_status = (items[0].get("status") or "").upper()
+                        n11_id = (items[0].get("sku") or {}).get("n11ProductId") or items[0].get("n11ProductId")
+                    else:
+                        sku_status = task_level
+                        n11_id = None
+                    _log.info(f"N11 task [{task_id}] task:{task_level} sku:{sku_status} n11ProductId:{n11_id}")
+                    if sku_status in ("SUCCESS", "PROCESSED", "COMPLETED", "DONE"):
+                        return {"status": "success", "task_id": task_id, "n11_product_id": n11_id,
+                                "message": f"N11 onayladı. TaskID: {task_id}, N11 ürün ID: {n11_id}"}
+                    if sku_status in ("REJECT", "REJECTED", "FAILED", "ERROR"):
+                        errors = (items[0].get("failedReasons") or items[0].get("reasons")
+                                  or items[0].get("errorMessage")
+                                  or d.get("message") or d) if items else d
+                        return {"status": "error", "task_id": task_id,
+                                "message": f"N11 reddetti: {errors}"}
+                    # IN_QUEUE / IN_PROGRESS / FAIL (N11 başlangıç değeri) → tekrar dene
+            except Exception as ex:
+                _log.info(f"N11 task poll [{attempt+1}] hata: {ex}")
+
     async def upload(self, product: Product) -> dict:
+        import json as _json
         payload = _build_payload(product)
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 CREATE_URL, json=payload, headers=self.headers,
                 timeout=aiohttp.ClientTimeout(total=60)
             ) as resp:
-                data = await resp.json(content_type=None)
+                raw_resp = await resp.text()
                 if resp.status not in (200, 201, 202):
-                    raise Exception(f"N11 REST {resp.status}: {data}")
+                    raise Exception(f"N11 REST {resp.status}: {raw_resp[:500]}")
+                try:
+                    data = _json.loads(raw_resp)
+                except Exception:
+                    data = {}
 
                 task_id = data.get("taskId") or data.get("id") or str(data)
-                return {
-                    "status": "success",
-                    "task_id": task_id,
-                    "message": f"N11'e gönderildi. TaskID: {task_id}",
-                }
+
+            # Task sonucunu bekle (maks ~25 sn)
+            result = await self._poll_task(session, task_id)
+            if result:
+                return result
+            # Zaman aşımı — N11 henüz işlemedi
+            return {
+                "status": "success_unconfirmed",
+                "task_id": task_id,
+                "message": f"N11'e gönderildi, onay bekleniyor. TaskID: {task_id}",
+            }

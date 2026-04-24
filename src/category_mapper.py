@@ -79,6 +79,8 @@ KEYWORD_MAP = {
     "led tv": 1000558,
     "televizyon": 1000558,
     "projeksiyon": 1246200,
+    "megafon": 1000240,
+    "anons cihaz": 1000240,
     "bluetooth hoparlör": 1165207,
     "gaming hoparlör": 1000370,
     "alçıpan hoparlör": 1000557,
@@ -132,17 +134,17 @@ KEYWORD_MAP = {
     "multimedya": 1003042,
 
     # ── GÜVENLİK & KAMERA ───────────────────────────────────
-    "güvenlik kamera": 1000300,
-    "ip kamera": 1000300,
-    "ahd kamera": 1000300,
-    "dome kamera": 1000300,
-    "bullet kamera": 1000300,
-    "wifi kamera": 1000300,
-    "maket kamera": 1000300,
-    "fotokapan": 1000300,
-    "yılan kamera": 1000300,
-    "aksiyon kamera": 1000300,
-    "kamera test": 1000300,
+    "güvenlik kamera": 1000240,
+    "ip kamera": 1000240,
+    "ahd kamera": 1000240,
+    "dome kamera": 1000240,
+    "bullet kamera": 1000240,
+    "wifi kamera": 1000240,
+    "maket kamera": 1000240,
+    "fotokapan": 1000240,
+    "yılan kamera": 1000240,
+    "aksiyon kamera": 1000240,
+    "kamera test": 1000240,
     "dvr kayıt": 1000298,
     "nvr kayıt": 1000298,
     "hibrit kayıt": 1000298,
@@ -214,7 +216,7 @@ KEYWORD_MAP = {
     "kvm switch": 1000277,
     "patch panel": 1000277,
     "fiber optik": 1000274,
-    "wireless adaptör": 1000284,
+    "wireless adaptör": 1000240,
     "network kablo": 1000274,
     "cat5": 1000274,
     "cat6": 1000274,
@@ -321,6 +323,197 @@ KEYWORD_MAP = {
 }
 
 DEFAULT_N11_CATEGORY = 1000240  # Bilgisayar → Aksesuar → USB Aksesuarları
+
+# Hepsiburada kategori ID'leri (Elektronik ağırlıklı)
+HB_KEYWORD_MAP = {
+    # ── TV & GÖRÜNTÜ ────────────────────────────────────────
+    "led tv": "60000072",
+    "smart tv": "60000072",
+    "televizyon": "60000072",
+    "tv panel": "60000075",
+    "tv yedek": "60000075",
+    "led bar": "60000075",
+    "projeksiyon": "60000074",
+    "tv kumanda": "60001094",
+    "uzaktan kumanda": "60001094",
+    "tv askı": "60001094",
+    "tv aksesuarı": "60001094",
+
+    # ── SES SİSTEMLERİ ───────────────────────────────────────
+    "soundbar": "60000084",
+    "hoparlör": "60000082",
+    "bluetooth hoparlör": "60000082",
+    "amfi": "60000081",
+    "ses sistem": "60000081",
+    "kulaklık": "60000086",
+    "bluetooth kulaklık": "60000086",
+    "kablosuz kulaklık": "60000086",
+    "gaming kulaklık": "60000086",
+    "mikrofon": "60000088",
+
+    # ── AYDINLATMA ───────────────────────────────────────────
+    "led ampul": "60002048",
+    "ampul": "60002048",
+    "floresan": "60002048",
+    "led floresan": "60002048",
+    "avize": "60002042",
+    "sarkıt": "60002042",
+    "tavan lamba": "60002044",
+    "aplik": "60002043",
+    "masa lambası": "60002046",
+    "lambader": "60002045",
+    "led spot": "60002049",
+    "spot lamba": "60002049",
+    "led projektör": "60002049",
+    "şerit led": "60002050",
+    "neon şerit": "60002050",
+    "dekoratif led": "60002050",
+    "solar aydınlatma": "60002051",
+    "el feneri": "60002051",
+    "aydınlatma": "60002041",
+
+    # ── UYDU & ANTEN ────────────────────────────────────────
+    "uydu alıcı": "60000078",
+    "uydu": "60000078",
+    "çanak anten": "60000079",
+    "lnb": "60000079",
+    "anten": "60000079",
+    "koaksiyel": "60001094",
+    "hdmi": "60001094",
+    "görüntü kablo": "60001094",
+
+    # ── GÜVENLİK & KAMERA ───────────────────────────────────
+    "güvenlik kamera": "60000477",
+    "ip kamera": "60000477",
+    "ahd kamera": "60000477",
+    "wifi kamera": "60000477",
+    "dvr kayıt": "60000478",
+    "nvr kayıt": "60000478",
+    "kayıt cihaz": "60000478",
+    "alarm sistem": "60000479",
+    "güvenlik sistem": "60000479",
+
+    # ── TELEFON & AKSESUARLAR ───────────────────────────────
+    "powerbank": "60001184",
+    "taşınabilir şarj": "60001184",
+    "hafıza kartı": "60001185",
+    "sd kart": "60001185",
+    "kart okuyucu": "60001185",
+    "ekran koruyucu": "60001186",
+    "kırılmaz ekran": "60001186",
+    "telefon kılıf": "60001187",
+    "araç tutucu": "60001188",
+    "telefon tutucu": "60001188",
+    "akıllı saat": "60001189",
+    "telefon kablo": "60001190",
+    "şarj kablosu": "60001190",
+    "data kablo": "60001190",
+    "telefon aksesuarı": "60001183",
+
+    # ── BİLGİSAYAR ──────────────────────────────────────────
+    "laptop": "60000138",
+    "dizüstü": "60000138",
+    "notebook": "60000138",
+    "masaüstü": "60000139",
+    "all in one": "60000139",
+    "tablet": "60000141",
+    "monitör": "60000143",
+    "gaming monitör": "60000143",
+    "klavye": "60000147",
+    "mouse": "60000148",
+    "webcam": "60000150",
+    "ups": "60000151",
+    "ssd": "60000156",
+    "hard disk": "60000156",
+    "harddisk": "60000156",
+    "usb bellek": "60000157",
+    "flash bellek": "60000157",
+    "yazıcı": "60000159",
+    "barkod okuyucu": "60000160",
+    "barkod yazıcı": "60000160",
+    "modem": "60000161",
+    "router": "60000161",
+    "ethernet switch": "60000161",
+    "access point": "60000161",
+    "network kablo": "60000161",
+    "cat5": "60000161",
+    "cat6": "60000161",
+    "bilgisayar": "60000137",
+
+    # ── OTO ELEKTRONİK ──────────────────────────────────────
+    "oto teyp": "60001068",
+    "double teyp": "60001068",
+    "oto hoparlör": "60001069",
+    "oto amfi": "60001070",
+    "subwoofer": "60001070",
+    "fm transmitter": "60001071",
+    "araç kamera": "60001072",
+    "navigasyon": "60001073",
+    "oto elektronik": "60001067",
+    "araç elektronik": "60001067",
+
+    # ── ADAPTÖR / ŞARJ / PİL ────────────────────────────────
+    "akü şarj": "60002060",
+    "pil şarj": "60002060",
+    "şarj cihazı": "60002060",
+    "adaptör": "60002060",
+    "güç kaynağı": "60002060",
+    "akü": "60002061",
+    "pil": "60002061",
+    "invertör": "60002062",
+    "konvertör": "60002062",
+    "solar enerji": "60002062",
+    "güneş paneli": "60002062",
+    "regülatör": "60002063",
+    "transformatör": "60002063",
+    "trafo": "60002063",
+    "priz": "60002063",
+    "elektrik aksesuarı": "60002063",
+
+    # ── KİŞİSEL BAKIM ───────────────────────────────────────
+    "saç kurutma": "60000424",
+    "epilasyon": "60000425",
+    "tıraş": "60000426",
+    "masaj": "60000427",
+    "kişisel bakım": "60000423",
+
+    # ── EV ALETLERİ ─────────────────────────────────────────
+    "robot süpürge": "60000390",
+    "süpürge": "60000391",
+    "blender": "60000380",
+    "kahve makine": "60000381",
+    "kettle": "60000382",
+    "su ısıtıcı": "60000382",
+    "ütü": "60000383",
+    "küçük ev aleti": "60000375",
+    "mutfak aleti": "60000375",
+}
+
+DEFAULT_HB_CATEGORY = "60000137"  # Bilgisayar (genel fallback)
+# UYARI: HB_KEYWORD_MAP ID'leri tahmini — API erişimi gelince /hepsiburada-categories
+# ile gerçek ID'leri kontrol et ve DB'ye manuel mapping ekle.
+
+
+def get_hepsiburada_category(source_category: str, db_mapping: dict = None) -> str:
+    if db_mapping:
+        normalized = source_category.strip().lower()
+        for db_key, db_id in db_mapping.items():
+            if db_key.strip().lower() == normalized and db_id:
+                logger.info("HB Kategori DB mapping: '%s' → %s", source_category, db_id)
+                return str(db_id)
+
+    lower = source_category.strip().lower()
+    for keyword, cat_id in HB_KEYWORD_MAP.items():
+        if keyword in lower:
+            logger.info("HB Kategori keyword eşleşti: '%s' → ID %s", source_category, cat_id)
+            return cat_id
+
+    logger.warning(
+        "HB KATEGORİ EŞLEŞMEDİ: '%s' → varsayılan ID %s. "
+        "Doğru ID için /hepsiburada-categories endpoint'ini kullanın.",
+        source_category, DEFAULT_HB_CATEGORY
+    )
+    return DEFAULT_HB_CATEGORY
 
 
 def get_n11_category(source_category: str, db_mapping: dict = None) -> int:
