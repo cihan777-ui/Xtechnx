@@ -320,8 +320,9 @@ async def hepsiburada_categories(search: str = ""):
     try:
         auth = aiohttp.BasicAuth(settings.hepsiburada_username, settings.hepsiburada_password)
         async with aiohttp.ClientSession(auth=auth) as session:
+            _mpop = "https://mpop-sit.hepsiburada.com" if settings.hepsiburada_env == "test" else "https://mpop.hepsiburada.com"
             async with session.get(
-                f"https://mpop.hepsiburada.com/product/api/categories/get-all-categories",
+                f"{_mpop}/product/api/categories/get-all-categories",
                 timeout=aiohttp.ClientTimeout(total=15)
             ) as resp:
                 if resp.status == 200:
@@ -408,8 +409,8 @@ async def hepsiburada_health():
     try:
         auth = aiohttp.BasicAuth(settings.hepsiburada_username, settings.hepsiburada_password)
         hb_headers = {"User-Agent": settings.hepsiburada_developer_username}
-        # MPOP API ile test (listing-external farklı kimlik bilgileri gerektirebilir)
-        url = f"https://mpop.hepsiburada.com/product/api/products?merchantId={settings.hepsiburada_merchant_id}&size=1"
+        mpop_base = "https://mpop-sit.hepsiburada.com" if settings.hepsiburada_env == "test" else "https://mpop.hepsiburada.com"
+        url = f"{mpop_base}/product/api/products?merchantId={settings.hepsiburada_merchant_id}&size=1"
         async with aiohttp.ClientSession(auth=auth, headers=hb_headers) as session:
             async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
                 if resp.status == 200:

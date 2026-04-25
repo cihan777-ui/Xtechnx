@@ -1,4 +1,6 @@
 import re
+import io
+import json
 import aiohttp
 from models.product import Product
 from config.settings import settings
@@ -11,11 +13,24 @@ BLOCKED = re.compile(
     r'campaign|slider|payment|cargo|trust|badge', re.IGNORECASE
 )
 
+_SIT_MPOP  = "https://mpop-sit.hepsiburada.com"
+_LIVE_MPOP = "https://mpop.hepsiburada.com"
+_SIT_LIST  = "https://listing-external-sit.hepsiburada.com"
+_LIVE_LIST = "https://listing-external.hepsiburada.com"
+_SIT_OMS   = "https://oms-external-sit.hepsiburada.com"
+_LIVE_OMS  = "https://oms-external.hepsiburada.com"
 
-def _resolve_category(p: Product) -> str:
+
+def _base_urls():
+    if settings.hepsiburada_env == "test":
+        return _SIT_MPOP, _SIT_LIST, _SIT_OMS
+    return _LIVE_MPOP, _LIVE_LIST, _LIVE_OMS
+
+
+def _resolve_category(p: Product) -> int:
     manual = p.attributes.get("_category_ids", {}).get("hepsiburada", "")
     if manual:
-        return str(manual)
+        return int(manual)
     try:
         import database as db
         db_mappings = {
@@ -25,11 +40,14 @@ def _resolve_category(p: Product) -> str:
         }
     except Exception:
         db_mappings = {}
-    return get_hepsiburada_category(p.category or "", db_mappings)
+    cat_str = get_hepsiburada_category(p.category or "", db_mappings)
+    try:
+        return int(cat_str)
+    except (ValueError, TypeError):
+        return 60003862  # fallback: genel kategori
 
 
 def _stable_id(text: str, length: int) -> str:
-    """Metinden deterministik sayısal ID üretir."""
     import hashlib
     h = int(hashlib.md5(text.encode()).hexdigest(), 16)
     return str(h % (10 ** length)).zfill(length)
@@ -39,23 +57,28 @@ def _build_sku(p: Product) -> str:
     return p.sku or f"HB-{_stable_id(p.title, 8)}"
 
 
-def _build_hb_sku(p: Product) -> str:
-    raw = p.barcode or ""
-    digits = "".join(c for c in raw if c.isdigit())
-    if digits:
-        return digits[:13].zfill(8)
-    return f"HB{_stable_id(p.sku or p.title, 10)}"
-
-
 class HepsiburadaUploader:
-    BASE_URL = "https://listing-external.hepsiburada.com"
-    PRODUCT_URL = "https://mpop.hepsiburada.com"
 
     def __init__(self):
-        self.username = settings.hepsiburada_username
-        self.password = settings.hepsiburada_password
-        self.merchant_id = settings.hepsiburada_merchant_id
+        self.username        = settings.hepsiburada_username
+        self.password        = settings.hepsiburada_password
+        self.merchant_id     = settings.hepsiburada_merchant_id
         self.developer_username = settings.hepsiburada_developer_username
+
+    @property
+    def PRODUCT_URL(self):
+        return _base_urls()[0]
+
+    @property
+    def BASE_URL(self):
+        return _base_urls()[1]
+
+    @property
+    def OMS_URL(self):
+        return _base_urls()[2]
+
+    def _auth(self):
+        return aiohttp.BasicAuth(self.username, self.password)
 
     def _headers(self) -> dict:
         return {
@@ -63,73 +86,175 @@ class HepsiburadaUploader:
             "User-Agent": self.developer_username,
         }
 
+    def _base_headers(self) -> dict:
+        return {"User-Agent": self.developer_username}
+
     async def upload(self, product: Product) -> dict:
-        auth = aiohttp.BasicAuth(self.username, self.password)
+        auth = self._auth()
         create_result = await self._create_product(product, auth)
         tracking_id = create_result.get("trackingId", "")
 
-        inventory_result = await self._upload_inventory(product, auth)
-        inv_tracking = inventory_result.get("trackingId", "")
+        inv_result = await self._upload_inventory(product, auth)
+        price_id = inv_result.get("price_upload_id", "")
+        stock_id = inv_result.get("stock_upload_id", "")
 
         return {
             "status": "pending",
-            "tracking_id": inv_tracking or tracking_id,
-            "message": f"Hepsiburada'ya gönderildi. TrackingID: {inv_tracking or tracking_id}",
+            "tracking_id": tracking_id,
+            "message": (
+                f"Hepsiburada'ya gonderildi. "
+                f"TrackingID: {tracking_id}  "
+                f"PriceUpload: {price_id}  StockUpload: {stock_id}"
+            ),
         }
 
     async def _create_product(self, product: Product, auth) -> dict:
         clean_images = self._validate_images(product.images)
         cat_id = _resolve_category(product)
         sku = _build_sku(product)
-        payload = {
-            "skuList": [{
-                "sku": sku,
-                "name": product.title[:500],
-                "description": product.description[:30000],
-                "categoryId": cat_id,
-                "tax": 20,
-                "brand": "Diğer",
-                "images": clean_images,
-                "attributes": [],
-            }]
+
+        # Fiyati Turkce formatinda gonder (virgul ondalik ayiraci)
+        price_str = f"{product.price:.2f}".replace(".", ",")
+
+        attrs = {
+            "merchantSku":    sku,
+            "UrunAdi":        product.title[:500],
+            "UrunAciklamasi": product.description[:5000] if product.description else product.title[:500],
+            "Barcode":        product.barcode or sku,
+            "Marka":          "Diger",
+            "GarantiSuresi":  "24",
+            "tax_vat_rate":   "20",
+            "kg":             "1",
+            "price":          price_str,
+            "stock":          str(product.stock),
         }
+
+        # Gorselleri Image1, Image2, ... olarak ekle
+        for i, url in enumerate(clean_images[:HB_MAX_IMAGES], start=1):
+            attrs[f"Image{i}"] = url
+
+        payload = [{"categoryId": cat_id, "merchant": self.merchant_id, "attributes": attrs}]
+        json_bytes = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+
+        form = aiohttp.FormData()
+        form.add_field("file", io.BytesIO(json_bytes),
+                       filename="products.json", content_type="application/json")
+
         async with aiohttp.ClientSession(auth=auth) as session:
             url = f"{self.PRODUCT_URL}/product/api/products/import"
             async with session.post(
-                url, json=payload,
-                headers=self._headers(),
+                url, data=form,
+                headers=self._base_headers(),
                 timeout=aiohttp.ClientTimeout(total=60)
             ) as resp:
                 data = await resp.json(content_type=None)
                 if resp.status not in (200, 201, 202):
-                    raise Exception(f"Hepsiburada ürün oluşturma hatası {resp.status}: {data}")
-                return data
+                    raise Exception(f"HB urun olusturma hatasi {resp.status}: {data}")
+                tracking = data.get("trackingId") or data.get("data", {}).get("trackingId", "")
+                return {"trackingId": tracking, "raw": data}
 
     async def _upload_inventory(self, product: Product, auth) -> dict:
         sku = _build_sku(product)
-        hb_sku = _build_hb_sku(product)
-        payload = {
-            "merchantId": self.merchant_id,
-            "inventories": [{
-                "hbSku": hb_sku,
-                "merchantSku": sku,
-                "price": round(product.price, 2),
-                "availableStock": product.stock,
-                "productCondition": 1,
-                "listingAllowed": True,
-            }]
-        }
+
+        # Listeleme stok durumu - oncelikle mevcut urun SKU'larini bul
+        hb_sku = await self._find_hb_sku(sku, auth)
+        if not hb_sku:
+            return {"price_upload_id": "", "stock_upload_id": ""}
+
+        price_payload = [{
+            "hepsiburadaSku": hb_sku,
+            "merchantSku":    sku,
+            "price":          round(product.price, 2),
+        }]
+        stock_payload = [{
+            "hepsiburadaSku":  hb_sku,
+            "merchantSku":     sku,
+            "availableStock":  product.stock,
+        }]
+
+        result = {}
         async with aiohttp.ClientSession(auth=auth) as session:
-            url = f"{self.BASE_URL}/listings/merchantid/{self.merchant_id}/inventory/import"
+            for name, payload, path in [
+                ("price", price_payload, "price-uploads"),
+                ("stock", stock_payload, "stock-uploads"),
+            ]:
+                url = f"{self.BASE_URL}/listings/merchantid/{self.merchant_id}/{path}"
+                async with session.post(
+                    url, json=payload,
+                    headers=self._headers(),
+                    timeout=aiohttp.ClientTimeout(total=60)
+                ) as resp:
+                    data = await resp.json(content_type=None)
+                    if resp.status not in (200, 201, 202):
+                        raise Exception(f"HB {name} upload hatasi {resp.status}: {data}")
+                    result[f"{name}_upload_id"] = data.get("id", "")
+        return result
+
+    async def _find_hb_sku(self, merchant_sku: str, auth) -> str:
+        """Merchant SKU'ya karsilik gelen HepsiburadaSku'yu bulur."""
+        async with aiohttp.ClientSession(auth=auth) as session:
+            url = f"{self.BASE_URL}/listings/merchantid/{self.merchant_id}?limit=100&offset=0"
+            async with session.get(
+                url, headers=self._headers(),
+                timeout=aiohttp.ClientTimeout(total=30)
+            ) as resp:
+                if resp.status != 200:
+                    return ""
+                data = await resp.json(content_type=None)
+                items = data.get("listings", data) if isinstance(data, dict) else data
+                for item in items:
+                    if item.get("merchantSku") == merchant_sku:
+                        return item.get("hepsiburadaSku", "")
+        return ""
+
+    async def list_orders(self, limit: int = 10) -> dict:
+        async with aiohttp.ClientSession(auth=self._auth()) as session:
+            url = f"{self.OMS_URL}/orders/merchantid/{self.merchant_id}?limit={limit}&offset=0"
+            async with session.get(
+                url, headers=self._headers(),
+                timeout=aiohttp.ClientTimeout(total=30)
+            ) as resp:
+                data = await resp.json(content_type=None)
+                if resp.status not in (200, 201):
+                    raise Exception(f"Siparis listeleme hatasi {resp.status}: {data}")
+                return data
+
+    async def list_packages(self, limit: int = 10) -> list:
+        async with aiohttp.ClientSession(auth=self._auth()) as session:
+            url = f"{self.OMS_URL}/packages/merchantid/{self.merchant_id}?limit={limit}&offset=0"
+            async with session.get(
+                url, headers=self._headers(),
+                timeout=aiohttp.ClientTimeout(total=30)
+            ) as resp:
+                raw = await resp.text()
+                if resp.status not in (200, 201):
+                    raise Exception(f"Paket listeleme hatasi {resp.status}: {raw}")
+                data = json.loads(raw) if raw.strip() else []
+                return data if isinstance(data, list) else data.get("data", [])
+
+    async def pack_order(self, package_id: str, line_items: list) -> dict:
+        payload = {"lines": line_items}
+        async with aiohttp.ClientSession(auth=self._auth()) as session:
+            url = f"{self.OMS_URL}/packages/{package_id}/items/pack"
             async with session.post(
                 url, json=payload,
                 headers=self._headers(),
-                timeout=aiohttp.ClientTimeout(total=60)
+                timeout=aiohttp.ClientTimeout(total=30)
             ) as resp:
                 data = await resp.json(content_type=None)
                 if resp.status not in (200, 201, 202):
-                    raise Exception(f"Hepsiburada stok hatası {resp.status}: {data}")
+                    raise Exception(f"Paketleme hatasi {resp.status}: {data}")
                 return data
+
+    async def get_tracking_status(self, tracking_id: str) -> dict:
+        async with aiohttp.ClientSession(auth=self._auth()) as session:
+            url = f"{self.PRODUCT_URL}/product/api/products/status/{tracking_id}"
+            async with session.get(
+                url, headers=self._headers(),
+                timeout=aiohttp.ClientTimeout(total=30)
+            ) as resp:
+                data = await resp.json(content_type=None)
+                return {"http_status": resp.status, "data": data}
 
     def _validate_images(self, images: list) -> list:
         result = []

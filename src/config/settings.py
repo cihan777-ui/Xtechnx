@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     hepsiburada_password: str = ""
     hepsiburada_merchant_id: str = ""
     hepsiburada_developer_username: str = "cihanelektrikelektronik_dev"
+    hepsiburada_env: str = "test"  # "test" → SIT, "production" → canlı
 
     n11_app_key: str = ""
     n11_app_secret: str = ""
