@@ -1,0 +1,58 @@
+[11:28:32] Hepsiburada SIT Entegrasyon Testi
+[11:28:32] Merchant ID : 9736564a-f8a4-44c5-82e3-e224ebd1981b
+[11:28:32] Username    : 9736564a-f8a4-44c5-82e3-e224ebd1981b
+[11:28:32] User-Agent  : cihanelektrikelektronik_dev
+[11:28:32] Ortam       : SIT (Test)
+[11:28:32] Tarih       : 2026-04-25 11:28:32
+[11:28:32] =======================================================
+[11:28:32] TEST 1: Katalog - Urun Gonderi
+[11:28:32] =======================================================
+[11:28:32] POST https://mpop-sit.hepsiburada.com/product/api/products/import  (multipart/form-data)
+[11:28:34] HTTP 200
+[11:28:34] Yanit: {"success":true,"code":0,"version":1,"message":null,"data":{"trackingId":"0c7e9632-989e-470c-be87-72b6773ca8b5"}}
+[11:28:34] [OK] trackingId: 0c7e9632-989e-470c-be87-72b6773ca8b5
+[11:28:36] 
+TrackingId durumu sorgulanıyor: 0c7e9632-989e-470c-be87-72b6773ca8b5
+[11:28:36] HTTP 200 - {"success":true,"code":0,"version":1,"message":null,"totalElements":1,"totalPages":1,"number":0,"numberOfElements":1,"first":true,"last":true,"data":[{"itemOrderID":1,"merchant":"9736564a-f8a4-44c5-82e3-e224ebd1981b","merchantSku":"XTECHNX-SIT-TEST-001","hbSku":null,"barcode":"XTECHNXTEST001","produ
+[11:28:36] 
+=======================================================
+[11:28:36] TEST 2: Listeleme - Mevcut Urunler
+[11:28:36] =======================================================
+[11:28:36] GET https://listing-external-sit.hepsiburada.com/listings/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b?limit=20&offset=0
+[11:28:36] HTTP 200
+[11:28:36] Mevcut urun sayisi: 20
+[11:28:36]   merchantSku=HBV0000KSJL98  hbSku=HBV0000105YIF  stok=10
+[11:28:36]   merchantSku=HBV0000KLK0  hbSku=HBV00001064DX  stok=0
+[11:28:36]   merchantSku=HBV00001KGKGK  hbSku=HBV0000106NTG  stok=0
+[11:28:36]   merchantSku=HBV00001JYSY37  hbSku=HBV0000106815  stok=0
+[11:28:36]   merchantSku=HBV00001987890  hbSku=HBV00001066IX  stok=0
+[11:28:36] 
+Fiyat guncelleniyor: HBV0000KSJL98
+[11:28:36] POST https://listing-external-sit.hepsiburada.com/listings/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b/price-uploads
+[11:28:36] HTTP 200 - {"id":"a8d567d9-67ad-4ca1-a5f3-fdee54d6241a"}
+[11:28:36] [OK] price-upload id: a8d567d9-67ad-4ca1-a5f3-fdee54d6241a
+[11:28:36] 
+Stok guncelleniyor: HBV0000KSJL98
+[11:28:36] POST https://listing-external-sit.hepsiburada.com/listings/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b/stock-uploads
+[11:28:36] HTTP 200 - {"id":"b4daeb28-34ab-4d60-bd7c-4ee20af66aa9"}
+[11:28:36] [OK] stock-upload id: b4daeb28-34ab-4d60-bd7c-4ee20af66aa9
+[11:28:36] 
+=======================================================
+[11:28:36] TEST 3: Siparis - Listeleme (OMS)
+[11:28:36] =======================================================
+[11:28:36] GET https://oms-external-sit.hepsiburada.com/packages/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b?limit=10&offset=0
+[11:28:36] HTTP 200
+[11:28:36] Paket sayisi: 0
+[11:28:36] 
+GET https://oms-external-sit.hepsiburada.com/orders/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b?limit=10&offset=0
+[11:28:36] HTTP 200
+[11:28:36] Siparis sayisi: 0
+[11:28:36] 
+[!] Sistemde siparis/paket yok.
+[11:28:36]     --> Test portalindan (merchant-sit.hepsiburada.com) bir test
+[11:28:36]         siparisi olusturun, sonra bu scripti tekrar calistirin.
+[11:28:36] 
+=======================================================
+[11:28:36] TESTLER TAMAMLANDI
+[11:28:36] =======================================================
+[11:28:36] Hepsiburada'ya iletilecek TrackingId: 0c7e9632-989e-470c-be87-72b6773ca8b5

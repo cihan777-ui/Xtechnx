@@ -232,6 +232,37 @@ class HepsiburadaUploader:
                 data = json.loads(raw) if raw.strip() else []
                 return data if isinstance(data, list) else data.get("data", [])
 
+    async def list_packable_orders(self, limit: int = 50) -> list:
+        """Paketlenmeyi bekleyen siparisleri dondurur (GET /orders/merchantid/{mid}/pack)."""
+        async with aiohttp.ClientSession(auth=self._auth()) as session:
+            url = f"{self.OMS_URL}/orders/merchantid/{self.merchant_id}/pack?limit={limit}&offset=0"
+            async with session.get(
+                url, headers=self._headers(),
+                timeout=aiohttp.ClientTimeout(total=30)
+            ) as resp:
+                raw = await resp.text()
+                if resp.status not in (200, 201):
+                    raise Exception(f"Paketlenecek siparis hatasi {resp.status}: {raw}")
+                data = json.loads(raw) if raw.strip() else {}
+                return data.get("items", []) if isinstance(data, dict) else data
+
+    async def create_package(self, line_items: list) -> dict:
+        """Paketlenecek siparis itemlarindan paket olusturur.
+        line_items: [{"id": lineItemId, "quantity": qty}, ...]
+        """
+        payload = {"lineItems": line_items}
+        async with aiohttp.ClientSession(auth=self._auth()) as session:
+            url = f"{self.OMS_URL}/packages/merchantid/{self.merchant_id}"
+            async with session.post(
+                url, json=payload,
+                headers=self._headers(),
+                timeout=aiohttp.ClientTimeout(total=30)
+            ) as resp:
+                raw = await resp.text()
+                if resp.status not in (200, 201, 202):
+                    raise Exception(f"Paket olusturma hatasi {resp.status}: {raw}")
+                return json.loads(raw) if raw.strip() else {}
+
     async def pack_order(self, package_id: str, line_items: list) -> dict:
         payload = {"lines": line_items}
         async with aiohttp.ClientSession(auth=self._auth()) as session:

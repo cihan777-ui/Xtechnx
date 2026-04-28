@@ -1,0 +1,48 @@
+[16:15:51] ============================================================
+[16:15:51] Hepsiburada - Paketlenecek Siparisleri Isle
+[16:15:51] Merchant ID : 9736564a-f8a4-44c5-82e3-e224ebd1981b
+[16:15:51] Ortam       : SIT
+[16:15:51] Tarih       : 2026-04-28 16:15:51
+[16:15:51] ============================================================
+[16:15:51] GET https://oms-external-sit.hepsiburada.com/orders/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b/pack?limit=50&offset=0
+[16:15:51]   HTTP 200
+[16:15:51]   4 paketlenecek item bulundu
+[16:15:51] 
+>>> 4 item isleniyor...
+
+[16:15:51] 
+--- Udemy A'dan Z'ye Arduino Dersleri ve Robotik Kodla (qty=2) ---
+[16:15:51] POST https://oms-external-sit.hepsiburada.com/packages/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b
+[16:15:51]   Payload: {"lineItems": [{"id": "69ee9ffc-0506-5912-7442-894906060606", "quantity": 2}]}
+[16:15:51]   HTTP 400 | {"statusCode":400,"code":"","defaultMessage":null,"correlationId":"bdc6e959-e1a1-4af6-90dd-c83bbc479878","message":"Line items empty or null merchantid(9736564a-f8a4-44c5-82e3-e224ebd1981b)"}
+
+[16:15:51]   [!] Paket olusturulamadi
+[16:15:51]   [!] Paket ID alinamadi, onay atlanıyor
+[16:15:52] 
+--- Udemy A'dan Z'ye Arduino Dersleri ve Robotik Kodla (qty=2) ---
+[16:15:52] POST https://oms-external-sit.hepsiburada.com/packages/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b
+[16:15:52]   Payload: {"lineItems": [{"id": "69eea00b-0506-5912-7442-8b3b06060606", "quantity": 2}]}
+[16:15:52]   HTTP 400 | {"statusCode":400,"code":"","defaultMessage":null,"correlationId":"c0115dbb-8c97-4665-96df-b7dfa350876a","message":"Line items empty or null merchantid(9736564a-f8a4-44c5-82e3-e224ebd1981b)"}
+
+[16:15:52]   [!] Paket olusturulamadi
+[16:15:52]   [!] Paket ID alinamadi, onay atlanıyor
+[16:15:53] 
+--- Udemy A'dan Z'ye Arduino Dersleri ve Robotik Kodla (qty=1) ---
+[16:15:53] POST https://oms-external-sit.hepsiburada.com/packages/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b
+[16:15:53]   Payload: {"lineItems": [{"id": "69ef1355-0506-5912-7449-ab0206060606", "quantity": 1}]}
+[16:15:53]   HTTP 400 | {"statusCode":400,"code":"","defaultMessage":null,"correlationId":"a156d190-3844-4aff-9e29-cdbf2f4f597e","message":"Line items empty or null merchantid(9736564a-f8a4-44c5-82e3-e224ebd1981b)"}
+
+[16:15:53]   [!] Paket olusturulamadi
+[16:15:53]   [!] Paket ID alinamadi, onay atlanıyor
+[16:15:54] 
+--- Udemy A'dan Z'ye Arduino Dersleri ve Robotik Kodla (qty=1) ---
+[16:15:54] POST https://oms-external-sit.hepsiburada.com/packages/merchantid/9736564a-f8a4-44c5-82e3-e224ebd1981b
+[16:15:54]   Payload: {"lineItems": [{"id": "69ef1cea-0506-5912-744a-48fa06060606", "quantity": 1}]}
+[16:15:54]   HTTP 400 | {"statusCode":400,"code":"","defaultMessage":null,"correlationId":"9c8773c6-f56c-4277-ba4c-4e2093b2c361","message":"Line items empty or null merchantid(9736564a-f8a4-44c5-82e3-e224ebd1981b)"}
+
+[16:15:54]   [!] Paket olusturulamadi
+[16:15:54]   [!] Paket ID alinamadi, onay atlanıyor
+[16:15:55] 
+============================================================
+[16:15:55] SONUC: 0/4 item basariyla paketlendi.
+[16:15:55] ============================================================
