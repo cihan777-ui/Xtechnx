@@ -1,147 +1,128 @@
 """
-Hepsiburada SIT/PROD - Paketlenecek siparisleri bul ve paketle.
-Calistir: python hb_paketle.py
+Hepsiburada - Paketlenecek siparisleri bul ve paketle.
 
-Akis:
-  1. GET /orders/merchantid/{mid}/pack  -> paketlenecek itemlari al
-  2. POST /packages/merchantid/{mid}    -> paket olustur (lineItems ile)
-  3. POST /packages/{id}/items/pack     -> paketi onayla
+Auth: hb_cookies.json (Selenium ile kaydedilmis portal session)
+      Cookie suresi dolunca: python hb_step1_login.py ile yenile
+
+Calistir: python hb_paketle.py
 """
-import asyncio
-import aiohttp
-import json
-import os
-import sys
+import requests, json, os, sys
 from datetime import datetime
 
 sys.stdout.reconfigure(encoding="utf-8") if hasattr(sys.stdout, "reconfigure") else None
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
-from dotenv import load_dotenv
-load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
-MERCHANT_ID  = os.getenv("HEPSIBURADA_MERCHANT_ID", "")
-USERNAME     = os.getenv("HEPSIBURADA_USERNAME", "")
-PASSWORD     = os.getenv("HEPSIBURADA_PASSWORD", "")
-DEVELOPER_UA = os.getenv("HEPSIBURADA_DEVELOPER_USERNAME", "")
-OMS_BASE     = "https://oms-external-sit.hepsiburada.com"
+# Ortama gore URL
+ENV      = os.getenv("HEPSIBURADA_ENV", "test").lower()
+if ENV == "production":
+    BASE = "https://merchant.hepsiburada.com/fulfilment"
+else:
+    BASE = "https://merchant-sit.hepsiburada.com/fulfilment"
 
+COOKIES_FILE = os.path.join(os.path.dirname(__file__), "hb_cookies.json")
 LOG = []
 
 def log(msg):
-    ts = datetime.now().strftime("%H:%M:%S")
+    ts   = datetime.now().strftime("%H:%M:%S")
     line = f"[{ts}] {msg}"
     print(line, flush=True)
     LOG.append(line)
 
-def hdr():
-    return {"Content-Type": "application/json", "User-Agent": DEVELOPER_UA}
+
+def load_session():
+    if not os.path.exists(COOKIES_FILE):
+        log(f"[!] {COOKIES_FILE} bulunamadi.")
+        log("    Once 'python hb_step1_login.py' calistirin.")
+        sys.exit(1)
+    with open(COOKIES_FILE, encoding="utf-8") as f:
+        saved = json.load(f)
+    s = requests.Session()
+    for c in saved:
+        s.cookies.set(c["name"], c["value"], domain=c.get("domain", ""), path=c.get("path", "/"))
+    s.headers.update({"Content-Type": "application/json"})
+    return s
 
 
-async def paketlenecekleri_getir(session) -> list:
-    """GET /orders/merchantid/{mid}/pack — paketlenmeyi bekleyenler."""
-    url = f"{OMS_BASE}/orders/merchantid/{MERCHANT_ID}/pack?limit=50&offset=0"
+def paketlenecekleri_getir(session) -> list:
+    """GET /api/v3/orderlines/tobepacked -> paketlenecek satirlari dondur."""
+    url = f"{BASE}/api/v3/orderlines/tobepacked?offset=0&limit=100"
     log(f"GET {url}")
-    async with session.get(url, headers=hdr(), timeout=aiohttp.ClientTimeout(total=30)) as r:
-        raw = await r.text()
-        log(f"  HTTP {r.status}")
-        if r.status != 200:
-            log(f"  [!] Hata: {raw[:200]}")
-            return []
-        data = json.loads(raw) if raw.strip() else {}
-        items = data.get("items", []) if isinstance(data, dict) else []
-        log(f"  {len(items)} paketlenecek item bulundu")
-        return items
+    r = session.get(url, timeout=30)
+    log(f"  HTTP {r.status_code}")
+    if r.status_code == 401:
+        log("  [!] Session suresi dolmus. 'python hb_step1_login.py' ile yenileyin.")
+        sys.exit(1)
+    if r.status_code != 200:
+        log(f"  [!] Hata: {r.text[:200]}")
+        return []
+    data = r.json()
+    items = []
+    for order in data.get("Data", []):
+        for line in order.get("OrderLines", []):
+            items.append({
+                "orderNumber": order.get("OrderNumber"),
+                "lineId":      line["Id"],
+                "qty":         line["Quantity"],
+                "name":        line.get("Sku", "")[:50],
+            })
+    log(f"  {len(items)} paketlenecek item bulundu")
+    return items
 
 
-async def paket_olustur(session, line_items: list) -> str:
-    """POST /packages/merchantid/{mid} — paket olustur, packageId doner."""
-    payload = {"lineItems": line_items}
-    url = f"{OMS_BASE}/packages/merchantid/{MERCHANT_ID}"
+def paket_olustur(session, line_id: str, qty: int) -> dict:
+    """POST /api/v1/deliveries -> paket olustur."""
+    payload = {
+        "CarrierId":      0,
+        "Lines":          [{"OrderLineId": line_id, "Quantity": qty, "SerialNumbers": []}],
+        "ParcelQuantity": 1,
+        "Deci":           None,
+    }
+    url = f"{BASE}/api/v1/deliveries"
     log(f"POST {url}")
     log(f"  Payload: {json.dumps(payload)}")
-    async with session.post(url, json=payload, headers=hdr(), timeout=aiohttp.ClientTimeout(total=30)) as r:
-        raw = await r.text()
-        log(f"  HTTP {r.status} | {raw[:300]}")
-        if r.status not in (200, 201, 202):
-            log(f"  [!] Paket olusturulamadi")
-            return ""
+    r = session.post(url, json=payload, timeout=30)
+    log(f"  HTTP {r.status_code}")
+    if r.status_code in (200, 201):
         try:
-            data = json.loads(raw)
-            pkg_id = (
-                data.get("packageId")
-                or data.get("id")
-                or data.get("packageNumber")
-                or ""
-            )
-            if pkg_id:
-                log(f"  [OK] packageId: {pkg_id}")
-            return str(pkg_id)
-        except Exception:
-            log(f"  [!] Yanit parse edilemedi: {raw[:200]}")
-            return ""
+            data = r.json()
+            pkg_id   = data.get("Id", "")
+            pkg_code = data.get("Code", "")
+            log(f"  [OK] Paket olusturuldu — Id={pkg_id}  Code={pkg_code}")
+            return {"id": pkg_id, "code": pkg_code, "ok": True}
+        except Exception as e:
+            log(f"  [!] Yanit parse hatasi: {e}")
+    else:
+        log(f"  [!] Hata: {r.text[:300]}")
+    return {"ok": False}
 
 
-async def paketi_onayla(session, package_id: str, line_items: list) -> bool:
-    """POST /packages/{packageId}/items/pack — paketi onayla."""
-    payload = {"lines": [{"lineItemId": li["id"], "quantity": li["quantity"]} for li in line_items]}
-    url = f"{OMS_BASE}/packages/{package_id}/items/pack"
-    log(f"POST {url}")
-    log(f"  Payload: {json.dumps(payload)}")
-    async with session.post(url, json=payload, headers=hdr(), timeout=aiohttp.ClientTimeout(total=30)) as r:
-        raw = await r.text()
-        log(f"  HTTP {r.status} | {raw[:300]}")
-        if r.status in (200, 201, 202):
-            log(f"  [OK] Paket {package_id} onaylandi!")
-            return True
-        log(f"  [!] Paket onay hatasi")
-        return False
-
-
-async def main():
+def main():
     log("=" * 60)
     log("Hepsiburada - Paketlenecek Siparisleri Isle")
-    log(f"Merchant ID : {MERCHANT_ID}")
-    log(f"Ortam       : SIT")
-    log(f"Tarih       : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    log(f"Ortam : {ENV.upper()} | Base: {BASE}")
+    log(f"Tarih : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     log("=" * 60)
 
-    auth = aiohttp.BasicAuth(USERNAME, PASSWORD)
-    async with aiohttp.ClientSession(auth=auth) as session:
+    session = load_session()
 
-        # 1. Paketlenecekleri al
-        items = await paketlenecekleri_getir(session)
-        if not items:
-            log("\n[!] Paketlenecek siparis yok.")
-            log("    Hepsiburada entegrasyon ekibinden gercek test siparisi talep edin.")
-        else:
-            log(f"\n>>> {len(items)} item isleniyor...\n")
+    # 1. Paketlenecekleri al
+    items = paketlenecekleri_getir(session)
+    if not items:
+        log("\n[!] Paketlenecek siparis yok.")
+        log("    Yeni siparis geldikten sonra tekrar calistirin.")
+    else:
+        log(f"\n>>> {len(items)} item isleniyor...\n")
+        basarili = 0
+        for item in items:
+            log(f"\n--- {item['orderNumber']} | {item['name']} (qty={item['qty']}) ---")
+            result = paket_olustur(session, item["lineId"], item["qty"])
+            if result["ok"]:
+                basarili += 1
 
-            # Her item ayri paket olarak olusturulacak
-            basarili = 0
-            for item in items:
-                item_id = item.get("id", "")
-                qty = item.get("quantity", 1)
-                name = item.get("name", "")[:50]
-                log(f"\n--- {name} (qty={qty}) ---")
-
-                # 2. Paket olustur
-                li = [{"id": item_id, "quantity": qty}]
-                pkg_id = await paket_olustur(session, li)
-
-                if pkg_id:
-                    # 3. Paketi onayla
-                    if await paketi_onayla(session, pkg_id, li):
-                        basarili += 1
-                else:
-                    log(f"  [!] Paket ID alinamadi, onay atlanıyor")
-
-                await asyncio.sleep(1)
-
-            log("\n" + "=" * 60)
-            log(f"SONUC: {basarili}/{len(items)} item basariyla paketlendi.")
-            if basarili == len(items):
-                log("Tum siparisler 'Gonderime hazir' statusune gecmeli.")
-            log("=" * 60)
+        log("\n" + "=" * 60)
+        log(f"SONUC: {basarili}/{len(items)} item basariyla paketlendi.")
+        if basarili == len(items):
+            log("Tum siparisler 'Gonderime hazir' statusune gecmeli.")
+        log("=" * 60)
 
     out = os.path.join(os.path.dirname(__file__), "hb_paketle_sonuc.txt")
     with open(out, "w", encoding="utf-8") as f:
@@ -150,4 +131,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
