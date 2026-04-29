@@ -197,6 +197,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
           <option value="hepsiburada">Hepsiburada</option>
           <option value="n11">N11</option>
           <option value="amazon">Amazon TR</option>
+          <option value="xtechnx">Xtechnx Site</option>
         </select>
         <select class="fsel" id="fStatus" onchange="loadHistory()">
           <option value="">Tüm Durumlar</option>
@@ -317,7 +318,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 
 <script>
 const API=window.location.origin;
-const PLAT={trendyol:{icon:'🟠',label:'Trendyol'},hepsiburada:{icon:'🟡',label:'Hepsiburada'},n11:{icon:'🔵',label:'N11'},amazon:{icon:'🟤',label:'Amazon TR'}};
+const PLAT={trendyol:{icon:'🟠',label:'Trendyol'},hepsiburada:{icon:'🟡',label:'Hepsiburada'},n11:{icon:'🔵',label:'N11'},amazon:{icon:'🟤',label:'Amazon TR'},xtechnx:{icon:'🟣',label:'Xtechnx Site'}};
 let barcodes=[],pending=[],jobPoll=null;
 let platSelections={}; // {item_id: {trendyol:true, n11:false, ...}}
 
