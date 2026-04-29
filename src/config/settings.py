@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     amazon_seller_id: str = ""
     amazon_marketplace_id: str = "A33AVAJ2PDY3EV"
 
+    xtechnx_admin_url: str = "https://xtechnx.com/admin/"
+    xtechnx_admin_user: str = "admin"
+    xtechnx_admin_pass: str = ""
+
     class Config:
         env_file = [".env", "../.env"]
         env_file_encoding = "utf-8"

@@ -23,6 +23,7 @@ from uploaders.trendyol import TrendyolUploader
 from uploaders.hepsiburada import HepsiburadaUploader
 from uploaders.n11 import N11Uploader
 from uploaders.amazon import AmazonUploader
+from uploaders.xtechnx_site import XtechnxSiteUploader
 
 db.init_db()
 
@@ -40,6 +41,7 @@ def _get_uploaders():
         "hepsiburada": HepsiburadaUploader(),
         "n11":         N11Uploader(),
         "amazon":      AmazonUploader(),
+        "xtechnx":     XtechnxSiteUploader(),
     }
 
 
