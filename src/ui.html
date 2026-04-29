@@ -484,6 +484,8 @@ async function approve(id){
     delete platSelections[id];
     document.getElementById(`card-${id}`)?.remove();
     loadPending();loadStats();
+    setTimeout(()=>{loadHistory();loadStats();},15000);
+    if(plats.includes('xtechnx'))setTimeout(()=>{loadHistory();loadStats();},90000);
   }catch(e){toast('Hata: '+e.message,'err');btn.disabled=false;btn.innerHTML='✓ Onayla & Yükle';}
 }
 
