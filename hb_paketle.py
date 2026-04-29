@@ -57,6 +57,9 @@ def paketlenecekleri_getir(session) -> list:
     if r.status_code == 401:
         log("  [!] Session suresi dolmus. 'python hb_step1_login.py' ile yenileyin.")
         sys.exit(1)
+    if r.status_code == 404:
+        log("  Paketlenecek siparis yok (404).")
+        return []
     if r.status_code != 200:
         log(f"  [!] Hata: {r.text[:200]}")
         return []
