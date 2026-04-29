@@ -11,6 +11,12 @@ from datetime import datetime
 
 sys.stdout.reconfigure(encoding="utf-8") if hasattr(sys.stdout, "reconfigure") else None
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+except ImportError:
+    pass
+
 # Ortama gore URL
 ENV      = os.getenv("HEPSIBURADA_ENV", "test").lower()
 if ENV == "production":

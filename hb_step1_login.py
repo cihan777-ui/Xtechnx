@@ -24,7 +24,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 wait = WebDriverWait(driver, 20)
 
 print("Login sayfasi aciliyor...")
-driver.get("https://merchant-sit.hepsiburada.com/v2/login")
+driver.get("https://merchant.hepsiburada.com/v2/login")
 wait.until(EC.presence_of_element_located((By.ID, "username"))).send_keys("orhancihan17@hotmail.com")
 wait.until(EC.presence_of_element_located((By.ID, "password"))).send_keys("Hb12345!")
 wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button.login-button"))).click()
@@ -36,7 +36,7 @@ print()
 for i in range(120):
     time.sleep(1)
     url = driver.current_url
-    if "merchant-sit" in url and "/login" not in url:
+    if "merchant.hepsiburada.com" in url and "/login" not in url:
         print(f"Otomatik algilama - Giris OK: {url}")
         break
     if i % 15 == 0 and i > 0:
@@ -50,4 +50,4 @@ print(f"\n{len(cookies)} cookie kaydedildi -> hb_cookies.json")
 print(f"Mevcut URL: {driver.current_url}")
 
 driver.quit()
-print("Hazir. Simdi hb_step2_capture.py calistirin.")
+print("Hazir. Cookie yenilendi. Simdi hb_paketle.py calistirabilirsiniz.")
