@@ -114,9 +114,18 @@ class N11Uploader:
                         sku_status = task_level
                         n11_id = None
                     _log.info(f"N11 task [{task_id}] task:{task_level} sku:{sku_status} n11ProductId:{n11_id}")
-                    if sku_status in ("SUCCESS", "PROCESSED", "COMPLETED", "DONE"):
-                        return {"status": "success", "task_id": task_id, "n11_product_id": n11_id,
-                                "message": f"N11 onayladı. TaskID: {task_id}, N11 ürün ID: {n11_id}"}
+                    # Task tamamlandıysa (PROCESSED/COMPLETED/DONE) kesin sonuç var
+                    if task_level in ("PROCESSED", "COMPLETED", "DONE"):
+                        if sku_status in ("SUCCESS", "DONE", "COMPLETED"):
+                            return {"status": "success", "task_id": task_id, "n11_product_id": n11_id,
+                                    "message": f"N11 onayladı. TaskID: {task_id}, N11 ürün ID: {n11_id}"}
+                        else:
+                            errors = (items[0].get("failedReasons") or items[0].get("reasons")
+                                      or items[0].get("errorMessage")
+                                      or d.get("message") or d) if items else d
+                            return {"status": "error", "task_id": task_id,
+                                    "message": f"N11 reddetti ({sku_status}): {errors}"}
+                    # SKU düzeyinde açık red
                     if sku_status in ("REJECT", "REJECTED", "FAILED", "ERROR"):
                         errors = (items[0].get("failedReasons") or items[0].get("reasons")
                                   or items[0].get("errorMessage")

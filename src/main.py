@@ -24,10 +24,11 @@ from uploaders.hepsiburada import HepsiburadaUploader
 from uploaders.n11 import N11Uploader
 from uploaders.amazon import AmazonUploader
 from uploaders.xtechnx_site import XtechnxSiteUploader
+from uploaders.xtechnx_site_api import XtechnxSiteApiUploader
 
 db.init_db()
 
-app = FastAPI(title="Xtechnx Product Sync", version="4.0.0", default_response_class=ORJSONResponse)
+app = FastAPI(title="Xtechnx Product Sync", version="4.2.0", default_response_class=ORJSONResponse)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 jobs: dict = {}
@@ -41,7 +42,7 @@ def _get_uploaders():
         "hepsiburada": HepsiburadaUploader(),
         "n11":         N11Uploader(),
         "amazon":      AmazonUploader(),
-        "xtechnx":     XtechnxSiteUploader(),
+        "xtechnx":     XtechnxSiteApiUploader(),
     }
 
 
@@ -238,15 +239,19 @@ async def _upload_job(job_id: str, item: dict, platforms: list):
     job["status"] = "uploading"
     product = item["transformed"]
     uploaders = _get_uploaders()
-    for platform in platforms:
+
+    async def _upload_one(platform: str):
         if platform not in uploaders:
-            continue
+            return
         try:
             if platform == "n11":
                 import json as _j
                 from uploaders.n11 import _build_payload
                 logger.info(f"N11 payload: {_j.dumps(_build_payload(product), ensure_ascii=False)[:3000]}")
-            result = await uploaders[platform].upload(product)
+            result = await asyncio.wait_for(
+                uploaders[platform].upload(product),
+                timeout=300  # 5 dakika platform başına hard limit
+            )
             logger.info(f"[{platform}] create cevap / sonuç: {result}")
             job["results"][platform] = result
             upload_status = result.get("status", "success")
@@ -257,13 +262,27 @@ async def _upload_job(job_id: str, item: dict, platforms: list):
                 item["original"].title, product.title,
                 item["original"].price, product.price, platform, upload_status
             )
+        except asyncio.TimeoutError:
+            msg = f"{platform} zaman aşımı (300s)"
+            logger.error(f"[{platform}] TIMEOUT")
+            job["results"][platform] = {"status": "error", "message": msg}
+            db.record_upload(
+                item["original_barcode"], product.barcode, product.sku,
+                item["original"].title, product.title,
+                item["original"].price, product.price, platform, "error", msg
+            )
         except Exception as e:
+            import traceback
+            logger.error(f"[{platform}] HATA: {e}\n{traceback.format_exc()}")
             job["results"][platform] = {"status": "error", "message": str(e)}
             db.record_upload(
                 item["original_barcode"], product.barcode, product.sku,
                 item["original"].title, product.title,
                 item["original"].price, product.price, platform, "error", str(e)
             )
+
+    # Tüm platformları aynı anda başlat
+    await asyncio.gather(*[_upload_one(p) for p in platforms])
     if item["item_id"] in pending_approval:
         del pending_approval[item["item_id"]]
     job["status"] = "completed"
@@ -320,7 +339,7 @@ async def hepsiburada_categories(search: str = ""):
     from category_mapper import HB_KEYWORD_MAP
     cats = [{"id": v, "name": k} for k, v in HB_KEYWORD_MAP.items()]
     try:
-        auth = aiohttp.BasicAuth(settings.hepsiburada_username, settings.hepsiburada_password)
+        auth = aiohttp.BasicAuth(settings.hepsiburada_merchant_id, settings.hepsiburada_password)
         async with aiohttp.ClientSession(auth=auth) as session:
             _mpop = "https://mpop-sit.hepsiburada.com" if settings.hepsiburada_env == "test" else "https://mpop.hepsiburada.com"
             async with session.get(
@@ -481,7 +500,7 @@ async def check_n11_category(cat_id: int):
 @app.get("/health")
 async def health():
     stats = db.get_history_stats()
-    return {"status": "ok", "version": "4.0.0",
+    return {"status": "ok", "version": "4.2.0",
             "uploads_total": stats.get("total", 0), "uploads_today": stats.get("today", 0)}
 
 
