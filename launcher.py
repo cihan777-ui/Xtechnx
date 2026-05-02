@@ -132,7 +132,7 @@ def show_tray():
 
 def main():
     logger.info("=" * 50)
-    logger.info("  Xtechnx Product Sync v4.0 başlatılıyor...")
+    logger.info("  Xtechnx Product Sync v4.2 başlatılıyor...")
     logger.info("=" * 50)
 
     # Sunucuyu arka planda başlat

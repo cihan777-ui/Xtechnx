@@ -9,8 +9,9 @@ from category_mapper import get_hepsiburada_category
 ALLOWED_IMG_EXT = (".jpg", ".jpeg", ".png", ".webp")
 HB_MAX_IMAGES = 5
 BLOCKED = re.compile(
-    r'logo|banner|icon|brand|seller|category|cms|static|assets|'
-    r'campaign|slider|payment|cargo|trust|badge', re.IGNORECASE
+    r'/(logo|banner|slider|kampanya|brand|marka|footer|header|'
+    r'icon|sprite|payment|cargo|trust|badge)',
+    re.IGNORECASE
 )
 
 _SIT_MPOP  = "https://mpop-sit.hepsiburada.com"
@@ -78,7 +79,7 @@ class HepsiburadaUploader:
         return _base_urls()[2]
 
     def _auth(self):
-        return aiohttp.BasicAuth(self.username, self.password)
+        return aiohttp.BasicAuth(self.merchant_id, self.password)
 
     def _headers(self) -> dict:
         return {
@@ -121,7 +122,7 @@ class HepsiburadaUploader:
             "UrunAdi":        product.title[:500],
             "UrunAciklamasi": product.description[:5000] if product.description else product.title[:500],
             "Barcode":        product.barcode or sku,
-            "Marka":          "Diger",
+            "Marka":          "Xtechnx",
             "GarantiSuresi":  "24",
             "tax_vat_rate":   "20",
             "kg":             "1",
@@ -295,9 +296,8 @@ class HepsiburadaUploader:
             clean = img.split("?")[0].lower()
             if BLOCKED.search(clean):
                 continue
-            if not any(clean.endswith(ext) for ext in ALLOWED_IMG_EXT):
-                if not re.search(r'/(productimages|image|img|media|photo)', clean):
-                    continue
+            if not re.search(r'\.(jpg|jpeg|png|webp)', clean):
+                continue
             result.append(img)
             if len(result) >= HB_MAX_IMAGES:
                 break

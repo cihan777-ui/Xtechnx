@@ -1,11 +1,12 @@
 """
 Ürün Dönüştürücü - Xtechnx kuralları:
-1. Başlık:    "Xtechnx " + orijinal başlık
+1. Başlık:    Önce "Xtechnx" kelimesi temizlenir, sonra başa "Xtechnx " eklenir
 2. Fiyat:     orijinal fiyat × 2
 3. Barkod:    "Xtechnx" + 6 rastgele rakam = 13 karakter
 4. Stok kodu: "Cihan"   + aynı 6 rakam
 Duplicate koruması: SQLite barcode_registry tablosuna kaydedilir.
 """
+import re
 import random
 import string
 import hashlib
@@ -67,14 +68,9 @@ def transform(product: Product) -> Product:
             seed = (orig_barcode or product.sku or product.title or "").strip()
             suffix = _generate_unique_suffix(seed)
 
-    if product.title.startswith(PREFIX_TITLE) or f" {PREFIX_TITLE.strip()} " in product.title:
-        new_title = product.title
-    else:
-        words = product.title.split()
-        if len(words) > 1:
-            new_title = words[0] + " " + PREFIX_TITLE + " ".join(words[1:])
-        else:
-            new_title = PREFIX_TITLE + product.title
+    # Başlıktan "Xtechnx" kelimesini her yerden temizle, sonra başa ekle
+    stripped_title = re.sub(r'\bXtechnx\b\s*', '', product.title, flags=re.IGNORECASE).strip()
+    new_title = PREFIX_TITLE + stripped_title
     new_price   = round(product.price * get_config()["price_multiplier"], 2)
     new_barcode = PREFIX_BARCODE + suffix
     raw_sku     = (product.sku or "").strip()

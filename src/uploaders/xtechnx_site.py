@@ -7,8 +7,10 @@ import time
 import hashlib
 import asyncio
 import os
-import tempfile
+import logging
 from functools import partial
+
+log = logging.getLogger(__name__)
 
 import requests as _req
 from selenium import webdriver
@@ -81,7 +83,7 @@ def _admin_giris(driver) -> bool:
             return True
         return False
     except Exception as e:
-        print(f"[xtechnx] Admin giris hatasi: {e}")
+        log.info("[xtechnx] Admin giris hatasi: {e}")
         return False
 
 
@@ -111,22 +113,22 @@ def _js_yaz(driver, el, deger):
 
 
 def _sekme_ac(driver, *isimler):
-    sekmeler = driver.find_elements(By.CSS_SELECTOR, "ul.nav-tabs a, .nav-tabs li a")
+    # data-toggle="tab" — Bootstrap tab linkleri, başka nav linklerine karışmaz
+    tum_sekmeler = driver.find_elements(By.CSS_SELECTOR, "a[data-toggle='tab']")
     for isim in isimler:
-        for a in sekmeler:
-            metin = a.text.strip().lower()
-            if metin == isim.lower() or isim.lower() in metin:
+        for a in tum_sekmeler:
+            metin = a.text.strip()
+            if metin.lower() == isim.lower() or isim.lower() in metin.lower():
                 driver.execute_script("arguments[0].click();", a)
                 time.sleep(0.8)
                 return True
-        for sel in [f"a[href='#{isim}']", f"a[href*='{isim}']"]:
-            try:
-                el = driver.find_element(By.CSS_SELECTOR, sel)
-                driver.execute_script("arguments[0].click();", el)
-                time.sleep(0.8)
-                return True
-            except Exception:
-                pass
+        try:
+            el = driver.find_element(By.CSS_SELECTOR, f"a[href='#{isim}'][data-toggle='tab']")
+            driver.execute_script("arguments[0].click();", el)
+            time.sleep(0.8)
+            return True
+        except Exception:
+            pass
     return False
 
 
@@ -145,47 +147,74 @@ def _autocomplete_sec(driver, el, deger):
             return True
         except Exception:
             pass
-    el.send_keys(Keys.RETURN)
-    time.sleep(0.5)
     return False
 
 
 def _resim_yukle(driver, resim_url, sira):
+    """v2.py bypc_ile_yukle — resmi Desktop'a indir, label#byPc ile yukle."""
     try:
         resp = _req.get(resim_url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
         if resp.status_code != 200 or len(resp.content) < 5000:
+            log.info(f"[xtechnx] Resim {sira}: indirilemedi ({resp.status_code}, {len(resp.content)} byte)")
             return False
-        tmp = os.path.join(tempfile.gettempdir(), f"xtechnx_r{sira}_{int(time.time())}.jpg")
-        with open(tmp, "wb") as f:
+
+        dosya_yolu = os.path.join(os.path.expanduser("~"), "Desktop", f"r{sira}_{int(time.time())}.jpg")
+        with open(dosya_yolu, "wb") as f:
             f.write(resp.content)
+        log.info(f"[xtechnx] Resim {sira}: indirildi ({len(resp.content)} byte) -> {dosya_yolu}")
+
         try:
-            label = driver.find_element(By.CSS_SELECTOR, "label#byPc")
-            for_id = label.get_attribute("for") or ""
-            if for_id:
-                file_input = driver.find_element(By.ID, for_id)
-            else:
-                file_input = driver.find_element(
-                    By.CSS_SELECTOR, "#drop-files input[type='file'], #frm input[type='file']")
-            file_input.send_keys(tmp)
-            time.sleep(2)
+            # Önce #file-input direkt dene, sonra label#byPc yolu
+            file_input = None
+            for sel in ["#file-input", "label#byPc", "#drop-files input[type='file']"]:
+                try:
+                    if sel == "label#byPc":
+                        label = driver.find_element(By.CSS_SELECTOR, sel)
+                        for_id = label.get_attribute("for") or ""
+                        file_input = driver.find_element(By.ID, for_id) if for_id else None
+                    else:
+                        file_input = driver.find_element(By.CSS_SELECTOR, sel)
+                    if file_input:
+                        log.info(f"[xtechnx] Resim {sira}: file input bulundu ({sel})")
+                        break
+                except Exception:
+                    pass
+
+            if not file_input:
+                log.info(f"[xtechnx] Resim {sira}: file input bulunamadi")
+                try: os.unlink(dosya_yolu)
+                except: pass
+                return False
+
+            driver.execute_script("arguments[0].style.display='block';arguments[0].style.visibility='visible';", file_input)
+            file_input.send_keys(dosya_yolu)
+            log.info(f"[xtechnx] Resim {sira}: dosya gonderildi")
+            time.sleep(3)
         except Exception as e:
-            print(f"[xtechnx] Resim input hatasi ({sira}): {e}")
+            log.info(f"[xtechnx] Resim {sira}: upload hatasi: {e}")
+            try: os.unlink(dosya_yolu)
+            except: pass
             return False
-        finally:
-            try:
-                os.unlink(tmp)
-            except Exception:
-                pass
-        for _ in range(3):
-            try:
-                alert = driver.switch_to.alert
-                alert.accept()
-                time.sleep(0.5)
-            except Exception:
-                break
+
+        try:
+            alert = driver.switch_to.alert
+            alert_txt = alert.text.strip()[:60]
+            alert.accept()
+            log.info(f"[xtechnx] Resim {sira}: alert: {alert_txt}")
+            time.sleep(0.5)
+            if "error" in alert_txt.lower() or "undefined" in alert_txt.lower():
+                try: os.unlink(dosya_yolu)
+                except: pass
+                return False
+        except Exception:
+            pass
+
+        try: os.unlink(dosya_yolu)
+        except: pass
         return True
+
     except Exception as e:
-        print(f"[xtechnx] Resim yukle hatasi ({sira}): {e}")
+        log.info(f"[xtechnx] Resim {sira}: genel hata: {e}")
         return False
 
 
@@ -199,6 +228,15 @@ def _urun_ekle_sync(p: Product) -> dict:
 
     driver.get(_ekle_url())
     time.sleep(3)
+    try:
+        sc_path = os.path.join(os.path.expanduser("~"), "Desktop", "product-sync", "logs", "xtechnx_form_yuklendi.png")
+        driver.save_screenshot(sc_path)
+        html_path = os.path.join(os.path.expanduser("~"), "Desktop", "product-sync", "logs", "xtechnx_form.html")
+        with open(html_path, "w", encoding="utf-8") as _f:
+            _f.write(driver.page_source)
+        log.info(f"[xtechnx] Screenshot ve HTML kaydedildi")
+    except Exception as _e:
+        log.info(f"[xtechnx] Screenshot hatasi: {_e}")
 
     baslik  = p.title[:200]
     fiyat   = str(round(p.price, 2))
@@ -348,12 +386,40 @@ def _urun_ekle_sync(p: Product) -> dict:
                     pass
 
         # ── Sekme 4: Resim ──────────────────────────────────────
-        _sekme_ac(driver, "tab-image", "tab-resim", "resim", "image")
-        time.sleep(1)
+        # jQuery Bootstrap tab API ile aktive et
+        driver.execute_script("""
+            var $tab = (typeof jQuery !== 'undefined') && jQuery('a[href="#tab-image"]');
+            if ($tab && $tab.length) { $tab.tab('show'); }
+            else {
+                var a = document.querySelector('a[href="#tab-image"]');
+                if (a) a.click();
+            }
+        """)
+        time.sleep(2)
 
-        for i, resim_url in enumerate(p.images[:5], 1):
-            _resim_yukle(driver, resim_url, i)
-            time.sleep(1)
+        # DOM'da ne var logla
+        check = driver.execute_script("""
+            return {
+                byPc: !!document.querySelector('label#byPc'),
+                fileInput: !!document.querySelector('#file-input'),
+                tabActive: !!(document.querySelector('#tab-image.active') || document.querySelector('#tab-image.in')),
+                tabPaneDisplay: (document.querySelector('#tab-image') || {}).style && (document.querySelector('#tab-image')).offsetParent !== null
+            };
+        """)
+        log.info(f"[xtechnx] DOM check: {check}")
+
+        sc_path = os.path.join(os.path.expanduser("~"), "Desktop", "product-sync", "logs", "xtechnx_resim_tab.png")
+        try:
+            driver.save_screenshot(sc_path)
+        except Exception:
+            pass
+
+        if p.images:
+            log.info(f"[xtechnx] Resimler yukleniyor ({len(p.images[:5])} adet)...")
+            for i, resim_url in enumerate(p.images[:5], 1):
+                basarili = _resim_yukle(driver, resim_url, i)
+                log.info(f"[xtechnx] Resim {i}: {'OK' if basarili else 'BASARISIZ'}")
+                time.sleep(1)
 
         # ── Kaydet ──────────────────────────────────────────────
         if "login" in driver.current_url.lower():

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Xtechnx Product Sync v4.1</title>
+<title>Xtechnx Product Sync v4.2</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 :root{
@@ -138,7 +138,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 <body>
 <header>
   <div class="logo"><em>Xtechnx</em> Product Sync</div>
-  <div class="ver">v4.1</div>
+  <div class="ver">v4.2</div>
   <div class="hstats">
     <div class="hstat"><div class="n" id="hToday">—</div><div class="l">BUGÜN</div></div>
     <div class="hstat"><div class="n" id="hTotal">—</div><div class="l">TOPLAM</div></div>
@@ -322,7 +322,8 @@ const PLAT={trendyol:{icon:'🟠',label:'Trendyol'},hepsiburada:{icon:'🟡',lab
 let barcodes=[],pending=[],jobPoll=null;
 let platSelections={}; // {item_id: {trendyol:true, n11:false, ...}}
 
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded',async()=>{
+  await fetch(`${API}/barcodes`,{method:'DELETE'});
   loadBC();loadPending();loadStats();loadHistory();loadAppConfig();
   document.getElementById('bcIn').addEventListener('keydown',e=>{if(e.key==='Enter')addBC();});
   document.getElementById('urlIn').addEventListener('keydown',e=>{if(e.key==='Enter')addByUrl();});
