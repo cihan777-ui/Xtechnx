@@ -283,6 +283,11 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
             <span style="font-weight:600">b2bmerter.com</span>
             <span style="font-size:11px;color:var(--muted);margin-left:4px">— URL ile ürün ekleme, üye girişi gerekli</span>
           </label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border:1px solid var(--border);border-radius:8px;transition:border-color .2s" id="lbl-xtechnx">
+            <input type="radio" name="src-site-sel" value="xtechnx" id="r-xtechnx" style="width:16px;height:16px;accent-color:var(--accent)" onchange="onSrcSiteChange()">
+            <span style="font-weight:600">xtechnx.com</span>
+            <span style="font-size:11px;color:var(--muted);margin-left:4px">— Kendi siteniz, URL ile ürün ekleyin</span>
+          </label>
         </div>
         <div id="b2bmerter-fields" style="display:none">
           <div class="sett-grid">
@@ -609,6 +614,7 @@ function onSrcSiteChange(){
   document.getElementById('b2bmerter-fields').style.display=(sel==='b2bmerter')?'':'none';
   document.getElementById('lbl-merter').style.borderColor=(sel==='merter')?'var(--accent)':'var(--border)';
   document.getElementById('lbl-b2bmerter').style.borderColor=(sel==='b2bmerter')?'var(--accent)':'var(--border)';
+  document.getElementById('lbl-xtechnx').style.borderColor=(sel==='xtechnx')?'var(--accent)':'var(--border)';
 }
 
 async function loadAppConfig(){
@@ -653,6 +659,13 @@ async function saveSourceSite(){
     body.source_site_member_no='';
     body.source_site_username='';
     body.source_site_password='';
+  } else if(sel==='xtechnx'){
+    body.source_site_name='xtechnx.com';
+    body.source_site_search_url='';
+    body.source_site_login_url='';
+    body.source_site_member_no='';
+    body.source_site_username='';
+    body.source_site_password='';
   } else {
     const member=document.getElementById('s-src-member')?.value.trim()||'';
     const user  =document.getElementById('s-src-user')?.value.trim()||'';
@@ -666,7 +679,8 @@ async function saveSourceSite(){
   }
   try{
     await fetch(`${API}/settings/app-config`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    fb.textContent=sel==='merter'?'✓ merterelektronik.com aktif':'✓ b2bmerter.com aktif (giriş bilgileri kaydedildi)';
+    const msgs={merter:'✓ merterelektronik.com aktif',b2bmerter:'✓ b2bmerter.com aktif (giriş bilgileri kaydedildi)',xtechnx:'✓ xtechnx.com aktif — URL ile Ekle\'yi kullanın'};
+    fb.textContent=msgs[sel]||'✓ Kaydedildi';
     fb.style.color='var(--green)';
     document.getElementById('s-src-pass').value='';
     setTimeout(()=>{fb.textContent='';},3000);

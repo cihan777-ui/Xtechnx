@@ -202,7 +202,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
         <select class="fsel" id="fStatus" onchange="loadHistory()">
           <option value="">Tüm Durumlar</option>
           <option value="success">Başarılı</option>
-          <option value="success_unconfirmed">Onaysız (N11 kontrol et)</option>
+          <option value="success_unconfirmed">Gönderildi (onay bekleniyor)</option>
           <option value="error">Hatalı</option>
         </select>
         <button class="btn-sm" onclick="generateReport()">📥 Excel Rapor</button>
@@ -271,36 +271,41 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
       </div>
       <div class="sett-section">
         <div class="sett-title">🌐 Kaynak Site</div>
-        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Ürün arama için kullanılan site. <code style="font-size:11px;color:var(--accent)">{}</code> arama terimi yerine geçer. Giriş gerektirmeyen siteler için kullanıcı adı/şifre boş bırakın.</p>
-        <div class="sett-grid" style="grid-template-columns:1fr">
-          <div class="inp-wrap">
-            <label>Site Adı</label>
-            <input id="s-src-name" placeholder="merterelektronik.com">
-          </div>
-          <div class="inp-wrap" style="margin-top:8px">
-            <label>Arama URL Şablonu</label>
-            <input id="s-src-url" placeholder="https://www.merterelektronik.com/Arama?1&kelime={}">
-          </div>
-          <div class="inp-wrap" style="margin-top:8px">
-            <label>Giriş Sayfası URL (opsiyonel)</label>
-            <input id="s-src-login" placeholder="https://www.b2bmerter.com/Giris">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px">Ürün çekilecek siteyi seçin.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border:1px solid var(--border);border-radius:8px;transition:border-color .2s" id="lbl-merter">
+            <input type="radio" name="src-site-sel" value="merter" id="r-merter" style="width:16px;height:16px;accent-color:var(--accent)" onchange="onSrcSiteChange()">
+            <span style="font-weight:600">merterelektronik.com</span>
+            <span style="font-size:11px;color:var(--muted);margin-left:4px">— Barkod ile arama, giriş gerektirmez</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border:1px solid var(--border);border-radius:8px;transition:border-color .2s" id="lbl-b2bmerter">
+            <input type="radio" name="src-site-sel" value="b2bmerter" id="r-b2bmerter" style="width:16px;height:16px;accent-color:var(--accent)" onchange="onSrcSiteChange()">
+            <span style="font-weight:600">b2bmerter.com</span>
+            <span style="font-size:11px;color:var(--muted);margin-left:4px">— URL ile ürün ekleme, üye girişi gerekli</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border:1px solid var(--border);border-radius:8px;transition:border-color .2s" id="lbl-xtechnx">
+            <input type="radio" name="src-site-sel" value="xtechnx" id="r-xtechnx" style="width:16px;height:16px;accent-color:var(--accent)" onchange="onSrcSiteChange()">
+            <span style="font-weight:600">xtechnx.com</span>
+            <span style="font-size:11px;color:var(--muted);margin-left:4px">— Kendi siteniz, URL ile ürün ekleyin</span>
+          </label>
+        </div>
+        <div id="b2bmerter-fields" style="display:none">
+          <div class="sett-grid">
+            <div class="inp-wrap">
+              <label>Üye No</label>
+              <input id="s-src-member" placeholder="12401" autocomplete="off">
+            </div>
+            <div class="inp-wrap">
+              <label>Kullanıcı Adı</label>
+              <input id="s-src-user" placeholder="CİHAN" autocomplete="off">
+            </div>
+            <div class="inp-wrap">
+              <label>Şifre</label>
+              <input type="password" id="s-src-pass" autocomplete="new-password">
+            </div>
           </div>
         </div>
-        <div class="sett-grid" style="margin-top:8px">
-          <div class="inp-wrap">
-            <label>Üye No / Kullanıcı No (opsiyonel)</label>
-            <input id="s-src-member" placeholder="12401" autocomplete="off">
-          </div>
-          <div class="inp-wrap">
-            <label>Kullanıcı Adı</label>
-            <input id="s-src-user" placeholder="CİHAN" autocomplete="off">
-          </div>
-          <div class="inp-wrap">
-            <label>Şifre</label>
-            <input type="password" id="s-src-pass" autocomplete="new-password">
-          </div>
-        </div>
-        <button class="btn-save-creds" onclick="saveSourceSite()" style="margin-top:10px">Kaydet</button>
+        <button class="btn-save-creds" onclick="saveSourceSite()" style="margin-top:12px">Kaydet</button>
         <div id="src-site-fb" style="font-size:12px;margin-top:6px"></div>
       </div>
       <div class="sett-section">
@@ -511,7 +516,7 @@ async function loadHistory(){
         <tr>
           <td class="mono">${(r.uploaded_at||'').slice(0,16).replace('T',' ')}</td>
           <td>${PLAT[r.platform]?.icon||''} ${PLAT[r.platform]?.label||r.platform}</td>
-          <td>${r.status==='success'?'<span class="ok-tag">✓ Başarılı</span>':r.status==='success_unconfirmed'?`<span class="warn-tag">⚠ ${PLAT[r.platform]?.label||r.platform} Kontrol Et</span>`:'<span class="err-tag">✗ Hata</span>'}</td>
+          <td>${r.status==='success'?'<span class="ok-tag">✓ Başarılı</span>':r.status==='success_unconfirmed'?`<span class="ok-tag">✓ Gönderildi</span>`:'<span class="err-tag">✗ Hata</span>'}</td>
           <td>${esc(r.title_new||'')}</td>
           <td class="mono">${esc(r.barcode_new||'')}</td>
           <td class="mono" style="color:var(--green)">${r.price_new} TL</td>
@@ -604,19 +609,28 @@ function pollUrlJob(jobId,fb){
   },2000);
 }
 
+function onSrcSiteChange(){
+  const sel=document.querySelector('input[name="src-site-sel"]:checked')?.value;
+  document.getElementById('b2bmerter-fields').style.display=(sel==='b2bmerter')?'':'none';
+  document.getElementById('lbl-merter').style.borderColor=(sel==='merter')?'var(--accent)':'var(--border)';
+  document.getElementById('lbl-b2bmerter').style.borderColor=(sel==='b2bmerter')?'var(--accent)':'var(--border)';
+  document.getElementById('lbl-xtechnx').style.borderColor=(sel==='xtechnx')?'var(--accent)':'var(--border)';
+}
+
 async function loadAppConfig(){
   try{
     const cfg=await fetch(`${API}/settings/app-config`).then(r=>r.json());
-    const set=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val||'';};
-    set('s-price-mult', cfg.price_multiplier??2);
-    set('s-src-name',   cfg.source_site_name);
-    set('s-src-url',    cfg.source_site_search_url);
-    set('s-src-login',  cfg.source_site_login_url);
-    set('s-src-member', cfg.source_site_member_no);
-    set('s-src-user',   cfg.source_site_username);
-    // şifreyi gösterme — dolu ise placeholder ile göster
+    const setv=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val||'';};
+    setv('s-price-mult', cfg.price_multiplier??2);
+    setv('s-src-member', cfg.source_site_member_no);
+    setv('s-src-user',   cfg.source_site_username);
     const passEl=document.getElementById('s-src-pass');
     if(passEl)passEl.placeholder=cfg.source_site_password?'••••••••':'';
+    // Radyo seçimi
+    const sel=cfg.source_site_selected||'merter';
+    const r=document.getElementById('r-'+sel);
+    if(r)r.checked=true;
+    onSrcSiteChange();
   }catch(e){}
 }
 
@@ -632,22 +646,44 @@ async function savePriceMultiplier(){
 }
 
 async function saveSourceSite(){
-  const name     = document.getElementById('s-src-name')?.value.trim();
-  const url      = document.getElementById('s-src-url')?.value.trim();
-  const loginUrl = document.getElementById('s-src-login')?.value.trim()||'';
-  const member   = document.getElementById('s-src-member')?.value.trim()||'';
-  const user     = document.getElementById('s-src-user')?.value.trim()||'';
-  const pass     = document.getElementById('s-src-pass')?.value||'';
+  const sel=document.querySelector('input[name="src-site-sel"]:checked')?.value;
   const fb=document.getElementById('src-site-fb');
-  if(!name||!url){fb.textContent='✗ Site adı ve URL gerekli';fb.style.color='var(--red)';return;}
-  if(!url.includes('{}')){fb.textContent='✗ URL şablonunda {} olmalı (arama terimi için)';fb.style.color='var(--red)';return;}
-  const body={source_site_name:name,source_site_search_url:url,source_site_login_url:loginUrl,source_site_member_no:member,source_site_username:user};
-  if(pass)body.source_site_password=pass;
+  if(!sel){fb.textContent='✗ Site seçin';fb.style.color='var(--red)';return;}
+  const MERTER_URL='https://www.merterelektronik.com/Arama?1&kelime={}';
+  const B2B_URL='https://www.b2bmerter.com/Arama/Sonuc?q={}';
+  let body={source_site_selected:sel};
+  if(sel==='merter'){
+    body.source_site_name='merterelektronik.com';
+    body.source_site_search_url=MERTER_URL;
+    body.source_site_login_url='';
+    body.source_site_member_no='';
+    body.source_site_username='';
+    body.source_site_password='';
+  } else if(sel==='xtechnx'){
+    body.source_site_name='xtechnx.com';
+    body.source_site_search_url='';
+    body.source_site_login_url='';
+    body.source_site_member_no='';
+    body.source_site_username='';
+    body.source_site_password='';
+  } else {
+    const member=document.getElementById('s-src-member')?.value.trim()||'';
+    const user  =document.getElementById('s-src-user')?.value.trim()||'';
+    const pass  =document.getElementById('s-src-pass')?.value||'';
+    body.source_site_name='b2bmerter.com';
+    body.source_site_search_url=B2B_URL;
+    body.source_site_login_url='';
+    body.source_site_member_no=member;
+    body.source_site_username=user;
+    if(pass)body.source_site_password=pass;
+  }
   try{
     await fetch(`${API}/settings/app-config`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    fb.textContent=`✓ "${name}" kaydedildi${loginUrl?' (giriş aktif)':''}`;fb.style.color='var(--green)';
+    const msgs={merter:'✓ merterelektronik.com aktif',b2bmerter:'✓ b2bmerter.com aktif (giriş bilgileri kaydedildi)',xtechnx:'✓ xtechnx.com aktif — URL ile Ekle\'yi kullanın'};
+    fb.textContent=msgs[sel]||'✓ Kaydedildi';
+    fb.style.color='var(--green)';
     document.getElementById('s-src-pass').value='';
-    setTimeout(()=>{fb.textContent='';loadAppConfig();},2000);
+    setTimeout(()=>{fb.textContent='';},3000);
   }catch(e){fb.textContent='✗ Kayıt hatası';fb.style.color='var(--red)';}
 }
 
