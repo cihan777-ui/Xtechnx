@@ -205,8 +205,8 @@ def main():
         barkod = sys.argv[1].strip()
 
     # xtechnx.com URL'si → requests ile çek, Selenium gerektirmez
-    if urun_url and "xtechnx.com" in urun_url:
-        sonuc = _handle_xtechnx_url(urun_url)
+    if direct_url and "xtechnx.com" in direct_url:
+        sonuc = _handle_xtechnx_url(direct_url)
         if sonuc:
             print(json.dumps(sonuc, ensure_ascii=False))
         else:
