@@ -52,6 +52,8 @@ def _generate_unique_suffix(seed: str = "") -> str:
 
 
 def transform(product: Product) -> Product:
+    is_xtechnx_src = "xtechnx.com" in (product.source_url or "").lower()
+
     if product.barcode and product.barcode.startswith(PREFIX_BARCODE):
         suffix = product.barcode[len(PREFIX_BARCODE):]
     else:
@@ -71,9 +73,16 @@ def transform(product: Product) -> Product:
     # Başlıktan "Xtechnx" kelimesini her yerden temizle, sonra başa ekle
     stripped_title = re.sub(r'\bXtechnx\b\s*', '', product.title, flags=re.IGNORECASE).strip()
     new_title = PREFIX_TITLE + stripped_title
-    new_price   = round(product.price * get_config()["price_multiplier"], 2)
+
+    # xtechnx.com kaynağı: fiyat zaten final (çarpan uygulanmış), tekrar çarpma
+    multiplier = 1.0 if is_xtechnx_src else get_config()["price_multiplier"]
+    new_price   = round(product.price * multiplier, 2)
+
     new_barcode = PREFIX_BARCODE + suffix
     raw_sku     = (product.sku or "").strip()
+    # xtechnx.com kaynağı: scraper suffix gönderir ama "Cihan" hâlâ kalırsa temizle
+    if is_xtechnx_src and raw_sku.startswith(PREFIX_SKU):
+        raw_sku = raw_sku[len(PREFIX_SKU):]
     new_sku     = PREFIX_SKU + (raw_sku.zfill(6) if raw_sku else suffix)
 
     try:

@@ -1,5 +1,6 @@
 """
 merterelektronik.com'dan barkodla veya URL ile urun ceker, JSON cikti verir.
+xtechnx.com URL'leri Selenium olmadan requests ile islenir.
 Kullanim:
   python merter_cek.py <barkod>
   python merter_cek.py --url <urun_url>
@@ -12,6 +13,180 @@ from urllib.parse import quote
 
 _DEFAULT_ARAMA = "https://www.merterelektronik.com/Arama?1&kelime={}"
 MERTE_ARAMA = os.environ.get("XTECHNX_SEARCH_URL", _DEFAULT_ARAMA)
+
+
+def _handle_xtechnx_url(url):
+    """xtechnx.com ürün sayfasını requests ile çeker — Selenium gerektirmez."""
+    import requests
+
+    try:
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    except Exception:
+        pass
+
+    hdrs = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/121.0.0.0 Safari/537.36",
+        "Accept-Language": "tr-TR,tr;q=0.9",
+    }
+
+    try:
+        resp = requests.get(url, headers=hdrs, timeout=30, verify=False)
+        resp.raise_for_status()
+    except Exception as e:
+        sys.stderr.write(f"[xtechnx] GET hatası: {e}\n"); sys.stderr.flush()
+        return None
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    # ── Başlık ───────────────────────────────────────────────────
+    baslik = ""
+    for sel in ['h1[itemprop="name"]', "h1.product-title", "h1"]:
+        el = soup.select_one(sel)
+        if el:
+            baslik = el.get_text(strip=True)
+            break
+    if not baslik:
+        m = soup.find("meta", {"property": "og:title"})
+        if m:
+            baslik = m.get("content", "")
+
+    # ── Fiyat: JSON-LD önce, sonra HTML ──────────────────────────
+    fiyat = 0.0
+    for script in soup.find_all("script", type="application/ld+json"):
+        try:
+            data = json.loads(script.string or "")
+            if isinstance(data, list):
+                data = next((d for d in data if d.get("@type") == "Product"), None)
+            if data and data.get("@type") == "Product":
+                if not baslik:
+                    baslik = data.get("name", "")
+                offers = data.get("offers", {})
+                if isinstance(offers, list):
+                    offers = offers[0]
+                p = str(offers.get("price", "0")).replace(",", ".")
+                try:
+                    fiyat = float(re.sub(r"[^\d.]", "", p))
+                    break
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    if fiyat == 0.0:
+        for sel in ["span.price-new", "span[itemprop='price']", ".price-new", "#content .price"]:
+            el = soup.select_one(sel)
+            if el:
+                content = el.get("content") or el.get_text(strip=True)
+                val = re.sub(r"[^\d,.]", "", content).replace(".", "").replace(",", ".")
+                try:
+                    fiyat = float(val)
+                    if fiyat > 0:
+                        break
+                except Exception:
+                    pass
+
+    # ── SKU / Barkod ─────────────────────────────────────────────
+    stok_kodu = ""
+    for li in soup.select("ul.list-unstyled li, #product li, ul.product-meta li"):
+        txt = li.get_text(strip=True)
+        for prefix in ["ürün kodu:", "model:", "sku:", "stok kodu:"]:
+            if txt.lower().startswith(prefix):
+                stok_kodu = txt[len(prefix):].strip()
+                break
+        if stok_kodu:
+            break
+
+    if not stok_kodu:
+        for sel_attr in ['[itemprop="sku"]', ".product-model", ".sku"]:
+            el = soup.select_one(sel_attr)
+            if el:
+                stok_kodu = el.get_text(strip=True)
+                break
+
+    # "Cihan" prefix'i → barcode derive et, transformer için suffix gönder
+    barkod = ""
+    if stok_kodu.startswith("Cihan"):
+        barkod = "Xtechnx" + stok_kodu[5:]
+        stok_kodu = stok_kodu[5:]   # transformer "Cihan" + suffix yapacak
+
+    # ── Açıklama ─────────────────────────────────────────────────
+    aciklama = ""
+    for sel in ["#tab-description", ".product-description", "#product-description",
+                'div[id*="description"]', ".desc-container"]:
+        el = soup.select_one(sel)
+        if el:
+            aciklama = el.get_text(separator="\n", strip=True)[:3000]
+            break
+    if not aciklama:
+        for m_attr in [{"name": "description"}, {"property": "og:description"}]:
+            m = soup.find("meta", m_attr)
+            if m:
+                aciklama = m.get("content", "")
+                break
+
+    # ── Resimler ─────────────────────────────────────────────────
+    resimler = []
+    seen = set()
+
+    # OpenCart: thumbnail link'lerinin href'i büyük resim
+    for a in soup.select("ul.thumbnails a[href], a.thumbnail[href]"):
+        href = a.get("href", "")
+        if href and re.search(r'\.(jpg|jpeg|png|webp)', href, re.I) and href not in seen:
+            if not href.startswith("http"):
+                href = "https://xtechnx.com" + href
+            seen.add(href)
+            resimler.append(href)
+
+    # img src fallback
+    if not resimler:
+        for sel in ['img[itemprop="image"]', ".product-image img", "#content img"]:
+            for img in soup.select(sel):
+                src = img.get("src") or img.get("data-src") or ""
+                if src and re.search(r'\.(jpg|jpeg|png|webp)', src, re.I):
+                    if not re.search(r'/(logo|banner|icon|sprite)', src, re.I):
+                        full = src if src.startswith("http") else "https://xtechnx.com" + src
+                        if full not in seen:
+                            seen.add(full)
+                            resimler.append(full)
+
+    # og:image son çare
+    if not resimler:
+        for og in soup.find_all("meta", {"property": "og:image"}):
+            u = og.get("content", "")
+            if u and u not in seen:
+                seen.add(u)
+                resimler.append(u)
+
+    # ── Kategori ─────────────────────────────────────────────────
+    kategori = ""
+    bc = soup.select_one("#breadcrumb, nav[aria-label='breadcrumb'], ol.breadcrumb")
+    if bc:
+        items = [i.get_text(strip=True) for i in bc.find_all(["a", "li", "span"])
+                 if len(i.get_text(strip=True)) > 1]
+        if len(items) >= 2:
+            kategori = items[-2]
+
+    sys.stderr.write(f"[xtechnx] Başlık: {baslik}\n")
+    sys.stderr.write(f"[xtechnx] Fiyat: {fiyat} | SKU: {stok_kodu} | Barkod: {barkod}\n")
+    sys.stderr.write(f"[xtechnx] Resim: {len(resimler)} | Kategori: {kategori}\n")
+    sys.stderr.flush()
+
+    if not baslik:
+        sys.stderr.write("[xtechnx] Başlık bulunamadı, ürün parse edilemedi.\n")
+        sys.stderr.flush()
+        return None
+
+    return {
+        "baslik": baslik,
+        "fiyat": fiyat,
+        "aciklama": aciklama,
+        "resimler": resimler[:6],
+        "kategori": kategori,
+        "barkod": barkod,
+        "stok_kodu": stok_kodu,
+        "url": url,
+    }
 
 def main():
     if len(sys.argv) < 2:
@@ -28,6 +203,15 @@ def main():
         barkod = "URL-" + direct_url.split("/")[-1][:20].strip("-")
     else:
         barkod = sys.argv[1].strip()
+
+    # xtechnx.com URL'si → requests ile çek, Selenium gerektirmez
+    if urun_url and "xtechnx.com" in urun_url:
+        sonuc = _handle_xtechnx_url(urun_url)
+        if sonuc:
+            print(json.dumps(sonuc, ensure_ascii=False))
+        else:
+            print(json.dumps({"hata": "xtechnx.com ürün bilgisi alınamadı"}))
+        return
 
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
