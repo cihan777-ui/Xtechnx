@@ -20,7 +20,9 @@ def _resolve_category(p: Product) -> int:
         }
     except Exception:
         db_mappings = {}
-    return get_n11_category(p.category or "", db_mappings)
+    # Kategori boşsa başlıktan tahmin et
+    cat = p.category or p.title or ""
+    return get_n11_category(cat, db_mappings)
 
 
 def _extract_brand(p: Product) -> str:

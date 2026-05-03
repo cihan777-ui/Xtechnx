@@ -41,7 +41,8 @@ def _resolve_category(p: Product) -> int:
         }
     except Exception:
         db_mappings = {}
-    cat_str = get_hepsiburada_category(p.category or "", db_mappings)
+    # Kategori boşsa başlıktan tahmin et
+    cat_str = get_hepsiburada_category(p.category or p.title or "", db_mappings)
     try:
         return int(cat_str)
     except (ValueError, TypeError):

@@ -58,6 +58,9 @@ KEYWORD_MAP = {
     "aydınlatma": 1000240,
 
     # ── UYDU & ANTEN ────────────────────────────────────────
+    "uydu kumanda": 1000572,
+    "alıcı kumanda": 1000572,
+    "receiver kumanda": 1000572,
     "uydu alıcı": 1000576,
     "uydu santrali": 1000575,
     "anten santral": 1000575,
@@ -376,6 +379,9 @@ HB_KEYWORD_MAP = {
     "aydınlatma": "60002041",
 
     # ── UYDU & ANTEN ────────────────────────────────────────
+    "uydu kumanda": "60001094",
+    "alıcı kumanda": "60001094",
+    "receiver kumanda": "60001094",
     "uydu alıcı": "60000078",
     "uydu": "60000078",
     "çanak anten": "60000079",
