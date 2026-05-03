@@ -74,9 +74,7 @@ def transform(product: Product) -> Product:
     stripped_title = re.sub(r'\bXtechnx\b\s*', '', product.title, flags=re.IGNORECASE).strip()
     new_title = PREFIX_TITLE + stripped_title
 
-    # xtechnx.com kaynağı: fiyat zaten final (çarpan uygulanmış), tekrar çarpma
-    multiplier = 1.0 if is_xtechnx_src else get_config()["price_multiplier"]
-    new_price   = round(product.price * multiplier, 2)
+    new_price   = round(product.price * get_config()["price_multiplier"], 2)
 
     new_barcode = PREFIX_BARCODE + suffix
     raw_sku     = (product.sku or "").strip()
