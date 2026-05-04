@@ -648,6 +648,25 @@ def main():
         sys.stderr.write(f"Resimler: {len(resimler)}\n"); sys.stderr.flush()
         sys.stderr.write(f"Stok kodu: {stok_kodu}\n"); sys.stderr.flush()
 
+        # Doğrulama: aranan barkod, bulunan ürünle eşleşmeli
+        # URL veya stok_kodu içinde barkod görünmüyorsa yanlış ürün seçilmiş demektir
+        if not direct_url:  # Sadece barkod aramasında uygula, direkt URL'de gerek yok
+            def _norm(s): return re.sub(r'[^0-9a-z]', '', (s or '').lower())
+            bc_norm = _norm(barkod)
+            eslesti = (
+                bc_norm in _norm(urun_url) or
+                bc_norm in _norm(stok_kodu) or
+                bc_norm in _norm(baslik)
+            )
+            if not eslesti and len(bc_norm) >= 5:
+                sys.stderr.write(
+                    f"UYARI: Aranan '{barkod}' urun sayfasinda bulunamadi "
+                    f"(url={urun_url.split('/')[-1][:40]}, sku={stok_kodu}). "
+                    f"Yanlis urun olabilir.\n"
+                ); sys.stderr.flush()
+                print(json.dumps({"hata": f"Yanlis urun eslesmesi: '{barkod}' barkoduna karsilik yanlıs urun bulundu ({baslik[:50]}). Urunu URL ile ekleyin."}))
+                return
+
         sonuc = {
             "baslik": baslik,
             "fiyat": fiyat,
