@@ -100,14 +100,21 @@ class HepsiburadaUploader:
         price_id = inv_result.get("price_upload_id", "")
         stock_id = inv_result.get("stock_upload_id", "")
 
+        if price_id or stock_id:
+            msg = (
+                f"Hepsiburada'ya gönderildi ve listelendi. "
+                f"TrackingID: {tracking_id}  Fiyat: {price_id}  Stok: {stock_id}"
+            )
+        else:
+            msg = (
+                f"Hepsiburada'ya gönderildi, HB incelemesinden sonra aktif olacak. "
+                f"TrackingID: {tracking_id}"
+            )
+
         return {
-            "status": "pending",
+            "status": "success_unconfirmed",
             "tracking_id": tracking_id,
-            "message": (
-                f"Hepsiburada'ya gonderildi. "
-                f"TrackingID: {tracking_id}  "
-                f"PriceUpload: {price_id}  StockUpload: {stock_id}"
-            ),
+            "message": msg,
         }
 
     async def _create_product(self, product: Product, auth) -> dict:

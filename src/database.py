@@ -39,7 +39,15 @@ def init_db():
         platform      TEXT,
         status        TEXT,
         error_msg     TEXT,
+        platform_product_id TEXT,
+        platform_group_id   TEXT,
         uploaded_at   TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS n11_group_map (
+        sku       TEXT PRIMARY KEY,
+        group_id  INTEGER NOT NULL,
+        saved_at  TEXT
     );
 
     CREATE TABLE IF NOT EXISTS product_cache (
@@ -62,6 +70,25 @@ def init_db():
         barcode_new   TEXT PRIMARY KEY,
         barcode_orig  TEXT,
         created_at    TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS stock_map (
+        sku                TEXT PRIMARY KEY,
+        xtechnx_product_id INTEGER DEFAULT 0,
+        n11_product_id     INTEGER DEFAULT 0,
+        n11_stock_code     TEXT    DEFAULT '',
+        hb_sku             TEXT    DEFAULT '',
+        current_stock      INTEGER DEFAULT 1,
+        last_synced        TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS processed_orders (
+        order_id     TEXT NOT NULL,
+        platform     TEXT NOT NULL,
+        sku          TEXT DEFAULT '',
+        qty          INTEGER DEFAULT 1,
+        processed_at TEXT,
+        PRIMARY KEY (order_id, platform)
     );
     """)
 
@@ -240,6 +267,29 @@ def get_barcode_by_orig(barcode_orig):
     conn = get_conn()
     row = conn.execute(
         "SELECT barcode_new FROM barcode_registry WHERE barcode_orig=?", (barcode_orig,)
+    ).fetchone()
+    conn.close()
+    return row[0] if row else None
+
+
+# ── N11 Group Map ────────────────────────────────────────────
+
+def save_n11_group(sku: str, group_id: int):
+    """N11 başarılı yüklemesinde groupId'yi kaydeder."""
+    conn = get_conn()
+    conn.execute("""
+        INSERT OR REPLACE INTO n11_group_map (sku, group_id, saved_at)
+        VALUES (?, ?, ?)
+    """, (sku, group_id, datetime.now().isoformat()))
+    conn.commit()
+    conn.close()
+
+
+def get_n11_group(sku: str) -> int | None:
+    """SKU'ya karşılık kayıtlı N11 groupId'yi döner."""
+    conn = get_conn()
+    row = conn.execute(
+        "SELECT group_id FROM n11_group_map WHERE sku=?", (sku,)
     ).fetchone()
     conn.close()
     return row[0] if row else None
