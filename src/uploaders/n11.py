@@ -163,10 +163,8 @@ class N11Uploader:
                 _log.info(f"N11 task poll [{attempt+1}] hata: {ex}")
 
     async def _get_group_id(self, session: aiohttp.ClientSession, stock_code: str) -> int | None:
-        """Verilen stockCode'a sahip N11 ürününün groupId'sini döner. Önce DB'ye bakar."""
-        import logging
-        _log = logging.getLogger(__name__)
-        # 1) Yerel DB'den bak
+        """Verilen stockCode'a sahip N11 ürününün groupId'sini döner. Önce DB'ye, sonra N11 API'ye bakar."""
+        # 1) Yerel DB
         try:
             import database as _db
             gid = _db.get_n11_group(stock_code)
@@ -175,7 +173,34 @@ class N11Uploader:
                 return gid
         except Exception:
             pass
-        _log.info(f"N11 groupId DB'de yok ({stock_code}) — API deneniyor")
+
+        # 2) N11 product page-query API
+        _log.info(f"N11 groupId DB'de yok ({stock_code}) — N11 API sorgulanıyor")
+        try:
+            import json as _json
+            url = f"{PRODUCT_QUERY_URL}?stockCode={stock_code}&page=0&size=1"
+            async with session.get(url, headers=self.headers,
+                                   timeout=aiohttp.ClientTimeout(total=15)) as r:
+                if r.status == 200:
+                    raw = await r.text()
+                    d = _json.loads(raw) if raw else {}
+                    content = (d.get("content") or
+                               (d.get("skus") or {}).get("content") or
+                               d.get("data") or [])
+                    for item in content:
+                        sku = item.get("sku") or item
+                        gid = sku.get("groupId") or item.get("groupId")
+                        if gid:
+                            gid = int(gid)
+                            _log.info(f"N11 groupId API'den bulundu: {gid} ({stock_code})")
+                            try:
+                                _db.save_n11_group(stock_code, gid)
+                            except Exception:
+                                pass
+                            return gid
+                _log.info(f"N11 groupId API yanıtı: HTTP {r.status}, bulunamadı ({stock_code})")
+        except Exception as ex:
+            _log.info(f"N11 groupId API hatası: {ex}")
         return None
 
     async def upload(self, product: Product) -> dict:
@@ -203,11 +228,14 @@ class N11Uploader:
             # ya da task eski/takılı kaldı → mevcut ürünün groupId'sini bul, varyant olarak gönder
             if result and result.get("status") == "error":
                 err_msg = result.get("message", "")
+                # "...katalog id Cihan682364 mağaza ürün kodu ve Cihan682364 seller stock kodu..."
+                # → conflicting ürünün stockCode'unu çek
                 mc = re.search(r'(\w+)\s+seller stock kodu', err_msg)
                 existing_stock_code = mc.group(1) if mc else None
-                # Stuck task durumunda kendi SKU'muzun stok kodu zaten N11'de olabilir
+                # STUCK_TASK: task takılı kaldı, kendi SKU'muz zaten N11'de olabilir
                 if not existing_stock_code and "N11_STUCK_TASK" in err_msg:
                     existing_stock_code = payload["payload"]["skus"][0].get("stockCode", "")
+                    _log.info(f"N11 STUCK_TASK: kendi SKU'su ile varyant aranıyor ({existing_stock_code})")
                 if existing_stock_code:
                     group_id = await self._get_group_id(session, existing_stock_code)
                     if group_id:
