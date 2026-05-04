@@ -1,7 +1,10 @@
+import logging
 import aiohttp
 from models.product import Product
 from config.settings import settings
 from category_mapper import get_n11_category
+
+_log = logging.getLogger(__name__)
 
 CREATE_URL      = "https://api.n11.com/ms/product/tasks/product-create"
 TASK_QUERY_URL  = "https://api.n11.com/ms/product/task-details/page-query"
@@ -106,9 +109,8 @@ class N11Uploader:
 
     async def _poll_task(self, session: aiohttp.ClientSession, task_id: str) -> dict | None:
         """Task sonucunu N11'den sorgular. Henüz bitmemişse None döner."""
-        import asyncio, logging, json as _json
+        import asyncio, json as _json
         from datetime import datetime
-        _log = logging.getLogger(__name__)
         for attempt in range(24):  # 24 × 10s = 4 dakika
             await asyncio.sleep(10)
             try:
@@ -265,8 +267,7 @@ class N11Uploader:
                 if existing_stock_code:
                     group_id = await self._get_group_id(session, existing_stock_code)
                     if group_id:
-                        import logging
-                        logging.getLogger(__name__).info(
+                        _log.info(
                             f"N11 varyant denemesi: groupId={group_id}, stockCode={existing_stock_code}"
                         )
                         # groupId ekleyerek yeniden gönder
