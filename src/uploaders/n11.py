@@ -51,6 +51,21 @@ def _numeric_barcode(p: Product) -> str:
     return _ean13(base12)
 
 
+def _n11_title(p: Product) -> str:
+    """SKU'yu başlığa gömer → aynı model farklı SKU'lar N11'de ayrı katalog açar."""
+    sku = p.sku or ""
+    title = p.title or ""
+    # "Xtechnx Philips Cihan625906 1.5 Metre ..." formatı
+    # Başlık zaten "Xtechnx " ile başlıyor, marka sonrasına SKU ekle
+    if sku and sku not in title:
+        prefix = "Xtechnx "
+        if title.startswith(prefix):
+            rest = title[len(prefix):]
+            return f"{prefix}{sku} {rest}"
+        return f"{sku} {title}"
+    return title
+
+
 def _build_payload(p: Product) -> dict:
     cat_id = _resolve_category(p)
     images = [{"url": img, "order": i + 1} for i, img in enumerate(p.images[:8]) if img]
@@ -61,7 +76,7 @@ def _build_payload(p: Product) -> dict:
         "payload": {
             "integrator": "Xtechnx",
             "skus": [{
-                "title": p.title[:255],
+                "title": _n11_title(p)[:255],
                 "description": p.description[:30000],
                 "categoryId": cat_id,
                 "currencyType": "TL",
@@ -228,6 +243,17 @@ class N11Uploader:
             # ya da task eski/takılı kaldı → mevcut ürünün groupId'sini bul, varyant olarak gönder
             if result and result.get("status") == "error":
                 err_msg = result.get("message", "")
+
+                # "Cihan625906 seller stock code tarafınızdan kullanılmaktadır"
+                # → ürün zaten bizim N11 mağazamızda var → success say
+                if "tarafınızdan kullanılmaktadır" in err_msg:
+                    _log.info(f"N11: ürün zaten mağazada mevcut (stock code çakışması) → success_already_exists")
+                    return {
+                        "status": "success",
+                        "task_id": task_id,
+                        "message": "N11'de zaten mevcut (önceki oturumda yüklendi). Güncelleme gerekmez.",
+                    }
+
                 # "...katalog id Cihan682364 mağaza ürün kodu ve Cihan682364 seller stock kodu..."
                 # → conflicting ürünün stockCode'unu çek
                 mc = re.search(r'(\w+)\s+seller stock kodu', err_msg)
