@@ -646,6 +646,220 @@ def get_hepsiburada_category(source_category: str, db_mapping: dict = None) -> s
     return DEFAULT_HB_CATEGORY
 
 
+# ══════════════════════════════════════════════════════════════════════════════
+# TRENDYOL KATEGORİ HARİTASI
+# ID'ler Trendyol kategori ağacından alınmıştır. IP onayı sonrası
+# /product-categories endpoint'i ile doğrulanmalıdır.
+# ══════════════════════════════════════════════════════════════════════════════
+
+TY_KEYWORD_MAP = {
+
+    # ── TV & GÖRÜNTÜ ────────────────────────────────────────
+    "led tv":              399,   # TV > LED TV
+    "lcd tv":              399,
+    "oled tv":             399,
+    "televizyon":          399,
+    "tv panel":            2356,  # TV Yedek Parça
+    "t-con board":         2356,
+    "lcd invertör":        2356,
+    "tv tamir":            2356,
+    "tv yedek":            2356,
+    "tv kumanda":          385,   # Uzaktan Kumanda
+    "uzaktan kumanda":     385,
+    "uydu kumanda":        385,
+    "alıcı kumanda":       385,
+    "tv askı":             2357,  # TV Aksesuarları
+    "tv aksesuarı":        2357,
+
+    # ── UYDU & ANTEN ────────────────────────────────────────
+    "uydu alıcı":          401,   # Uydu Alıcı
+    "uydu":                401,
+    "çanak anten":         402,   # Anten
+    "lnb":                 402,
+    "anten":               402,
+
+    # ── SES SİSTEMLERİ ──────────────────────────────────────
+    "soundbar":            404,   # Soundbar
+    "ev sinema":           405,   # Ev Sinema Sistemi
+    "amfi":                406,   # Amfi & Receiver
+    "receiver":            406,
+    "hoparlör":            407,   # Hoparlör
+    "subwoofer":           407,
+    "kulaklık":            408,   # Kulaklık
+    "mikrofonlu kulaklık": 408,
+    "mikrofon":            409,   # Mikrofon
+    "bluetooth hoparlör":  407,
+
+    # ── KABLO & ADAPTÖR ─────────────────────────────────────
+    "hdmi":                3000,  # HDMI Kablo
+    "görüntü kablo":       3000,
+    "koaksiyel":           3001,  # Koaksiyel Kablo
+    "anten kablo":         3001,
+    "ethernet kablo":      3002,  # Ethernet & Ağ Kablosu
+    "network kablo":       3002,
+    "cat5":                3002,
+    "cat6":                3002,
+    "cat7":                3002,
+    "lan kablo":           3002,
+    "usb kablo":           3003,  # USB Kablo & Adaptör
+    "type-c":              3003,
+    "şarj kablosu":        3003,
+    "adaptör":             3004,  # Adaptör & Çevirici
+    "çevirici":            3004,
+    "dvi":                 3004,
+    "vga":                 3004,
+    "displayport":         3004,
+
+    # ── AĞ ÜRÜNLERİ ─────────────────────────────────────────
+    "modem":               3005,  # Modem & Router
+    "router":              3005,
+    "wifi":                3005,
+    "access point":        3006,  # Access Point
+    "switch":              3007,  # Network Switch
+    "ethernet":            3008,  # Ağ Kartı & Aksesuar
+    "powerline":           3008,
+    "wi-fi adaptör":       3008,
+
+    # ── BİLGİSAYAR SOĞUTMA ──────────────────────────────────
+    "bilgisayar soğutma":  1125,  # Bilgisayar > Soğutma
+    "pc fan":              1125,
+    "dc fan":              1125,
+    "kasa fanı":           1125,
+    "soğutucu fan":        1125,
+    "cpu soğutucu":        1125,
+
+    # ── TELEFON AKSESUARLARı ────────────────────────────────
+    "telefon kılıf":       411,
+    "kılıf":               411,
+    "ekran koruyucu":      412,
+    "powerbank":           413,
+    "şarj cihazı":         414,
+    "kablosuz şarj":       414,
+    "hafıza kartı":        415,
+    "bluetooth kulaklık":  408,
+
+    # ── AYDINLATMA ──────────────────────────────────────────
+    "led ampul":           2354,  # Ampul
+    "ampul":               2354,
+    "led floresan":        2355,  # Floresan & Tüp Led
+    "floresan":            2355,
+    "led projektör":       2353,  # Projektör
+    "led spot":            2353,
+    "spot lamba":          2353,
+    "şerit led":           2352,  # Şerit Led
+    "neon şerit":          2352,
+    "solar":               2358,  # Solar Aydınlatma
+    "güneş enerjili":      2358,
+    "el feneri":           2351,  # El Feneri
+    "şarjlı lamba":        2351,
+    "cob led":             2351,
+    "aydınlatma":          2350,  # Aydınlatma Genel
+
+    # ── GÜVENLİK ────────────────────────────────────────────
+    "güvenlik kamera":     416,   # Güvenlik Kamerası
+    "ip kamera":           416,
+    "dvr":                 417,   # DVR & NVR
+    "nvr":                 417,
+    "alarm":               418,   # Alarm Sistemi
+
+    # ── ELEKTRİK ────────────────────────────────────────────
+    "şarj adaptör":        419,   # Şarj & Adaptör
+    "güç adaptörü":        419,
+    "akü şarj":            420,   # Akü Şarj Cihazı
+    "akü":                 421,   # Akü
+    "pil":                 422,   # Pil
+    "ups":                 423,   # UPS
+    "invertör":            424,   # İnvertör
+    "solar panel":         425,   # Güneş Paneli
+    "regülatör":           426,   # Regülatör
+    "priz":                427,   # Priz & Çoklu Priz
+    "çoklu priz":          427,
+
+    # ── OTO ELEKTRONİK ──────────────────────────────────────
+    "oto teyp":            428,   # Oto Teyp
+    "araç şarj":           429,   # Araç Şarj Cihazı
+    "oto hoparlör":        430,   # Oto Hoparlör
+    "araç kamera":         431,   # Araç İçi Kamera
+
+    # ── KİŞİSEL BAKIM ───────────────────────────────────────
+    "saç kurutma":         432,
+    "tıraş":               433,
+    "epilasyon":           434,
+
+    # ── EV ALETLERİ ─────────────────────────────────────────
+    "robot süpürge":       435,
+    "süpürge":             436,
+    "blender":             437,
+    "kettle":              438,
+    "su ısıtıcı":          438,
+    "ütü":                 439,
+}
+
+DEFAULT_TY_CATEGORY = 3008   # Bilgisayar > Ağ Ürünleri (güvenilir fallback)
+
+TY_CATEGORY_LABELS = {
+    399:  "TV > Televizyon",
+    385:  "TV > Uzaktan Kumanda",
+    2356: "TV > Yedek Parça",
+    2357: "TV > Aksesuar",
+    401:  "Uydu > Uydu Alıcı",
+    402:  "Uydu > Anten",
+    404:  "Ses > Soundbar",
+    407:  "Ses > Hoparlör",
+    408:  "Ses > Kulaklık",
+    3000: "Kablo > HDMI",
+    3001: "Kablo > Koaksiyel",
+    3002: "Kablo > Ethernet",
+    3003: "Kablo > USB",
+    3004: "Kablo > Adaptör",
+    3005: "Ağ > Modem & Router",
+    3006: "Ağ > Access Point",
+    3007: "Ağ > Switch",
+    3008: "Ağ > Aksesuar",
+    1125: "Bilgisayar > Soğutma",
+    411:  "Telefon > Kılıf",
+    413:  "Telefon > Powerbank",
+    414:  "Telefon > Şarj",
+    2350: "Aydınlatma > Genel",
+    2351: "Aydınlatma > El Feneri",
+    2352: "Aydınlatma > Şerit Led",
+    2353: "Aydınlatma > Spot",
+    2354: "Aydınlatma > Ampul",
+    416:  "Güvenlik > Kamera",
+    419:  "Elektrik > Şarj & Adaptör",
+    423:  "Bilgisayar > UPS",
+    427:  "Elektrik > Priz",
+}
+
+
+def get_ty_category_label(cat_id: int) -> str:
+    return TY_CATEGORY_LABELS.get(cat_id, f"#{cat_id}")
+
+
+def get_trendyol_category(source_category: str, db_mapping: dict = None) -> int:
+    if db_mapping:
+        normalized = source_category.strip().lower()
+        for db_key, db_id in db_mapping.items():
+            if db_key.strip().lower() == normalized:
+                ty_id = db_id if isinstance(db_id, int) else None
+                if ty_id:
+                    logger.info("TY Kategori DB mapping: '%s' → %s", source_category, ty_id)
+                    return ty_id
+
+    lower = source_category.strip().lower()
+    for keyword, cat_id in TY_KEYWORD_MAP.items():
+        if keyword in lower:
+            logger.info("TY Kategori keyword eşleşti: '%s' → ID %d", source_category, cat_id)
+            return cat_id
+
+    logger.warning(
+        "TY KATEGORİ EŞLEŞMEDİ: '%s' → varsayılan ID %d. "
+        "Trendyol category API ile doğru ID'yi bulun.",
+        source_category, DEFAULT_TY_CATEGORY
+    )
+    return DEFAULT_TY_CATEGORY
+
+
 def get_n11_category(source_category: str, db_mapping: dict = None) -> int:
     """
     source_category: Merter'den gelen kategori adı

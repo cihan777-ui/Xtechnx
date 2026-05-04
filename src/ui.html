@@ -259,6 +259,8 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
           <div></div>
           <div class="inp-wrap"><label>N11 Kategori ID</label><input type="number" id="cm-n11" placeholder="ör: 1000616"></div>
           <div class="inp-wrap"><label>HB Kategori ID</label><input id="cm-hb" placeholder="ör: 60002048"></div>
+          <div class="inp-wrap"><label>🟠 Trendyol Kategori ID</label><input type="number" id="cm-ty" placeholder="ör: 3002"></div>
+          <div></div>
         </div>
         <button class="btn-save-creds" onclick="saveMapping()">Kaydet</button>
         <div id="cm-fb" style="font-size:12px;margin-top:6px"></div>
@@ -502,6 +504,7 @@ function renderPending(){
             ${item.category?`<div class="tag"><span class="lbl">Kategori</span><span>${esc(item.category)}</span></div>`:''}
             <div class="tag${item.n11_is_default?' warn':''}" title="${esc(item.n11_category_label)}"><span class="lbl">N11</span><span>${item.n11_category_id}${item.n11_is_default?' ⚠':''}</span></div>
             <div class="tag${item.hb_is_default?' warn':''}" title="${esc(item.hb_category_label)}"><span class="lbl">HB</span><span>${item.hb_category_id}${item.hb_is_default?' ⚠':''}</span></div>
+            ${item.ty_category_id?`<div class="tag${item.ty_is_default?' warn':''}" title="${esc(item.ty_category_label||'')}"><span class="lbl">TY</span><span>${item.ty_category_id}${item.ty_is_default?' ⚠':''}</span></div>`:''}
           </div>
           ${hasWarn?`<button class="btn-edit-cat" onclick="toggleCatEdit('${item.item_id}')">✎ Kategori Düzelt</button>`:''}
         </div>
@@ -511,9 +514,10 @@ function renderPending(){
         <div class="cat-row">
           <input class="cat-input" id="ce-n11-${item.item_id}" type="number" placeholder="N11 ID..." value="${item.n11_category_id}">
           <input class="cat-input" id="ce-hb-${item.item_id}" placeholder="HB ID..." value="${item.hb_category_id}">
+          <input class="cat-input" id="ce-ty-${item.item_id}" type="number" placeholder="TY ID..." value="${item.ty_category_id||''}">
           <button class="btn-cat-save" onclick="saveItemCat('${item.item_id}','${esc(item.category||'')}')">Kaydet</button>
         </div>
-        <div style="font-size:10px;color:var(--muted);margin-top:6px">N11: ${esc(item.n11_category_label)} &nbsp;|&nbsp; HB: ${esc(item.hb_category_label)}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px">N11: ${esc(item.n11_category_label)} &nbsp;|&nbsp; HB: ${esc(item.hb_category_label)}${item.ty_category_label?' &nbsp;|&nbsp; TY: '+esc(item.ty_category_label):''}</div>
       </div>
       <div class="diff">
         <div><div class="dl">Başlık</div><div class="dold">${esc(p.original.title)}</div></div>
@@ -777,8 +781,9 @@ function toggleCatEdit(id){
 async function saveItemCat(id,sourceCat){
   const n11=parseInt(document.getElementById(`ce-n11-${id}`)?.value)||0;
   const hb=document.getElementById(`ce-hb-${id}`)?.value.trim()||'';
+  const ty=parseInt(document.getElementById(`ce-ty-${id}`)?.value)||0;
   try{
-    await fetch(`${API}/pending/${id}/set-category`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source_category:sourceCat,n11_id:n11,hb_id:hb})});
+    await fetch(`${API}/pending/${id}/set-category`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source_category:sourceCat,n11_id:n11,hb_id:hb,ty_id:ty})});
     toast('✓ Kategori kaydedildi — DB\'ye de eklendi','ok');
     document.getElementById(`ce-${id}`).style.display='none';
     loadPending();
@@ -793,11 +798,12 @@ async function loadCatMappings(){
     if(!el)return;
     if(!maps.length){el.innerHTML='<div class="no-data" style="padding:20px;text-align:center;color:var(--muted)">Kayıtlı eşleştirme yok.<br>Onay ekranında "Kategori Düzelt" kullandığınızda buraya otomatik eklenir.</div>';return;}
     el.innerHTML=`<table class="hist-table"><thead><tr>
-      <th>Kaynak Kategori</th><th>N11 ID</th><th>HB ID</th><th>Güncellendi</th><th></th>
+      <th>Kaynak Kategori</th><th>N11 ID</th><th>HB ID</th><th>🟠 TY ID</th><th>Güncellendi</th><th></th>
     </tr></thead><tbody>${maps.map(m=>`<tr>
       <td>${esc(m.source_category)}</td>
       <td class="mono">${m.n11_id||'—'}</td>
       <td class="mono">${m.hepsiburada_id||'—'}</td>
+      <td class="mono">${m.trendyol_id||'—'}</td>
       <td class="mono">${(m.updated_at||'').slice(0,16).replace('T',' ')}</td>
       <td><button class="btn-sm btn-danger" onclick="deleteCatMap('${esc(m.source_category)}')">Sil</button></td>
     </tr>`).join('')}</tbody></table>`;
@@ -840,9 +846,10 @@ async function saveMapping(){
   const src=document.getElementById('cm-source')?.value.trim();
   const n11=parseInt(document.getElementById('cm-n11')?.value)||0;
   const hb=document.getElementById('cm-hb')?.value.trim()||'';
+  const ty=parseInt(document.getElementById('cm-ty')?.value)||0;
   const fb=document.getElementById('cm-fb');
   if(!src){fb.textContent='✗ Kaynak kategori boş!';fb.style.color='var(--red)';return;}
-  await fetch(`${API}/categories`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source_category:src,n11_id:n11,hepsiburada_id:hb,trendyol_id:0})});
+  await fetch(`${API}/categories`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source_category:src,n11_id:n11,hepsiburada_id:hb,trendyol_id:ty})});
   fb.textContent='✓ Kaydedildi';fb.style.color='var(--green)';
   setTimeout(()=>{fb.textContent='';},3000);
   loadCatMappings();

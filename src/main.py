@@ -28,7 +28,7 @@ from uploaders.xtechnx_site_api import XtechnxSiteApiUploader
 
 db.init_db()
 
-app = FastAPI(title="Xtechnx Product Sync", version="4.2.0", default_response_class=ORJSONResponse)
+app = FastAPI(title="Xtechnx Product Sync", version="5.0.0", default_response_class=ORJSONResponse)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 jobs: dict = {}
@@ -204,28 +204,31 @@ async def get_job(job_id: str):
 @app.get("/pending")
 async def get_pending():
     from category_mapper import (
-        get_n11_category, get_hepsiburada_category,
-        get_n11_category_label, get_hb_category_label,
-        DEFAULT_N11_CATEGORY, DEFAULT_HB_CATEGORY,
+        get_n11_category, get_hepsiburada_category, get_trendyol_category,
+        get_n11_category_label, get_hb_category_label, get_ty_category_label,
+        DEFAULT_N11_CATEGORY, DEFAULT_HB_CATEGORY, DEFAULT_TY_CATEGORY,
     )
     try:
         db_maps = db.get_category_mappings()
         n11_db = {m["source_category"]: m["n11_id"] for m in db_maps if m.get("n11_id")}
         hb_db  = {m["source_category"]: m["hepsiburada_id"] for m in db_maps if m.get("hepsiburada_id")}
+        ty_db  = {m["source_category"]: m["trendyol_id"] for m in db_maps if m.get("trendyol_id")}
     except Exception:
-        n11_db, hb_db = {}, {}
+        n11_db, hb_db, ty_db = {}, {}, {}
 
     items = []
     for item_id, item in pending_approval.items():
         cat = item["original"].category or ""
         n11_id = get_n11_category(cat, n11_db)
         hb_id  = get_hepsiburada_category(cat, hb_db)
-        # Eğer transformed ürünün attributes'ında manuel override varsa onu kullan
+        ty_id  = get_trendyol_category(cat, ty_db)
         manual = item["transformed"].attributes.get("_category_ids", {})
         if manual.get("n11"):
             n11_id = manual["n11"]
         if manual.get("hepsiburada"):
             hb_id = str(manual["hepsiburada"])
+        if manual.get("trendyol"):
+            ty_id = manual["trendyol"]
         items.append({
             "item_id": item_id,
             "barcode": item["original_barcode"],
@@ -236,8 +239,11 @@ async def get_pending():
             "n11_category_label": get_n11_category_label(n11_id),
             "hb_category_id": hb_id,
             "hb_category_label": get_hb_category_label(hb_id),
+            "ty_category_id": ty_id,
+            "ty_category_label": get_ty_category_label(ty_id),
             "n11_is_default": n11_id == DEFAULT_N11_CATEGORY,
             "hb_is_default": hb_id == DEFAULT_HB_CATEGORY,
+            "ty_is_default": ty_id == DEFAULT_TY_CATEGORY,
         })
     return {"count": len(items), "items": items}
 
@@ -372,6 +378,7 @@ class ItemCategoryIn(BaseModel):
     source_category: str = ""
     n11_id: int = 0
     hb_id: str = ""
+    ty_id: int = 0
 
 @app.post("/pending/{item_id}/set-category")
 async def set_item_category(item_id: str, body: ItemCategoryIn):
@@ -379,7 +386,6 @@ async def set_item_category(item_id: str, body: ItemCategoryIn):
     if item_id not in pending_approval:
         raise HTTPException(404, "Ürün bulunamadı")
 
-    # DB'ye kaydet — aynı source_category'den gelecek ürünler için
     src = body.source_category or pending_approval[item_id]["original"].category or ""
     if src:
         existing = db.get_category_mappings()
@@ -387,12 +393,11 @@ async def set_item_category(item_id: str, body: ItemCategoryIn):
         old = existing_map.get(src, {})
         db.upsert_category_mapping(
             src,
-            old.get("trendyol_id", 0),
+            body.ty_id if body.ty_id else old.get("trendyol_id", 0),
             body.hb_id if body.hb_id else old.get("hepsiburada_id", ""),
             body.n11_id if body.n11_id else old.get("n11_id", 0),
         )
 
-    # In-memory ürünü güncelle — şu an onay bekleyen bu item için
     from models.product import Product
     transformed = pending_approval[item_id]["transformed"]
     attrs = {**transformed.attributes}
@@ -401,12 +406,14 @@ async def set_item_category(item_id: str, body: ItemCategoryIn):
         cat_ids["n11"] = body.n11_id
     if body.hb_id:
         cat_ids["hepsiburada"] = body.hb_id
+    if body.ty_id:
+        cat_ids["trendyol"] = body.ty_id
     attrs["_category_ids"] = cat_ids
     data = transformed.model_dump()
     data["attributes"] = attrs
     pending_approval[item_id]["transformed"] = Product(**data)
 
-    return {"status": "saved", "n11_id": body.n11_id, "hb_id": body.hb_id}
+    return {"status": "saved", "n11_id": body.n11_id, "hb_id": body.hb_id, "ty_id": body.ty_id}
 
 @app.get("/hepsiburada-categories")
 async def hepsiburada_categories(search: str = ""):
