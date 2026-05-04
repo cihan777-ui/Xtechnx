@@ -38,14 +38,15 @@ def _ean13(base: str) -> str:
 
 
 def _numeric_barcode(p: Product) -> str:
-    """Ürüne özgü geçerli EAN-13 barkod üretir."""
+    """Ürüne özgü geçerli EAN-13 barkod üretir.
+    GS1 dahili kullanım aralığı (2xx) — N11 kataloğundaki gerçek ürünlerle çakışmaz."""
     raw = p.barcode or ""
     digits = "".join(c for c in raw if c.isdigit())
-    if len(digits) >= 12:
-        base12 = digits[:12]
+    # "2" + 11 hane → 12 hane base, her zaman "2" ile başlar
+    if len(digits) >= 11:
+        base12 = "2" + digits[:11]
     else:
-        # "Xtechnx406837" → "406837" → sola sıfır ekle → "000000406837"
-        base12 = digits.zfill(12)
+        base12 = "2" + digits.zfill(11)
     return _ean13(base12)
 
 
