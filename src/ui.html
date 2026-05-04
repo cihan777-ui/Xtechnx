@@ -133,6 +133,20 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
 .toast.show{transform:translateY(0);opacity:1}
 .toast.ok{border-color:var(--green);color:var(--green)}
 .toast.err{border-color:var(--red);color:var(--red)}
+.tag.warn{border-color:var(--yellow)!important;color:var(--yellow)!important}
+.cat-edit{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:0 14px 10px}
+.cat-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cat-input{background:var(--surf);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px;width:140px;outline:none;transition:border-color .15s}
+.cat-input:focus{border-color:var(--accent)}
+.btn-cat-save{background:var(--accent);border:none;color:#fff;font-family:var(--font);font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;cursor:pointer}
+.btn-edit-cat{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font);font-size:10px;padding:3px 8px;border-radius:5px;cursor:pointer;margin-left:2px}
+.btn-edit-cat:hover{border-color:var(--yellow);color:var(--yellow)}
+.cat-search-inp{flex:1;background:var(--surf2);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:7px 11px;border-radius:7px;outline:none}
+.cat-search-inp:focus{border-color:var(--accent)}
+.cat-result-item{padding:5px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border2);font-size:11px;gap:8px}
+.cat-result-item span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.cat-id-btn{font-family:var(--mono);font-size:11px;color:var(--accent);cursor:pointer;background:var(--surf2);border:1px solid var(--border);padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.cat-id-btn:hover{background:rgba(124,92,252,.15)}
 </style>
 </head>
 <body>
@@ -179,6 +193,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
     <div class="tab active" onclick="sw('pending')" id="t-pending">Onay Bekleyen <span class="cnt" id="cPending">0</span></div>
     <div class="tab" onclick="sw('history')" id="t-history">Geçmiş</div>
     <div class="tab" onclick="sw('stats')" id="t-stats">İstatistik</div>
+    <div class="tab" onclick="sw('categories')" id="t-categories">🗂 Kategoriler</div>
     <div class="tab" onclick="sw('settings')" id="t-settings">⚙ Ayarlar</div>
   </div>
   <div class="tcontent">
@@ -215,6 +230,47 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
       <div class="stats-grid" id="statsGrid"></div>
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Platform Detayı</div>
       <div class="plat-stats" id="platStats"></div>
+    </div>
+
+    <div class="tpane" id="p-categories">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div>
+          <div class="sett-title">🔵 N11 Kategori Ara</div>
+          <div style="display:flex;gap:6px;margin-bottom:8px">
+            <input class="cat-search-inp" id="n11CatSearch" placeholder="ör: aydınlatma, kablo..." onkeydown="if(event.key==='Enter')searchN11Cat()">
+            <button class="btn-sm" onclick="searchN11Cat()">Ara</button>
+          </div>
+          <div id="n11CatResults" style="max-height:220px;overflow-y:auto"></div>
+        </div>
+        <div>
+          <div class="sett-title">🟡 HB Kategori Ara</div>
+          <div style="display:flex;gap:6px;margin-bottom:8px">
+            <input class="cat-search-inp" id="hbCatSearch" placeholder="ör: aydınlatma, hoparlör..." onkeydown="if(event.key==='Enter')searchHBCat()">
+            <button class="btn-sm" onclick="searchHBCat()">Ara</button>
+          </div>
+          <div id="hbCatResults" style="max-height:220px;overflow-y:auto"></div>
+        </div>
+      </div>
+      <div class="sett-section">
+        <div class="sett-title">➕ Manuel Eşleştirme Ekle / Güncelle</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px">Kaynak site kategori adı tam olarak girilmeli (büyük/küçük harf duyarsız). N11 veya HB ID'yi yukarıdan arayıp tıklayarak otomatik doldurun.</p>
+        <div class="sett-grid">
+          <div class="inp-wrap"><label>Kaynak Kategori</label><input id="cm-source" placeholder="ör: Aydınlatma Diğer"></div>
+          <div></div>
+          <div class="inp-wrap"><label>N11 Kategori ID</label><input type="number" id="cm-n11" placeholder="ör: 1000616"></div>
+          <div class="inp-wrap"><label>HB Kategori ID</label><input id="cm-hb" placeholder="ör: 60002048"></div>
+        </div>
+        <button class="btn-save-creds" onclick="saveMapping()">Kaydet</button>
+        <div id="cm-fb" style="font-size:12px;margin-top:6px"></div>
+      </div>
+      <div class="sett-section">
+        <div class="sett-title" style="display:flex;justify-content:space-between;align-items:center">
+          <span>📋 Kayıtlı Eşleştirmeler</span>
+          <button class="btn-sm" onclick="loadCatMappings()">↻ Yenile</button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:6px 0 12px">Onay ekranında "Kategori Düzelt" kullandığınızda buraya otomatik eklenir.</p>
+        <div id="catMappings"><div class="no-data">Yükleniyor...</div></div>
+      </div>
     </div>
 
     <div class="tpane" id="p-settings">
@@ -342,6 +398,7 @@ function sw(name){
   document.getElementById('p-'+name).classList.add('active');
   if(name==='history')loadHistory();
   if(name==='stats')loadStats();
+  if(name==='categories')loadCatMappings();
 }
 
 async function addBC(){
@@ -432,6 +489,7 @@ function renderPending(){
   el.innerHTML=pending.map(item=>{
     const p=item.preview,img=item.images?.[0];
     const sel=platSelections[item.item_id]||{};
+    const hasWarn=item.n11_is_default||item.hb_is_default;
     return `<div class="pcard" id="card-${item.item_id}">
       <div class="card-top">
         ${img?`<img class="card-img" src="${esc(img)}" onerror="this.style.display='none'">`:'<div class="card-no-img">📦</div>'}
@@ -441,8 +499,21 @@ function renderPending(){
             <div class="tag price"><span class="lbl">Fiyat</span><span class="val">${p.original.price} → <b>${p.transformed.price} TL</b></span></div>
             <div class="tag"><span class="lbl">Barkod</span><span>${p.transformed.barcode}</span></div>
             <div class="tag"><span class="lbl">SKU</span><span>${p.transformed.sku}</span></div>
+            ${item.category?`<div class="tag"><span class="lbl">Kategori</span><span>${esc(item.category)}</span></div>`:''}
+            <div class="tag${item.n11_is_default?' warn':''}" title="${esc(item.n11_category_label)}"><span class="lbl">N11</span><span>${item.n11_category_id}${item.n11_is_default?' ⚠':''}</span></div>
+            <div class="tag${item.hb_is_default?' warn':''}" title="${esc(item.hb_category_label)}"><span class="lbl">HB</span><span>${item.hb_category_id}${item.hb_is_default?' ⚠':''}</span></div>
           </div>
+          ${hasWarn?`<button class="btn-edit-cat" onclick="toggleCatEdit('${item.item_id}')">✎ Kategori Düzelt</button>`:''}
         </div>
+      </div>
+      <div class="cat-edit" id="ce-${item.item_id}" style="display:none">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Override: <span style="color:var(--yellow)">${esc(item.category||'(kategori yok)')}</span></div>
+        <div class="cat-row">
+          <input class="cat-input" id="ce-n11-${item.item_id}" type="number" placeholder="N11 ID..." value="${item.n11_category_id}">
+          <input class="cat-input" id="ce-hb-${item.item_id}" placeholder="HB ID..." value="${item.hb_category_id}">
+          <button class="btn-cat-save" onclick="saveItemCat('${item.item_id}','${esc(item.category||'')}')">Kaydet</button>
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px">N11: ${esc(item.n11_category_label)} &nbsp;|&nbsp; HB: ${esc(item.hb_category_label)}</div>
       </div>
       <div class="diff">
         <div><div class="dl">Başlık</div><div class="dold">${esc(p.original.title)}</div></div>
@@ -695,6 +766,92 @@ async function testHB(){
     if(d.status==='ok'){el.textContent='✓ Bağlantı başarılı';el.style.color='var(--green)';}
     else{el.textContent=`✗ ${d.message||d.status}`;el.style.color='var(--red)';}
   }catch(e){el.textContent='✗ Sunucuya ulaşılamadı';el.style.color='var(--red)';}
+}
+
+// ── KATEGORİ YÖNETİMİ ──────────────────────────────────────
+function toggleCatEdit(id){
+  const el=document.getElementById(`ce-${id}`);
+  if(el)el.style.display=el.style.display==='none'?'block':'none';
+}
+
+async function saveItemCat(id,sourceCat){
+  const n11=parseInt(document.getElementById(`ce-n11-${id}`)?.value)||0;
+  const hb=document.getElementById(`ce-hb-${id}`)?.value.trim()||'';
+  try{
+    await fetch(`${API}/pending/${id}/set-category`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source_category:sourceCat,n11_id:n11,hb_id:hb})});
+    toast('✓ Kategori kaydedildi — DB\'ye de eklendi','ok');
+    document.getElementById(`ce-${id}`).style.display='none';
+    loadPending();
+  }catch(e){toast('Kaydetme hatası','err');}
+}
+
+async function loadCatMappings(){
+  try{
+    const d=await fetch(`${API}/categories`).then(r=>r.json());
+    const maps=d.mappings||[];
+    const el=document.getElementById('catMappings');
+    if(!el)return;
+    if(!maps.length){el.innerHTML='<div class="no-data" style="padding:20px;text-align:center;color:var(--muted)">Kayıtlı eşleştirme yok.<br>Onay ekranında "Kategori Düzelt" kullandığınızda buraya otomatik eklenir.</div>';return;}
+    el.innerHTML=`<table class="hist-table"><thead><tr>
+      <th>Kaynak Kategori</th><th>N11 ID</th><th>HB ID</th><th>Güncellendi</th><th></th>
+    </tr></thead><tbody>${maps.map(m=>`<tr>
+      <td>${esc(m.source_category)}</td>
+      <td class="mono">${m.n11_id||'—'}</td>
+      <td class="mono">${m.hepsiburada_id||'—'}</td>
+      <td class="mono">${(m.updated_at||'').slice(0,16).replace('T',' ')}</td>
+      <td><button class="btn-sm btn-danger" onclick="deleteCatMap('${esc(m.source_category)}')">Sil</button></td>
+    </tr>`).join('')}</tbody></table>`;
+  }catch(e){}
+}
+
+async function searchN11Cat(){
+  const q=document.getElementById('n11CatSearch')?.value.trim();if(!q)return;
+  const el=document.getElementById('n11CatResults');
+  el.innerHTML='<span class="spinner"></span>';
+  try{
+    const d=await fetch(`${API}/n11-categories?search=${encodeURIComponent(q)}`).then(r=>r.json());
+    const cats=d.categories||[];
+    el.innerHTML=cats.length
+      ?cats.slice(0,25).map(c=>`<div class="cat-result-item">
+          <span>${esc(c.name)}</span>
+          <span class="cat-id-btn" onclick="document.getElementById('cm-n11').value='${c.id}';toast('N11 ID seçildi: ${c.id}')">${c.id}</span>
+        </div>`).join('')
+      :'<div style="color:var(--muted);padding:8px">Sonuç bulunamadı</div>';
+  }catch(e){el.innerHTML='<div style="color:var(--red);padding:8px">N11 API hatası</div>';}
+}
+
+async function searchHBCat(){
+  const q=document.getElementById('hbCatSearch')?.value.trim();if(!q)return;
+  const el=document.getElementById('hbCatResults');
+  el.innerHTML='<span class="spinner"></span>';
+  try{
+    const d=await fetch(`${API}/hepsiburada-categories?search=${encodeURIComponent(q)}`).then(r=>r.json());
+    const cats=d.categories||[];
+    el.innerHTML=cats.length
+      ?cats.slice(0,25).map(c=>`<div class="cat-result-item">
+          <span>${esc(c.name)}</span>
+          <span class="cat-id-btn" style="color:var(--yellow)" onclick="document.getElementById('cm-hb').value='${c.id}';toast('HB ID seçildi: ${c.id}')">${c.id}</span>
+        </div>`).join('')
+      :'<div style="color:var(--muted);padding:8px">Sonuç bulunamadı</div>';
+  }catch(e){el.innerHTML='<div style="color:var(--red);padding:8px">HB API hatası</div>';}
+}
+
+async function saveMapping(){
+  const src=document.getElementById('cm-source')?.value.trim();
+  const n11=parseInt(document.getElementById('cm-n11')?.value)||0;
+  const hb=document.getElementById('cm-hb')?.value.trim()||'';
+  const fb=document.getElementById('cm-fb');
+  if(!src){fb.textContent='✗ Kaynak kategori boş!';fb.style.color='var(--red)';return;}
+  await fetch(`${API}/categories`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source_category:src,n11_id:n11,hepsiburada_id:hb,trendyol_id:0})});
+  fb.textContent='✓ Kaydedildi';fb.style.color='var(--green)';
+  setTimeout(()=>{fb.textContent='';},3000);
+  loadCatMappings();
+}
+
+async function deleteCatMap(src){
+  if(!confirm(`"${src}" eşleştirmesi silinsin mi?`))return;
+  await fetch(`${API}/categories/${encodeURIComponent(src)}`,{method:'DELETE'});
+  toast('Silindi','ok');loadCatMappings();
 }
 
 let toastTimer;

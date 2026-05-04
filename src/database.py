@@ -187,6 +187,13 @@ def upsert_category_mapping(source_category, trendyol_id, hepsiburada_id, n11_id
     conn.close()
 
 
+def delete_category_mapping(source_category):
+    conn = get_conn()
+    conn.execute("DELETE FROM category_mapping WHERE source_category=?", (source_category,))
+    conn.commit()
+    conn.close()
+
+
 def get_category_ids(source_category):
     conn = get_conn()
     row = conn.execute(

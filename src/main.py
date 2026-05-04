@@ -203,14 +203,41 @@ async def get_job(job_id: str):
 # ── ONAY ────────────────────────────────────────────────────
 @app.get("/pending")
 async def get_pending():
+    from category_mapper import (
+        get_n11_category, get_hepsiburada_category,
+        get_n11_category_label, get_hb_category_label,
+        DEFAULT_N11_CATEGORY, DEFAULT_HB_CATEGORY,
+    )
+    try:
+        db_maps = db.get_category_mappings()
+        n11_db = {m["source_category"]: m["n11_id"] for m in db_maps if m.get("n11_id")}
+        hb_db  = {m["source_category"]: m["hepsiburada_id"] for m in db_maps if m.get("hepsiburada_id")}
+    except Exception:
+        n11_db, hb_db = {}, {}
+
     items = []
     for item_id, item in pending_approval.items():
+        cat = item["original"].category or ""
+        n11_id = get_n11_category(cat, n11_db)
+        hb_id  = get_hepsiburada_category(cat, hb_db)
+        # Eğer transformed ürünün attributes'ında manuel override varsa onu kullan
+        manual = item["transformed"].attributes.get("_category_ids", {})
+        if manual.get("n11"):
+            n11_id = manual["n11"]
+        if manual.get("hepsiburada"):
+            hb_id = str(manual["hepsiburada"])
         items.append({
             "item_id": item_id,
             "barcode": item["original_barcode"],
             "preview": item["preview"],
             "images": item["transformed"].images[:3],
-            "category": item["original"].category,
+            "category": cat,
+            "n11_category_id": n11_id,
+            "n11_category_label": get_n11_category_label(n11_id),
+            "hb_category_id": hb_id,
+            "hb_category_label": get_hb_category_label(hb_id),
+            "n11_is_default": n11_id == DEFAULT_N11_CATEGORY,
+            "hb_is_default": hb_id == DEFAULT_HB_CATEGORY,
         })
     return {"count": len(items), "items": items}
 
@@ -332,6 +359,54 @@ async def get_categories():
 async def save_category(body: CategoryMapping):
     db.upsert_category_mapping(body.source_category, body.trendyol_id, body.hepsiburada_id, body.n11_id)
     return {"status": "saved"}
+
+@app.delete("/categories/{source_category:path}")
+async def delete_category(source_category: str):
+    import urllib.parse
+    src = urllib.parse.unquote(source_category)
+    db.delete_category_mapping(src)
+    return {"status": "deleted"}
+
+
+class ItemCategoryIn(BaseModel):
+    source_category: str = ""
+    n11_id: int = 0
+    hb_id: str = ""
+
+@app.post("/pending/{item_id}/set-category")
+async def set_item_category(item_id: str, body: ItemCategoryIn):
+    """Override category for a pending item. Saves to DB for future items with same source category."""
+    if item_id not in pending_approval:
+        raise HTTPException(404, "Ürün bulunamadı")
+
+    # DB'ye kaydet — aynı source_category'den gelecek ürünler için
+    src = body.source_category or pending_approval[item_id]["original"].category or ""
+    if src:
+        existing = db.get_category_mappings()
+        existing_map = {m["source_category"]: m for m in existing}
+        old = existing_map.get(src, {})
+        db.upsert_category_mapping(
+            src,
+            old.get("trendyol_id", 0),
+            body.hb_id if body.hb_id else old.get("hepsiburada_id", ""),
+            body.n11_id if body.n11_id else old.get("n11_id", 0),
+        )
+
+    # In-memory ürünü güncelle — şu an onay bekleyen bu item için
+    from models.product import Product
+    transformed = pending_approval[item_id]["transformed"]
+    attrs = {**transformed.attributes}
+    cat_ids = {**attrs.get("_category_ids", {})}
+    if body.n11_id:
+        cat_ids["n11"] = body.n11_id
+    if body.hb_id:
+        cat_ids["hepsiburada"] = body.hb_id
+    attrs["_category_ids"] = cat_ids
+    data = transformed.model_dump()
+    data["attributes"] = attrs
+    pending_approval[item_id]["transformed"] = Product(**data)
+
+    return {"status": "saved", "n11_id": body.n11_id, "hb_id": body.hb_id}
 
 @app.get("/hepsiburada-categories")
 async def hepsiburada_categories(search: str = ""):

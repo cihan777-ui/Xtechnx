@@ -52,10 +52,12 @@ KEYWORD_MAP = {
     "floresan": 1000618,
     "ampul": 1000615,
     "spot": 1000629,
-    "el feneri": 1000240,
-    "şarjlı lamba": 1000240,
-    "cob led": 1000240,
-    "aydınlatma": 1000240,
+    "el feneri": 1000616,
+    "şarjlı lamba": 1000616,
+    "cob led": 1000616,
+    "aydınlatma diğer": 1000616,
+    "diğer aydınlatma": 1000616,
+    "aydınlatma": 1000616,
 
     # ── UYDU & ANTEN ────────────────────────────────────────
     "uydu kumanda": 1000572,
@@ -330,6 +332,64 @@ KEYWORD_MAP = {
 
 DEFAULT_N11_CATEGORY = 1000240  # Bilgisayar → Aksesuar → USB Aksesuarları
 
+# Bilinen N11 kategori ID → kısa etiket (UI için)
+N11_CATEGORY_LABELS = {
+    1000240: "Bilgisayar > USB Aksesuarları",
+    1000236: "Bilgisayar > Kablolar",
+    1000274: "Bilgisayar > Modem & Ağ",
+    1000286: "Bilgisayar > Access Point",
+    1000294: "Bilgisayar > Barkod Okuyucu",
+    1000298: "Güvenlik > Kayıt Cihazı",
+    1000305: "Güvenlik > Alarm Sistemi",
+    1000353: "Bilgisayar > USB Bellek",
+    1000357: "Bilgisayar > HDD Kutusu",
+    1000364: "Bilgisayar > Kulaklık",
+    1000368: "Bilgisayar > Monitör",
+    1000371: "Bilgisayar > UPS",
+    1000479: "Telefon > BT Kulaklık",
+    1000483: "Telefon > Hafıza Kartı",
+    1000486: "Telefon > Kablo",
+    1000542: "Elektrik > Akü / Pil",
+    1000544: "Elektrik > Adaptör / Şarj",
+    1000550: "Ses > Amfi / Mixer",
+    1000557: "Ses > Hoparlör",
+    1000558: "TV > Televizyon",
+    1000565: "TV > TV Aksesuarı",
+    1000568: "TV > TV Askı",
+    1000569: "TV > TV Yedek Parça",
+    1000570: "TV > TV Kabloları",
+    1000572: "TV > Uzaktan Kumanda",
+    1000575: "Uydu > Santral / Anten",
+    1000576: "Uydu > Uydu Alıcı",
+    1000606: "Aydınlatma > Abajur",
+    1000615: "Aydınlatma > Ampul",
+    1000616: "Aydınlatma > LED Ampul",
+    1000618: "Aydınlatma > LED Floresan",
+    1000619: "Aydınlatma > Aplik",
+    1000620: "Aydınlatma > Armatür",
+    1000621: "Aydınlatma > Avize",
+    1000623: "Aydınlatma > Şerit LED",
+    1000624: "Aydınlatma > Gece Lambası",
+    1000625: "Aydınlatma > Lambader",
+    1000627: "Aydınlatma > Masa Lambası",
+    1000629: "Aydınlatma > LED Spot",
+    1000630: "Aydınlatma > Tuz Lambası",
+    1076100: "Telefon > Powerbank",
+    1149100: "Aydınlatma > Tavan Lamba",
+    1149101: "Elektrik > Priz / Trafo",
+    1212000: "Oto > Elektronik",
+    1217206: "Aydınlatma > Solar",
+    1246200: "TV > Projeksiyon",
+    1003045: "Oto > Elektronik",
+    1003054: "Oto > Ses Sistemi",
+    1003056: "Oto > Oto Teyp",
+    1003058: "Oto > Oto Hoparlör",
+}
+
+
+def get_n11_category_label(cat_id: int) -> str:
+    return N11_CATEGORY_LABELS.get(cat_id, f"#{cat_id}")
+
 # Hepsiburada kategori ID'leri (Elektronik ağırlıklı)
 HB_KEYWORD_MAP = {
     # ── TV & GÖRÜNTÜ ────────────────────────────────────────
@@ -509,6 +569,59 @@ HB_KEYWORD_MAP = {
 }
 
 DEFAULT_HB_CATEGORY = "60001671"  # Bilgisayar > Ağ Ürünleri (güvenilir fallback)
+
+HB_CATEGORY_LABELS = {
+    "60001671": "Bilgisayar > Ağ Ürünleri",
+    "60000072": "TV > Televizyon",
+    "60000075": "TV > TV Yedek Parça",
+    "60000078": "Uydu > Uydu Alıcı",
+    "60000079": "Uydu > Anten",
+    "60000081": "Ses > Amfi",
+    "60000082": "Ses > Hoparlör",
+    "60000084": "Ses > Soundbar",
+    "60000086": "Ses > Kulaklık",
+    "60000088": "Ses > Mikrofon",
+    "60000138": "Bilgisayar > Laptop",
+    "60000139": "Bilgisayar > Masaüstü",
+    "60000143": "Bilgisayar > Monitör",
+    "60000147": "Bilgisayar > Klavye",
+    "60000148": "Bilgisayar > Mouse",
+    "60000151": "Bilgisayar > UPS",
+    "60000156": "Bilgisayar > Disk",
+    "60000157": "Bilgisayar > USB Bellek",
+    "60000159": "Bilgisayar > Yazıcı",
+    "60000477": "Güvenlik > Kamera",
+    "60000478": "Güvenlik > Kayıt Cihazı",
+    "60000479": "Güvenlik > Alarm",
+    "60001094": "Elektronik > Aksesuarlar",
+    "60001183": "Telefon > Aksesuar",
+    "60001184": "Telefon > Powerbank",
+    "60001185": "Telefon > Hafıza Kartı",
+    "60001186": "Telefon > Ekran Koruyucu",
+    "60001187": "Telefon > Kılıf",
+    "60001190": "Telefon > Kablo",
+    "60002041": "Aydınlatma > Genel",
+    "60002042": "Aydınlatma > Avize",
+    "60002043": "Aydınlatma > Aplik",
+    "60002044": "Aydınlatma > Tavan Lamba",
+    "60002045": "Aydınlatma > Lambader",
+    "60002046": "Aydınlatma > Masa Lambası",
+    "60002048": "Aydınlatma > Ampul",
+    "60002049": "Aydınlatma > LED Spot",
+    "60002050": "Aydınlatma > Şerit LED",
+    "60002051": "Aydınlatma > Solar / El Feneri",
+    "60002060": "Elektrik > Şarj / Adaptör",
+    "60002061": "Elektrik > Akü / Pil",
+    "60002062": "Elektrik > İnvertör",
+    "60002063": "Elektrik > Regülatör / Priz",
+    "60001067": "Oto > Elektronik",
+    "60001068": "Oto > Oto Teyp",
+    "60001069": "Oto > Oto Hoparlör",
+}
+
+
+def get_hb_category_label(cat_id: str) -> str:
+    return HB_CATEGORY_LABELS.get(str(cat_id), f"#{cat_id}")
 
 
 def get_hepsiburada_category(source_category: str, db_mapping: dict = None) -> str:
