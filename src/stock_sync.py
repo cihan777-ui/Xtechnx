@@ -129,6 +129,85 @@ async def _push_stock_n11(stock_code: str, new_stock: int):
         _log.warning("N11 stok push hatası: %s", ex)
 
 
+# ── xtechnx Sipariş Çekme ────────────────────────────────────
+
+async def _fetch_xtechnx_orders() -> list:
+    """xtechnx.com'dan son siparişleri çeker."""
+    from uploaders.xtechnx_site_api import XtechnxSiteApiUploader
+    try:
+        uploader = XtechnxSiteApiUploader()
+        return await uploader.get_orders()
+    except Exception as ex:
+        _log.warning("xtechnx sipariş çekme hatası: %s", ex)
+        return []
+
+
+# ── xtechnx Stok Güncelleme ──────────────────────────────────
+
+async def _push_stock_xtechnx(product_id: int, new_stock: int):
+    if not product_id:
+        return
+    from uploaders.xtechnx_site_api import XtechnxSiteApiUploader
+    uploader = XtechnxSiteApiUploader()
+    ok = await uploader.update_stock(product_id, new_stock)
+    if ok:
+        _log.info("xtechnx stok güncellendi: product_id=%d → %d", product_id, new_stock)
+    else:
+        _log.warning("xtechnx stok güncelleme başarısız: product_id=%d", product_id)
+
+
+# ── xtechnx'ten Stok Çekme (master sync) ─────────────────────
+
+async def sync_from_xtechnx() -> dict:
+    """
+    xtechnx.com'daki her ürünün güncel stokunu okur.
+    stock_map'teki değerle farklıysa → stock_map günceller, N11/HB'ye push eder.
+    """
+    from datetime import datetime
+    from uploaders.xtechnx_site_api import XtechnxSiteApiUploader
+    uploader = XtechnxSiteApiUploader()
+    rows = db.get_stock_map()
+    updated = 0
+    errors = []
+
+    for row in rows:
+        pid = row.get("xtechnx_product_id") or 0
+        if not pid:
+            continue
+        try:
+            live_stock = await uploader.get_stock(pid)
+            if live_stock is None:
+                continue
+            if live_stock == row["current_stock"]:
+                continue
+
+            _log.info("xtechnx stok değişimi: %s %d → %d",
+                      row["sku"], row["current_stock"], live_stock)
+            db.update_stock(row["sku"], live_stock)
+
+            # N11 ve HB'yi güncelle
+            push_tasks = []
+            if row.get("n11_stock_code"):
+                push_tasks.append(_push_stock_n11(row["n11_stock_code"], live_stock))
+            if row.get("hb_sku"):
+                push_tasks.append(_push_stock_hb(row["hb_sku"], row["sku"], live_stock))
+            if push_tasks:
+                await asyncio.gather(*push_tasks, return_exceptions=True)
+            updated += 1
+        except Exception as ex:
+            errors.append(f"{row['sku']}: {ex}")
+
+    result = {
+        "status": "ok",
+        "updated": updated,
+        "errors": errors,
+        "message": f"{updated} ürün stoku xtechnx'ten senkronize edildi",
+        "at": datetime.now().isoformat(),
+    }
+    _last_sync.update(result)
+    return result
+
+
 # ── Ana Sync Fonksiyonu ──────────────────────────────────────
 
 async def sync_stock() -> dict:
@@ -142,10 +221,11 @@ async def sync_stock() -> dict:
     skipped_count   = 0
     errors          = []
 
-    # Siparişleri çek (HB + N11 paralel)
-    hb_orders, n11_orders = await asyncio.gather(
+    # Siparişleri çek (HB + N11 + xtechnx paralel)
+    hb_orders, n11_orders, xt_orders = await asyncio.gather(
         _fetch_hb_orders(),
         _fetch_n11_orders(),
+        _fetch_xtechnx_orders(),
         return_exceptions=True,
     )
     if isinstance(hb_orders, Exception):
@@ -154,14 +234,18 @@ async def sync_stock() -> dict:
     if isinstance(n11_orders, Exception):
         errors.append(f"N11 sipariş hatası: {n11_orders}")
         n11_orders = []
+    if isinstance(xt_orders, Exception):
+        errors.append(f"xtechnx sipariş hatası: {xt_orders}")
+        xt_orders = []
 
     all_orders = (
         [{"platform": "hepsiburada", **o} for o in hb_orders] +
-        [{"platform": "n11",         **o} for o in n11_orders]
+        [{"platform": "n11",         **o} for o in n11_orders] +
+        [{"platform": "xtechnx",     **o} for o in xt_orders]
     )
 
-    _log.info("Toplam sipariş: %d (HB:%d N11:%d)",
-              len(all_orders), len(hb_orders), len(n11_orders))
+    _log.info("Toplam sipariş: %d (HB:%d N11:%d XT:%d)",
+              len(all_orders), len(hb_orders), len(n11_orders), len(xt_orders))
 
     for order in all_orders:
         platform = order["platform"]
@@ -192,10 +276,12 @@ async def sync_stock() -> dict:
 
         # Tüm platformlarda stoku güncelle
         push_tasks = []
-        if stock_row.get("hb_sku"):
+        if stock_row.get("hb_sku") and platform != "hepsiburada":
             push_tasks.append(_push_stock_hb(stock_row["hb_sku"], sku, new_stock))
-        if stock_row.get("n11_stock_code"):
+        if stock_row.get("n11_stock_code") and platform != "n11":
             push_tasks.append(_push_stock_n11(stock_row["n11_stock_code"], new_stock))
+        if stock_row.get("xtechnx_product_id") and platform != "xtechnx":
+            push_tasks.append(_push_stock_xtechnx(stock_row["xtechnx_product_id"], new_stock))
         if push_tasks:
             await asyncio.gather(*push_tasks, return_exceptions=True)
 

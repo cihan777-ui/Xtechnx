@@ -277,10 +277,15 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
     </div>
 
     <div class="tpane" id="p-stock">
-      <div class="hist-filters" style="align-items:center;gap:10px">
-        <button class="btn-sm" onclick="syncStock()" id="btnStockSync">↻ Stok Senkronizasyonu Başlat</button>
+      <div class="hist-filters" style="align-items:center;gap:10px;flex-wrap:wrap">
+        <button class="btn-sm" onclick="syncFromXtechnx()" id="btnXtSync" title="xtechnx.com'daki stoğu okur, N11/HB'ye yansıtır">🔄 xtechnx'ten Stok Çek</button>
+        <button class="btn-sm" onclick="syncStock()" id="btnStockSync" title="HB/N11/xtechnx siparişlerini çek, stok düş">📦 Sipariş Sync (Tümü)</button>
         <span id="stockSyncStatus" style="font-size:12px;color:var(--muted)"></span>
         <button class="btn-sm" onclick="loadStock()" style="margin-left:auto">↻ Listeyi Yenile</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);padding:4px 20px 0">
+        <strong>xtechnx'ten Stok Çek</strong>: xtechnx.com'da elle değiştirdiğin stokları N11/HB'ye yansıtır &nbsp;|&nbsp;
+        <strong>Sipariş Sync</strong>: Tüm platformlardaki satışları işler, stok düşer
       </div>
       <div id="stockSyncResult" style="margin:10px 20px;font-size:12px;display:none;padding:8px 12px;border-radius:6px;background:var(--surf2)"></div>
       <table class="hist-table" style="margin-top:4px">
@@ -935,6 +940,28 @@ async function syncStock(){
     res.style.display='block';res.textContent='Hata: '+e;res.style.color='#e55';
   }finally{
     btn.disabled=false;btn.textContent='↻ Stok Senkronizasyonu Başlat';
+  }
+}
+
+async function syncFromXtechnx(){
+  const btn=document.getElementById('btnXtSync');
+  const res=document.getElementById('stockSyncResult');
+  btn.disabled=true;btn.textContent='⏳ xtechnx okunuyor...';
+  res.style.display='none';
+  try{
+    await fetch(`${API}/stock/sync-from-xtechnx`,{method:'POST'});
+    await new Promise(r=>setTimeout(r,8000));
+    const r=await fetch(`${API}/stock/sync/status`);
+    const d=await r.json();
+    res.style.display='block';
+    res.style.color=d.errors&&d.errors.length?'#e55':'var(--text)';
+    res.textContent=d.message||'xtechnx stok çekme tamamlandı';
+    await loadStock();
+    toast('xtechnx stokları N11/HB\'ye yansıtıldı','ok');
+  }catch(e){
+    res.style.display='block';res.textContent='Hata: '+e;res.style.color='#e55';
+  }finally{
+    btn.disabled=false;btn.textContent='🔄 xtechnx\'ten Stok Çek';
   }
 }
 

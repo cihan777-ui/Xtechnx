@@ -298,15 +298,12 @@ async def _upload_job(job_id: str, item: dict, platforms: list):
             )
             # Başarılı yüklemelerde stock_map'e kaydet
             if upload_status in ("success", "success_unconfirmed"):
-                n11_id  = int(result.get("n11_product_id") or 0)
-                hb_sku  = str(result.get("hb_sku") or result.get("tracking_id") or "")
-                n11_sc  = product.sku if platform == "n11" else ""
-                hb_s    = hb_sku    if platform == "hepsiburada" else ""
                 db.register_stock(
                     sku=product.sku,
-                    n11_product_id=n11_id if platform == "n11" else 0,
-                    n11_stock_code=n11_sc,
-                    hb_sku=hb_s,
+                    n11_product_id=int(result.get("n11_product_id") or 0) if platform == "n11" else 0,
+                    n11_stock_code=product.sku if platform == "n11" else "",
+                    hb_sku=str(result.get("hb_sku") or "") if platform == "hepsiburada" else "",
+                    xtechnx_product_id=int(result.get("xtechnx_product_id") or 0) if platform == "xtechnx" else 0,
                     stock=product.stock,
                 )
         except asyncio.TimeoutError:
@@ -611,10 +608,22 @@ async def _run_stock_sync():
     except Exception as e:
         logger.error(f"Stok sync hatası: {e}")
 
+async def _run_xtechnx_sync():
+    try:
+        await ss.sync_from_xtechnx()
+    except Exception as e:
+        logger.error(f"xtechnx sync hatası: {e}")
+
 @app.get("/stock/sync/status")
 async def stock_sync_status():
     """Son stok senkronizasyonunun durumunu döner."""
     return ss.get_last_sync()
+
+@app.post("/stock/sync-from-xtechnx")
+async def sync_from_xtechnx(background_tasks: BackgroundTasks):
+    """xtechnx.com'daki stok değişikliklerini N11 ve HB'ye yansıt."""
+    background_tasks.add_task(_run_xtechnx_sync)
+    return {"status": "started", "message": "xtechnx stok okuma başladı"}
 
 @app.patch("/stock/{sku}")
 async def set_stock(sku: str, stock: int):

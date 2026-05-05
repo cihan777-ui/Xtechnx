@@ -209,10 +209,11 @@ def _urun_ekle_sync(p: Product) -> dict:
 
         if "product_id" in r.url or "alert-success" in r.text:
             pid = re.search(r"product_id=(\d+)", r.url)
+            product_id = int(pid.group(1)) if pid else 0
             msg = f"xtechnx.com API ile yuklendi: {baslik[:50]}"
-            if pid:
-                msg += f" (ID:{pid.group(1)})"
-            return {"status": "success", "message": msg}
+            if product_id:
+                msg += f" (ID:{product_id})"
+            return {"status": "success", "message": msg, "xtechnx_product_id": product_id}
         elif "alert-danger" in r.text or "alert-error" in r.text:
             err = re.search(r'alert-danger[^>]*>(.*?)</div>', r.text, re.S)
             return {"status": "error", "message": err.group(1).strip()[:200] if err else "Form hatasi"}
@@ -223,8 +224,137 @@ def _urun_ekle_sync(p: Product) -> dict:
         return {"status": "error", "message": str(e)}
 
 
+def _get_xtechnx_stock_sync(product_id: int) -> int | None:
+    """xtechnx.com admin panelinden ürünün mevcut stokunu okur."""
+    try:
+        session, token = _get_session()
+        url = f"{ADMIN_URL}index.php?route=catalog/product/edit&user_token={token}&product_id={product_id}"
+        r = session.get(url, timeout=15)
+        m = re.search(r'name=["\']quantity["\'][^>]+value=["\'](\d+)["\']', r.text)
+        if not m:
+            m = re.search(r'id=["\']input-quantity["\'][^>]+value=["\'](\d+)["\']', r.text)
+        if not m:
+            m = re.search(r'name="quantity"\s+value="(\d+)"', r.text)
+        if m:
+            return int(m.group(1))
+        log.warning(f"[xtechnx-api] Stok okunamadı, product_id={product_id}")
+        return None
+    except Exception as e:
+        log.warning(f"[xtechnx-api] Stok okuma hatası: {e}")
+        return None
+
+
+def _update_xtechnx_stock_sync(product_id: int, new_qty: int) -> bool:
+    """xtechnx.com admin panelinde ürünün stokunu günceller."""
+    try:
+        session, token = _get_session()
+        edit_url = f"{ADMIN_URL}index.php?route=catalog/product/edit&user_token={token}&product_id={product_id}"
+
+        # Edit sayfasını çek, mevcut form alanlarını al
+        r = session.get(edit_url, timeout=15)
+        if r.status_code != 200:
+            return False
+
+        # Temel zorunlu alanları parse et
+        def _fval(name, default=""):
+            m = re.search(rf'name="{re.escape(name)}"\s+[^>]*value="([^"]*)"', r.text)
+            return m.group(1) if m else default
+
+        def _tval(name):
+            m = re.search(rf'name="{re.escape(name)}"[^>]*>([^<]*)</textarea>', r.text, re.S)
+            return m.group(1).strip() if m else ""
+
+        # Minimum zorunlu alanlar
+        data = {
+            f"product_description[{LANG_ID}][name]":             _fval(f"product_description[{LANG_ID}][name]", "Ürün"),
+            f"product_description[{LANG_ID}][description]":      _tval(f"product_description[{LANG_ID}][description]"),
+            f"product_description[{LANG_ID}][tag]":              "",
+            f"product_description[{LANG_ID}][meta_title]":       _fval(f"product_description[{LANG_ID}][meta_title]", ""),
+            f"product_description[{LANG_ID}][meta_description]": "",
+            f"product_description[{LANG_ID}][meta_keyword]":     "",
+            "model":           _fval("model"),
+            "sku":             _fval("sku"),
+            "ean":             _fval("ean"),
+            "price":           _fval("price", "0.00"),
+            "tax_class_id":    _fval("tax_class_id", str(TAX_CLASS_ID)),
+            "quantity":        str(max(0, new_qty)),
+            "minimum":         _fval("minimum", "1"),
+            "subtract":        "1",
+            "stock_status_id": _fval("stock_status_id", "7"),
+            "shipping":        "1",
+            "image":           _fval("image"),
+            "manufacturer_id": _fval("manufacturer_id", str(MANUFACTURER_ID)),
+            "sort_order":      _fval("sort_order", "0"),
+            "status":          _fval("status", "1"),
+            "weight":          _fval("weight", "0.00"),
+            "weight_class_id": _fval("weight_class_id", "1"),
+            "length":          _fval("length", "0.00"),
+            "width":           _fval("width", "0.00"),
+            "height":          _fval("height", "0.00"),
+            "length_class_id": _fval("length_class_id", "1"),
+            "product_store[]": str(STORE_ID),
+        }
+
+        post_url = f"{ADMIN_URL}index.php?route=catalog/product/edit&user_token={token}&product_id={product_id}"
+        resp = session.post(post_url, data=data, timeout=30)
+        log.info(f"[xtechnx-api] Stok güncelleme HTTP {resp.status_code}, qty={new_qty}")
+        return resp.status_code == 200
+    except Exception as e:
+        log.warning(f"[xtechnx-api] Stok güncelleme hatası: {e}")
+        return False
+
+
+def _get_xtechnx_orders_sync(limit: int = 50) -> list:
+    """xtechnx.com'dan son siparişleri çeker (Processing + Complete). [{order_id, sku, qty}]"""
+    try:
+        session, token = _get_session()
+        orders = []
+        for status_id in [2, 5]:  # 2=Processing, 5=Complete
+            url = (f"{ADMIN_URL}index.php?route=sale/order"
+                   f"&user_token={token}&filter_order_status_id={status_id}&limit={limit}")
+            r = session.get(url, timeout=15)
+            # order_id'leri parse et
+            order_ids = re.findall(r'route=sale/order/info[^"]*order_id=(\d+)', r.text)
+            for oid in order_ids[:limit]:
+                # Sipariş detayına bak
+                detail_url = (f"{ADMIN_URL}index.php?route=sale/order/info"
+                              f"&user_token={token}&order_id={oid}")
+                rd = session.get(detail_url, timeout=15)
+                # model (SKU) ve qty parse et
+                # OpenCart order info sayfasında ürün satırları: Model sütunu
+                rows = re.findall(
+                    r'<td[^>]*>([^<]+)</td>\s*<td[^>]*>\s*(\d+)\s*</td>',
+                    rd.text
+                )
+                for model_raw, qty_raw in rows:
+                    sku = model_raw.strip()
+                    qty = int(qty_raw.strip())
+                    if sku and qty > 0 and sku.startswith("Cihan"):
+                        orders.append({
+                            "order_id": f"xtechnx_{oid}",
+                            "sku": sku,
+                            "qty": qty,
+                        })
+        return orders
+    except Exception as e:
+        log.warning(f"[xtechnx-api] Sipariş çekme hatası: {e}")
+        return []
+
+
 class XtechnxSiteApiUploader:
 
     async def upload(self, product: Product) -> dict:
         loop = asyncio.get_event_loop()
         return await loop.run_in_executor(None, partial(_urun_ekle_sync, product))
+
+    async def get_stock(self, product_id: int) -> int | None:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, _get_xtechnx_stock_sync, product_id)
+
+    async def update_stock(self, product_id: int, new_qty: int) -> bool:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, _update_xtechnx_stock_sync, product_id, new_qty)
+
+    async def get_orders(self) -> list:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, _get_xtechnx_orders_sync)
