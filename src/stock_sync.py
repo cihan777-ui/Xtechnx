@@ -91,6 +91,23 @@ async def _push_stock_hb(hb_sku: str, merchant_sku: str, new_stock: int):
     from uploaders.hepsiburada import HepsiburadaUploader
     uploader = HepsiburadaUploader()
     auth = uploader._auth()
+
+    # hb_sku boşsa merchant_sku ile HB'den ara
+    if not hb_sku:
+        try:
+            hb_sku = await uploader._find_hb_sku(merchant_sku, auth)
+            if hb_sku:
+                # Bulundu, stock_map'e kaydet
+                import database as _db
+                _db.register_stock(sku=merchant_sku, hb_sku=hb_sku)
+                _log.info("HB SKU bulundu ve kaydedildi: %s → %s", merchant_sku, hb_sku)
+        except Exception as ex:
+            _log.warning("HB SKU arama hatası: %s", ex)
+
+    if not hb_sku:
+        _log.warning("HB stok güncellenemedi: %s için HepsiburadaSku bulunamadı", merchant_sku)
+        return
+
     payload = [{"hepsiburadaSku": hb_sku, "merchantSku": merchant_sku,
                 "availableStock": max(0, new_stock)}]
     try:

@@ -654,15 +654,25 @@ async def register_stock_entry(body: StockRegisterIn):
     xtechnx_product_id = 0
     try:
         from uploaders.xtechnx_site_api import XtechnxSiteApiUploader
-        uploader = XtechnxSiteApiUploader()
-        xtechnx_product_id = await uploader.find_product_id_by_sku(sku)
+        xt_uploader = XtechnxSiteApiUploader()
+        xtechnx_product_id = await xt_uploader.find_product_id_by_sku(sku)
     except Exception as e:
         logger.warning(f"xtechnx product_id arama hatası: {e}")
+
+    # HB SKU'yu bul (kullanıcı girmediyse HB API'den ara)
+    hb_sku = body.hb_sku.strip()
+    if not hb_sku:
+        try:
+            from uploaders.hepsiburada import HepsiburadaUploader
+            hb_uploader = HepsiburadaUploader()
+            hb_sku = await hb_uploader._find_hb_sku(sku, hb_uploader._auth())
+        except Exception as e:
+            logger.warning(f"HB SKU arama hatası: {e}")
 
     db.register_stock(
         sku=sku,
         n11_stock_code=sku,
-        hb_sku=body.hb_sku.strip(),
+        hb_sku=hb_sku,
         xtechnx_product_id=xtechnx_product_id,
         stock=body.stock,
     )
@@ -670,8 +680,12 @@ async def register_stock_entry(body: StockRegisterIn):
         "status": "registered",
         "sku": sku,
         "xtechnx_product_id": xtechnx_product_id,
+        "hb_sku": hb_sku,
         "stock": body.stock,
-        "message": f"Kayıt edildi. xtechnx product_id: {xtechnx_product_id or 'bulunamadı (elle girilebilir)'}",
+        "message": (f"Kayıt edildi. "
+                    f"xtechnx:{xtechnx_product_id or '?'} "
+                    f"HB:{hb_sku or 'bulunamadı'} "
+                    f"N11:{sku}"),
     }
 
 
