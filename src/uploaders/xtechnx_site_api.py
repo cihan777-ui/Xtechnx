@@ -224,6 +224,23 @@ def _urun_ekle_sync(p: Product) -> dict:
         return {"status": "error", "message": str(e)}
 
 
+def _find_product_id_by_sku_sync(sku: str) -> int:
+    """xtechnx.com admin panelinde model alanı == sku olan ürünün product_id'sini bulur."""
+    try:
+        session, token = _get_session()
+        url = (f"{ADMIN_URL}index.php?route=catalog/product"
+               f"&user_token={token}&filter_model={sku}&limit=5")
+        r = session.get(url, timeout=15)
+        m = re.search(r'product_id=(\d+)[^"]*"[^>]*>' + re.escape(sku), r.text)
+        if not m:
+            # Alternatif: tüm satırları tara, model sütununu bul
+            m = re.search(r'product_id=(\d+)', r.text)
+        return int(m.group(1)) if m else 0
+    except Exception as e:
+        log.warning(f"[xtechnx-api] SKU ile product_id bulunamadı ({sku}): {e}")
+        return 0
+
+
 def _get_xtechnx_stock_sync(product_id: int) -> int | None:
     """xtechnx.com admin panelinden ürünün mevcut stokunu okur."""
     try:
@@ -358,3 +375,7 @@ class XtechnxSiteApiUploader:
     async def get_orders(self) -> list:
         loop = asyncio.get_event_loop()
         return await loop.run_in_executor(None, _get_xtechnx_orders_sync)
+
+    async def find_product_id_by_sku(self, sku: str) -> int:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, _find_product_id_by_sku_sync, sku)

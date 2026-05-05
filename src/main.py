@@ -635,6 +635,46 @@ async def set_stock(sku: str, stock: int):
     return {"status": "updated", "sku": sku, "new_stock": stock}
 
 
+class StockRegisterIn(BaseModel):
+    sku: str
+    stock: int = 1
+    hb_sku: str = ""
+
+@app.post("/stock/register")
+async def register_stock_entry(body: StockRegisterIn):
+    """
+    SKU ile ürünü stock_map'e ekler.
+    N11 stok kodu = SKU, xtechnx product_id arka planda aranır.
+    """
+    if not body.sku.strip():
+        raise HTTPException(400, "SKU boş olamaz")
+    sku = body.sku.strip()
+
+    # xtechnx product_id'yi bul
+    xtechnx_product_id = 0
+    try:
+        from uploaders.xtechnx_site_api import XtechnxSiteApiUploader
+        uploader = XtechnxSiteApiUploader()
+        xtechnx_product_id = await uploader.find_product_id_by_sku(sku)
+    except Exception as e:
+        logger.warning(f"xtechnx product_id arama hatası: {e}")
+
+    db.register_stock(
+        sku=sku,
+        n11_stock_code=sku,
+        hb_sku=body.hb_sku.strip(),
+        xtechnx_product_id=xtechnx_product_id,
+        stock=body.stock,
+    )
+    return {
+        "status": "registered",
+        "sku": sku,
+        "xtechnx_product_id": xtechnx_product_id,
+        "stock": body.stock,
+        "message": f"Kayıt edildi. xtechnx product_id: {xtechnx_product_id or 'bulunamadı (elle girilebilir)'}",
+    }
+
+
 @app.get("/health")
 async def health():
     stats = db.get_history_stats()

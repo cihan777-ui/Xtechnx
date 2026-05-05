@@ -288,6 +288,22 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
         <strong>Sipariş Sync</strong>: Tüm platformlardaki satışları işler, stok düşer
       </div>
       <div id="stockSyncResult" style="margin:10px 20px;font-size:12px;display:none;padding:8px 12px;border-radius:6px;background:var(--surf2)"></div>
+
+      <div style="margin:10px 20px;padding:12px 16px;background:var(--surf2);border-radius:8px;border:1px solid var(--border)">
+        <div style="font-size:12px;font-weight:700;margin-bottom:8px">+ Stok Kaydı Ekle</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end">
+          <div><label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Stok Kodu (Cihan...)</label>
+            <input id="regSku" placeholder="Cihan123456" style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surf);color:var(--text);width:130px"></div>
+          <div><label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">Mevcut Stok</label>
+            <input id="regStock" type="number" min="0" value="1" style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surf);color:var(--text);width:70px"></div>
+          <div><label style="font-size:11px;color:var(--muted);display:block;margin-bottom:3px">HB SKU (isteğe bağlı)</label>
+            <input id="regHbSku" placeholder="HepsiburadaSku" style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surf);color:var(--text);width:140px"></div>
+          <button class="btn-sm" onclick="registerStock()" id="btnRegStock">Ekle</button>
+          <span id="regResult" style="font-size:11px;color:var(--muted)"></span>
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px">N11 stok kodu otomatik olarak stok koduyla aynı ayarlanır. xtechnx product_id arka planda aranır.</div>
+      </div>
+
       <table class="hist-table" style="margin-top:4px">
         <thead><tr>
           <th>SKU</th><th>Mevcut Stok</th><th>N11 Stock Code</th><th>HB SKU</th><th>Son Güncelleme</th><th>Manuel Güncelle</th>
@@ -941,6 +957,33 @@ async function syncStock(){
   }finally{
     btn.disabled=false;btn.textContent='↻ Stok Senkronizasyonu Başlat';
   }
+}
+
+async function registerStock(){
+  const sku=document.getElementById('regSku').value.trim();
+  const stock=parseInt(document.getElementById('regStock').value)||1;
+  const hbSku=document.getElementById('regHbSku').value.trim();
+  const res=document.getElementById('regResult');
+  const btn=document.getElementById('btnRegStock');
+  if(!sku){res.textContent='Stok kodu gerekli';res.style.color='#e55';return;}
+  btn.disabled=true;btn.textContent='⏳';
+  res.textContent='Kaydediliyor...';res.style.color='var(--muted)';
+  try{
+    const r=await fetch(`${API}/stock/register`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({sku,stock,hb_sku:hbSku})
+    });
+    const d=await r.json();
+    if(r.ok){
+      res.textContent='✓ '+d.message;res.style.color='var(--accent)';
+      document.getElementById('regSku').value='';
+      document.getElementById('regHbSku').value='';
+      document.getElementById('regStock').value='1';
+      await loadStock();
+      toast(sku+' stok kaydı eklendi','ok');
+    }else{res.textContent='Hata: '+(d.detail||d.message);res.style.color='#e55';}
+  }catch(e){res.textContent='Hata: '+e;res.style.color='#e55';}
+  finally{btn.disabled=false;btn.textContent='Ekle';}
 }
 
 async function syncFromXtechnx(){
