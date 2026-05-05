@@ -194,6 +194,7 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
     <div class="tab" onclick="sw('history')" id="t-history">Geçmiş</div>
     <div class="tab" onclick="sw('stats')" id="t-stats">İstatistik</div>
     <div class="tab" onclick="sw('categories')" id="t-categories">🗂 Kategoriler</div>
+    <div class="tab" onclick="sw('stock')" id="t-stock">📦 Stok</div>
     <div class="tab" onclick="sw('settings')" id="t-settings">⚙ Ayarlar</div>
   </div>
   <div class="tcontent">
@@ -273,6 +274,21 @@ header{padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:
         <p style="font-size:12px;color:var(--muted);margin:6px 0 12px">Onay ekranında "Kategori Düzelt" kullandığınızda buraya otomatik eklenir.</p>
         <div id="catMappings"><div class="no-data">Yükleniyor...</div></div>
       </div>
+    </div>
+
+    <div class="tpane" id="p-stock">
+      <div class="hist-filters" style="align-items:center;gap:10px">
+        <button class="btn-sm" onclick="syncStock()" id="btnStockSync">↻ Stok Senkronizasyonu Başlat</button>
+        <span id="stockSyncStatus" style="font-size:12px;color:var(--muted)"></span>
+        <button class="btn-sm" onclick="loadStock()" style="margin-left:auto">↻ Listeyi Yenile</button>
+      </div>
+      <div id="stockSyncResult" style="margin:10px 20px;font-size:12px;display:none;padding:8px 12px;border-radius:6px;background:var(--surf2)"></div>
+      <table class="hist-table" style="margin-top:4px">
+        <thead><tr>
+          <th>SKU</th><th>Mevcut Stok</th><th>N11 Stock Code</th><th>HB SKU</th><th>Son Güncelleme</th><th>Manuel Güncelle</th>
+        </tr></thead>
+        <tbody id="stockBody"><tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">Yükleniyor...</td></tr></tbody>
+      </table>
     </div>
 
     <div class="tpane" id="p-settings">
@@ -401,6 +417,7 @@ function sw(name){
   if(name==='history')loadHistory();
   if(name==='stats')loadStats();
   if(name==='categories')loadCatMappings();
+  if(name==='stock')loadStock();
 }
 
 async function addBC(){
@@ -868,6 +885,70 @@ function toast(msg,type=''){
   clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3500);
 }
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// ── STOK ─────────────────────────────────────────────────────
+async function loadStock(){
+  const tbody=document.getElementById('stockBody');
+  if(!tbody)return;
+  try{
+    const r=await fetch(`${API}/stock`);
+    const d=await r.json();
+    const rows=d.stock||[];
+    if(!rows.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">Henüz stok kaydı yok. Ürün yükledikçe burası dolar.</td></tr>';return;}
+    tbody.innerHTML=rows.map(s=>`
+      <tr>
+        <td><code style="font-size:11px">${esc(s.sku)}</code></td>
+        <td><strong style="color:${s.current_stock===0?'#e55':'var(--text)'}">${s.current_stock}</strong></td>
+        <td style="font-size:11px;color:var(--muted)">${esc(s.n11_stock_code)||'-'}</td>
+        <td style="font-size:11px;color:var(--muted)">${esc(s.hb_sku)||'-'}</td>
+        <td style="font-size:11px;color:var(--muted)">${s.last_synced?s.last_synced.slice(0,16).replace('T',' '):'-'}</td>
+        <td><input type="number" min="0" value="${s.current_stock}" id="si-${esc(s.sku)}" style="width:60px;padding:3px 6px;border:1px solid var(--border);border-radius:4px;font-size:12px;background:var(--surf2);color:var(--text)">
+          <button class="btn-sm" style="margin-left:4px" onclick="manualStock('${esc(s.sku)}')">Kaydet</button></td>
+      </tr>`).join('');
+  }catch(e){tbody.innerHTML=`<tr><td colspan="6" style="color:#e55;text-align:center;padding:20px">Hata: ${esc(String(e))}</td></tr>`;}
+  // Son sync durumu
+  try{
+    const rs=await fetch(`${API}/stock/sync/status`);
+    const ds=await rs.json();
+    const el=document.getElementById('stockSyncStatus');
+    if(el&&ds.at)el.textContent=`Son sync: ${ds.at.slice(0,16).replace('T',' ')} — ${ds.message||''}`;
+  }catch(e){}
+}
+
+async function syncStock(){
+  const btn=document.getElementById('btnStockSync');
+  const res=document.getElementById('stockSyncResult');
+  btn.disabled=true;btn.textContent='⏳ Senkronizasyon...';
+  res.style.display='none';
+  try{
+    await fetch(`${API}/stock/sync`,{method:'POST'});
+    // 5 saniye bekle, sonra durumu çek
+    await new Promise(r=>setTimeout(r,5000));
+    const r=await fetch(`${API}/stock/sync/status`);
+    const d=await r.json();
+    res.style.display='block';
+    res.style.color=d.errors&&d.errors.length?'#e55':'var(--text)';
+    res.textContent=d.message||(d.status==='never'?'Sync başlatıldı, arka planda devam ediyor...':'Tamamlandı');
+    await loadStock();
+    toast('Stok senkronizasyonu tamamlandı','ok');
+  }catch(e){
+    res.style.display='block';res.textContent='Hata: '+e;res.style.color='#e55';
+  }finally{
+    btn.disabled=false;btn.textContent='↻ Stok Senkronizasyonu Başlat';
+  }
+}
+
+async function manualStock(sku){
+  const inp=document.getElementById('si-'+sku);
+  if(!inp)return;
+  const stock=parseInt(inp.value);
+  if(isNaN(stock)||stock<0){toast('Geçersiz stok değeri','err');return;}
+  try{
+    const r=await fetch(`${API}/stock/${encodeURIComponent(sku)}?stock=${stock}`,{method:'PATCH'});
+    if(r.ok){toast(`${sku} stoku ${stock} olarak güncellendi`,'ok');}
+    else toast('Güncelleme hatası','err');
+  }catch(e){toast('Hata: '+e,'err');}
+}
 </script>
 </body>
 </html>

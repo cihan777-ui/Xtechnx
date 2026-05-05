@@ -293,3 +293,74 @@ def get_n11_group(sku: str) -> int | None:
     ).fetchone()
     conn.close()
     return row[0] if row else None
+
+
+# ── Stock Map ────────────────────────────────────────────────
+
+def register_stock(sku: str, n11_stock_code: str = "", hb_sku: str = "",
+                   n11_product_id: int = 0, xtechnx_product_id: int = 0,
+                   stock: int = 1):
+    """Ürünü stock_map'e kaydeder. Zaten varsa platform ID'lerini günceller."""
+    conn = get_conn()
+    conn.execute("""
+        INSERT INTO stock_map (sku, xtechnx_product_id, n11_product_id, n11_stock_code, hb_sku, current_stock, last_synced)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(sku) DO UPDATE SET
+          n11_product_id     = CASE WHEN excluded.n11_product_id > 0     THEN excluded.n11_product_id     ELSE n11_product_id END,
+          n11_stock_code     = CASE WHEN excluded.n11_stock_code != ''   THEN excluded.n11_stock_code     ELSE n11_stock_code END,
+          hb_sku             = CASE WHEN excluded.hb_sku != ''           THEN excluded.hb_sku             ELSE hb_sku END,
+          xtechnx_product_id = CASE WHEN excluded.xtechnx_product_id > 0 THEN excluded.xtechnx_product_id ELSE xtechnx_product_id END,
+          last_synced        = excluded.last_synced
+    """, (sku, xtechnx_product_id, n11_product_id, n11_stock_code, hb_sku, stock,
+          datetime.now().isoformat()))
+    conn.commit()
+    conn.close()
+
+
+def update_stock(sku: str, new_stock: int):
+    conn = get_conn()
+    conn.execute("""
+        UPDATE stock_map SET current_stock=?, last_synced=? WHERE sku=?
+    """, (max(0, new_stock), datetime.now().isoformat(), sku))
+    conn.commit()
+    conn.close()
+
+
+def get_stock_map() -> list:
+    conn = get_conn()
+    rows = conn.execute("SELECT * FROM stock_map ORDER BY sku").fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+
+def get_stock_by_sku(sku: str) -> dict | None:
+    conn = get_conn()
+    row = conn.execute("SELECT * FROM stock_map WHERE sku=?", (sku,)).fetchone()
+    conn.close()
+    return dict(row) if row else None
+
+
+# ── Processed Orders ─────────────────────────────────────────
+
+def is_order_processed(order_id: str, platform: str) -> bool:
+    conn = get_conn()
+    row = conn.execute(
+        "SELECT 1 FROM processed_orders WHERE order_id=? AND platform=?",
+        (order_id, platform)
+    ).fetchone()
+    conn.close()
+    return row is not None
+
+
+def mark_order_processed(order_id: str, platform: str, sku: str, qty: int):
+    conn = get_conn()
+    try:
+        conn.execute("""
+            INSERT INTO processed_orders (order_id, platform, sku, qty, processed_at)
+            VALUES (?, ?, ?, ?, ?)
+        """, (order_id, platform, sku, qty, datetime.now().isoformat()))
+        conn.commit()
+    except Exception:
+        pass
+    finally:
+        conn.close()

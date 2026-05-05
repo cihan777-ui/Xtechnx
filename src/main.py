@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 import database as db
 import barcode_manager as bm
+import stock_sync as ss
 from config.settings import settings
 from transformer import transform, preview
 from app_config import get_config, set_config_value
@@ -295,6 +296,19 @@ async def _upload_job(job_id: str, item: dict, platforms: list):
                 item["original"].title, product.title,
                 item["original"].price, product.price, platform, upload_status
             )
+            # Başarılı yüklemelerde stock_map'e kaydet
+            if upload_status in ("success", "success_unconfirmed"):
+                n11_id  = int(result.get("n11_product_id") or 0)
+                hb_sku  = str(result.get("hb_sku") or result.get("tracking_id") or "")
+                n11_sc  = product.sku if platform == "n11" else ""
+                hb_s    = hb_sku    if platform == "hepsiburada" else ""
+                db.register_stock(
+                    sku=product.sku,
+                    n11_product_id=n11_id if platform == "n11" else 0,
+                    n11_stock_code=n11_sc,
+                    hb_sku=hb_s,
+                    stock=product.stock,
+                )
         except asyncio.TimeoutError:
             msg = f"{platform} zaman aşımı (300s)"
             logger.error(f"[{platform}] TIMEOUT")
@@ -579,10 +593,43 @@ async def check_n11_category(cat_id: int):
         return {"error": str(e)}
 
 
+# ── STOK SENKRONİZASYONU ────────────────────────────────────
+@app.get("/stock")
+async def get_stock():
+    """stock_map tablosunu döner — tüm ürünlerin mevcut stok durumu."""
+    return {"stock": db.get_stock_map()}
+
+@app.post("/stock/sync")
+async def trigger_stock_sync(background_tasks: BackgroundTasks):
+    """Siparişleri çek, stok düş, platformları güncelle."""
+    background_tasks.add_task(_run_stock_sync)
+    return {"status": "started", "message": "Stok senkronizasyonu başladı"}
+
+async def _run_stock_sync():
+    try:
+        await ss.sync_stock()
+    except Exception as e:
+        logger.error(f"Stok sync hatası: {e}")
+
+@app.get("/stock/sync/status")
+async def stock_sync_status():
+    """Son stok senkronizasyonunun durumunu döner."""
+    return ss.get_last_sync()
+
+@app.patch("/stock/{sku}")
+async def set_stock(sku: str, stock: int):
+    """Manuel stok güncelleme."""
+    row = db.get_stock_by_sku(sku)
+    if not row:
+        raise HTTPException(404, "SKU stock_map'te bulunamadı")
+    db.update_stock(sku, stock)
+    return {"status": "updated", "sku": sku, "new_stock": stock}
+
+
 @app.get("/health")
 async def health():
     stats = db.get_history_stats()
-    return {"status": "ok", "version": "4.2.0",
+    return {"status": "ok", "version": "5.1.0",
             "uploads_total": stats.get("total", 0), "uploads_today": stats.get("today", 0)}
 
 
